@@ -1,0 +1,326 @@
+<p>You’re absolutely right to ask this—and it’s a <strong>common
+challenge</strong> in doing effective EDA:</p>
+<p>✅ You want to capture insights…<br />
+⚠️ But you don’t want to write a novel.<br />
+🎯 You need a <strong>systematic, efficient process</strong> that
+delivers <strong>just enough</strong> interpretation to create
+value.</p>
+<p>Let’s walk through <strong>a scalable, practical approach</strong>
+that balances depth with speed—especially when working with many
+variables.</p>
+<hr />
+<h2 id="do-i-need-to-write-observations-for-every-feature">🎓 Do I Need
+to Write Observations for Every Feature?</h2>
+<p><strong>Short answer: No. But…</strong></p>
+<p>You <strong>do</strong> need to: - Understand <strong>all</strong>
+features at a surface level<br />
+- Deep dive into features that are: - Target-related - High variance or
+high impact - High cardinality or messy - Business-critical
+(domain-prioritized) - Anomalous or surprising</p>
+<blockquote>
+<p>📌 Think of EDA notes like triage: <strong>not every feature is a
+priority</strong>, but <strong>you need to quickly assess which ones
+are</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="systematic-3-pass-eda-notetaking-strategy">✅ Systematic 3-Pass
+EDA Notetaking Strategy</h2>
+<h3 id="pass-1-quick-scan-triage-phase">🔁 <strong>Pass 1: Quick Scan
+(Triage Phase)</strong></h3>
+<p>For <strong>every variable</strong>, jot a one-liner:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Type</th>
+<th>Unique</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>customer_id</code></td>
+<td>Categorical</td>
+<td>High</td>
+<td>Identifier, drop</td>
+</tr>
+<tr class="even">
+<td><code>purchase_date</code></td>
+<td>Date</td>
+<td>720</td>
+<td>Weekly cycle, investigate</td>
+</tr>
+<tr class="odd">
+<td><code>product_type</code></td>
+<td>Categorical</td>
+<td>12</td>
+<td>Well-balanced</td>
+</tr>
+<tr class="even">
+<td><code>units_sold</code></td>
+<td>Numeric</td>
+<td>1,456</td>
+<td>Right-skewed, 5% outliers</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Goal:</strong> Spot feature types, scale, cardinality, and
+immediate red flags.</p>
+</blockquote>
+<hr />
+<h3 id="pass-2-prioritized-observation-interpretation">🔁 <strong>Pass
+2: Prioritized Observation &amp; Interpretation</strong></h3>
+<p>For high-priority columns (e.g. target-related, messy, predictive, or
+surprising), write 2–3 sentences:</p>
+<ul>
+<li><strong>Observation:</strong> What do you see? (e.g., skew,
+outliers, imbalance)</li>
+<li><strong>Interpretation:</strong> Why might this be happening?</li>
+<li><strong>Business Meaning:</strong> How could this impact decisions
+or modeling?</li>
+</ul>
+<p><strong>Example:</strong> &gt; <code>units_sold</code> is heavily
+right-skewed, with a small number of orders exceeding 1,000 units. These
+likely represent bulk buyers and could distort the mean. Consider log
+transformation or segmenting high-volume buyers.</p>
+<hr />
+<h3 id="pass-3-synthesis-and-recommendations-only-for-key-features">🔁
+<strong>Pass 3: Synthesis and Recommendations (Only for Key
+Features)</strong></h3>
+<p>Only for <strong>features that influence decision-making</strong>,
+write a brief <strong>Insight + Action</strong> note.</p>
+<p><strong>Format:</strong> &gt; <strong>Insight:</strong>
+<code>product_type</code> A is 2.5x more likely to be returned.<br />
+&gt; <strong>Action:</strong> Investigate supplier quality or update
+return policies for this product line.</p>
+<hr />
+<h2
+id="use-a-lightweight-template-for-notetaking-or-markdown-reporting">🧠
+Use a Lightweight Template (for Notetaking or Markdown Reporting)</h2>
+<p>Here’s a Markdown/Notebook-ready structure:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### `feature_name`</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Type:** <span class="co">[</span><span class="ot">Numeric / Categorical / Date / Text</span><span class="co">]</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Distribution:** <span class="co">[</span><span class="ot">Normal / Skewed / Bimodal / Constant / Other</span><span class="co">]</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Missingness:** <span class="co">[</span><span class="ot">% missing</span><span class="co">]</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Cardinality:** <span class="co">[</span><span class="ot"># unique values</span><span class="co">]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Initial Observations:**</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">One-liner on spread, balance, or anomalies</span><span class="co">]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Business Interpretation:**</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">How this connects to the domain or operations</span><span class="co">]</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Recommendation:**</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Drop / Keep / Engineer / Transform / Investigate</span><span class="co">]</span></span></code></pre></div>
+<hr />
+<h2 id="tips-for-speed-clarity">🧠 Tips for Speed &amp; Clarity</h2>
+<ul>
+<li><strong>Use EDA automation tools</strong> like
+<code>ydata-profiling</code>, <code>sweetviz</code>, or
+<code>dtale</code> to scan data.</li>
+<li><strong>Copy/paste visuals into your notes</strong> for key features
+and annotate.</li>
+<li><strong>Tag variables by priority</strong> (high, medium, low) after
+first pass.</li>
+<li><strong>Create templates or notebook cells</strong> that you
+reuse.</li>
+</ul>
+<hr />
+<h2 id="the-8020-rule-of-eda-notes">🎯 The 80/20 Rule of EDA Notes</h2>
+<p>Spend your interpretation time on the <strong>20% of features that
+explain 80% of the variance, risk, or outcome</strong>.</p>
+<hr />
+<p>Would you like: - A reusable Python/Markdown template for this? - A
+sample notebook where this is already implemented? - A Google Sheet or
+Notion version for managing features and notes?</p>
+<p>Let me know your preferred workflow and I’ll tailor the format!</p>
+<hr />
+<h1 id="next-topic">NEXT TOPIC</h1>
+<hr />
+<p>Absolutely! Below is a <strong>reusable Markdown template</strong>
+for making structured EDA notes for each feature. It’s designed for
+clarity, speed, and business relevance—perfect for documenting within a
+Jupyter notebook or saving as a project report.</p>
+<hr />
+<h2 id="eda-feature-analysis-template-markdown">📊 <strong>EDA Feature
+Analysis Template (Markdown)</strong></h2>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">### 🔍 Feature: `feature_name_here`</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">- **Type:** `Numeric / Categorical / Date / Text`</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">- **Role:** `Feature / Target / ID / Derived / Flag`</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">- **Cardinality:** `Low / Medium / High` (`X` unique values)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">- **Missing Values:** `X` missing (`Y%`)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 📈 Distribution / Summary Stats:</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Mean: <span class="in">`___`</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Median: <span class="in">`___`</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Std Dev: <span class="in">`___`</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Skewness: <span class="in">`___`</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Kurtosis: <span class="in">`___`</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Range: <span class="in">`[min, max]`</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 📌 Initial Observations:</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bullet points describing data quality, shape, or anomalies.</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Any standout value concentrations or patterns.</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Compare subgroups if necessary (e.g., by time, segment, or category).</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 💡 Domain Interpretation:</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What does this feature represent in the real world?</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Why might the patterns you&#39;re seeing make sense (or not)?</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How does it relate to operations, customer behavior, or system design?</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 🎯 Target Relationship (if applicable):</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Is it predictive?</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Does it correlate positively/negatively with the target?</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Do certain values or bins dominate outcomes?</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 🛠️ Recommendation:</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`Keep / Drop / Transform / Bin / Investigate / Engineer`</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If transform: <span class="in">`Log / Normalize / Encode / Combine`</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Optional next step or stakeholder question.</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>---</span></code></pre></div>
+<hr />
+<h3 id="how-to-use-it-efficiently">🧠 How to Use It Efficiently</h3>
+<ul>
+<li>Copy &amp; paste the block above for <strong>each high-priority
+feature</strong>.</li>
+<li>Use just the <strong>top 1–3 sections</strong> for lower-priority
+ones.</li>
+<li>Customize it for your use case—add visuals or links to plots if
+needed.</li>
+</ul>
+<hr />
+<p>Would you like a version of this that’s: - Rendered inside a
+<strong>Jupyter notebook cell</strong>? - Converted into a
+<strong>template notebook file</strong>? - Part of a multi-feature
+summary tracker?</p>
+<p>Let me know your workflow and I can plug it right in.</p>
+<hr />
+<h1 id="next-topic-1">NEXT TOPIC</h1>
+<hr />
+<p>Great question! A <strong>multi-feature summary tracker</strong> is a
+compact, tabular view of your EDA that lets you:</p>
+<ul>
+<li>Quickly scan and compare multiple variables<br />
+</li>
+<li>Prioritize what’s worth deeper analysis<br />
+</li>
+<li>Track data issues and transformation plans<br />
+</li>
+<li>Document your decisions for reproducibility</li>
+</ul>
+<hr />
+<h2 id="use-case">✅ Use Case</h2>
+<p>Think of it like a <strong>feature inventory dashboard</strong>—super
+helpful when you’re working with dozens (or hundreds) of columns.</p>
+<p>You can use it in: - <strong>Markdown tables</strong> (in Jupyter) -
+<strong>Pandas DataFrame</strong> (for programmatic tracking) -
+<strong>Google Sheets / Excel</strong> (for collaborative teams) -
+<strong>Notion / Airtable</strong> (for interactive EDA logs)</p>
+<hr />
+<h2 id="markdown-table-template-multi-feature-tracker">📊 Markdown Table
+Template — Multi-Feature Tracker</h2>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>| Feature Name       | Type       | Cardinality | Missing (%) | Distribution | </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>|--------------------|------------|-------------|-------------|--------------|</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>| customer_id        | Categorical| High        | 0.0%        | Unique IDs   |</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>| purchase_date      | Date       | High        | 0.0%        | Weekly cycles|</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>| product_type       | Category   | Low (12)    | 0.0%        | Even spread  |</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>| units_sold         | Numeric    | High        | 0.0%        | Right-skewed |</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>| region             | Category   | Medium (6)  | 2.5%        | Imbalanced   |</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>| discount_applied   | Boolean    | Low         | 0.0%        | Binary       |</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a> Target Relevance   | Notes / Observations                        | Action            |</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>|-------------------|---------------------------------------------|-------------------|</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>| None              | Identifier column                           | Drop              |</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>| Temporal signal   | Spikes on weekends                          | Engineer features |</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>| Moderate          | A few types tied to returns                 | Keep              |</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>| High              | Outliers in bulk orders                     | Log transform     |</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>| High              | Region C has highest returns                | One-hot encode    |</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>| Moderate          | Discounts increase sales but lower margin   | Keep              |</span></code></pre></div>
+<hr />
+<h2 id="column-definitions">🧠 Column Definitions</h2>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Feature Name</strong></td>
+<td>The name of the variable</td>
+</tr>
+<tr class="even">
+<td><strong>Type</strong></td>
+<td>Numerical, Categorical, Date, Text, Boolean</td>
+</tr>
+<tr class="odd">
+<td><strong>Cardinality</strong></td>
+<td>Unique value count (Low/Med/High helps triage complexity)</td>
+</tr>
+<tr class="even">
+<td><strong>Missing (%)</strong></td>
+<td>Helps assess data quality</td>
+</tr>
+<tr class="odd">
+<td><strong>Distribution</strong></td>
+<td>Normal, skewed, binary, multimodal, etc.</td>
+</tr>
+<tr class="even">
+<td><strong>Target Relevance</strong></td>
+<td>Initial judgment of how predictive it seems</td>
+</tr>
+<tr class="odd">
+<td><strong>Notes / Observations</strong></td>
+<td>What stood out during EDA</td>
+</tr>
+<tr class="even">
+<td><strong>Action</strong></td>
+<td>Keep, drop, transform, engineer, etc.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="optional-pandas-version">🔁 Optional: Pandas Version</h2>
+<p>You can also manage this as a DataFrame and export it:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>eda_tracker <span class="op">=</span> pd.DataFrame([</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Feature&quot;</span>: <span class="st">&quot;units_sold&quot;</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Type&quot;</span>: <span class="st">&quot;Numeric&quot;</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Cardinality&quot;</span>: <span class="st">&quot;High&quot;</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Missing %&quot;</span>: <span class="fl">0.0</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Distribution&quot;</span>: <span class="st">&quot;Right-skewed&quot;</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Target Relevance&quot;</span>: <span class="st">&quot;High&quot;</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Observation&quot;</span>: <span class="st">&quot;Outliers suggest bulk purchasing behavior&quot;</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Action&quot;</span>: <span class="st">&quot;Log transform&quot;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add more rows here...</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>eda_tracker</span></code></pre></div>
+<hr />
+<p>Would you like a downloadable <code>.csv</code> version of this
+tracker? Or a Jupyter Notebook cell that generates a ready-to-fill
+table? Let me know what format you prefer!</p>

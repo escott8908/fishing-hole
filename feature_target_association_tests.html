@@ -1,0 +1,241 @@
+<p>Absolutely! <strong>Feature-target association tests</strong> are
+used in <strong>diagnostic analytics</strong> to determine how strongly
+each feature (independent variable) is associated with a target variable
+(dependent variable), often before building predictive models. These
+tests depend on the data types involved (categorical, numeric, ordinal)
+and the nature of the relationship you’re exploring.</p>
+<p>Below is a curated list of <strong>commonly used feature-target
+association tests</strong>, categorized by data type combinations, with
+the <strong>purpose</strong>, <strong>test name</strong>, and
+<strong>Python library</strong> for each.</p>
+<hr />
+<h3 id="categorical-feature-vs-categorical-target">📊 1.
+<strong>Categorical Feature vs Categorical Target</strong></h3>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 37%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>Purpose</th>
+<th>Python Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Chi-Squared Test</strong></td>
+<td>Tests independence between two categorical variables</td>
+<td><code>scipy.stats.chi2_contingency</code></td>
+</tr>
+<tr class="even">
+<td><strong>Fisher’s Exact Test</strong></td>
+<td>Alternative to chi-squared for small sample sizes</td>
+<td><code>scipy.stats.fisher_exact</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Cramér’s V</strong></td>
+<td>Measures strength of association (0–1 scale)</td>
+<td><code>pingouin.cramers_v</code> or custom</td>
+</tr>
+<tr class="even">
+<td><strong>Theil’s U (Uncertainty Coefficient)</strong></td>
+<td>Asymmetric measure of information gain</td>
+<td><code>dython.nominal.theils_u</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Mutual Information (Categorical)</strong></td>
+<td>Measures information shared between two variables</td>
+<td><code>sklearn.feature_selection.mutual_info_classif</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="numeric-feature-vs-categorical-target">📉 2. <strong>Numeric
+Feature vs Categorical Target</strong></h3>
+<p>(Assumes binary or multi-class target)</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 38%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>Purpose</th>
+<th>Python Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>ANOVA F-test</strong></td>
+<td>Compares means across groups (multi-class target)</td>
+<td><code>sklearn.feature_selection.f_classif</code></td>
+</tr>
+<tr class="even">
+<td><strong>Point-Biserial Correlation</strong></td>
+<td>Special case of Pearson’s r for binary target</td>
+<td><code>scipy.stats.pointbiserialr</code></td>
+</tr>
+<tr class="odd">
+<td><strong>T-test (independent samples)</strong></td>
+<td>Compare means between two classes</td>
+<td><code>scipy.stats.ttest_ind</code></td>
+</tr>
+<tr class="even">
+<td><strong>Kruskal-Wallis Test</strong></td>
+<td>Non-parametric version of ANOVA</td>
+<td><code>scipy.stats.kruskal</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Mutual Information (Numeric)</strong></td>
+<td>Measures non-linear dependence</td>
+<td><code>sklearn.feature_selection.mutual_info_classif</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="numeric-feature-vs-numeric-target">🔢 3. <strong>Numeric Feature
+vs Numeric Target</strong></h3>
+<p>(Continuous regression targets)</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 26%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>Purpose</th>
+<th>Python Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Pearson Correlation</strong></td>
+<td>Measures linear association</td>
+<td><code>scipy.stats.pearsonr</code></td>
+</tr>
+<tr class="even">
+<td><strong>Spearman Rank Correlation</strong></td>
+<td>Measures monotonic relationships</td>
+<td><code>scipy.stats.spearmanr</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Kendall’s Tau</strong></td>
+<td>Measures ordinal association</td>
+<td><code>scipy.stats.kendalltau</code></td>
+</tr>
+<tr class="even">
+<td><strong>Mutual Information (Regressor)</strong></td>
+<td>Captures nonlinear relationships</td>
+<td><code>sklearn.feature_selection.mutual_info_regression</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Maximal Information Coefficient (MIC)</strong></td>
+<td>General association strength</td>
+<td><code>minepy</code> or <code>sklearn-contrib</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="categorical-feature-vs-numeric-target">🔡 4. <strong>Categorical
+Feature vs Numeric Target</strong></h3>
+<p>(Reverse of category vs numeric)</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 34%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>Purpose</th>
+<th>Python Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>ANOVA F-test</strong></td>
+<td>Tests if means differ by group</td>
+<td><code>statsmodels.formula.api.ols</code> + <code>.fit()</code> +
+<code>.anova_lm()</code></td>
+</tr>
+<tr class="even">
+<td><strong>T-test</strong></td>
+<td>For two-category variables</td>
+<td><code>scipy.stats.ttest_ind</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Eta Squared</strong></td>
+<td>Effect size for ANOVA</td>
+<td><code>pingouin.anova</code> or <code>custom</code></td>
+</tr>
+<tr class="even">
+<td><strong>Boxplots &amp; Visual EDA</strong></td>
+<td>Helps understand distributional separation</td>
+<td><code>seaborn.boxplot</code>, <code>sns.violinplot</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="bonus-model-based-feature-importance">🧠 Bonus: Model-Based
+Feature Importance</h3>
+<p>While not tests in a strict statistical sense, these are <strong>very
+commonly used</strong> in diagnostic analytics:</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 28%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>Purpose</th>
+<th>Python Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Logistic Regression Coefficients</strong></td>
+<td>Linear relationship to odds</td>
+<td><code>sklearn.linear_model.LogisticRegression</code></td>
+</tr>
+<tr class="even">
+<td><strong>Random Forest Feature Importance</strong></td>
+<td>Nonlinear association importance</td>
+<td><code>sklearn.ensemble.RandomForestClassifier</code></td>
+</tr>
+<tr class="odd">
+<td><strong>SHAP Values</strong></td>
+<td>Local/global interpretability</td>
+<td><code>shap</code></td>
+</tr>
+<tr class="even">
+<td><strong>Permutation Importance</strong></td>
+<td>Measures change in performance</td>
+<td><code>sklearn.inspection.permutation_importance</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="tips-on-choosing-a-test">🧪 Tips on Choosing a Test</h3>
+<ul>
+<li>Use <strong>Chi-Squared</strong>, <strong>Cramér’s V</strong>, or
+<strong>Mutual Info</strong> for categorical-to-categorical.</li>
+<li>Use <strong>ANOVA</strong>, <strong>t-test</strong>, or
+<strong>Point-Biserial</strong> for numeric-to-categorical.</li>
+<li>Use <strong>Pearson/Spearman</strong> for numeric-to-numeric.</li>
+<li>Use <strong>Mutual Information</strong> for detecting nonlinear
+relationships.</li>
+<li>Use <strong>SHAP</strong> or <strong>Permutation Importance</strong>
+for model-based insights.</li>
+</ul>
+<p>Would you like a flowchart or cheat sheet to help choose the right
+test based on data types?</p>

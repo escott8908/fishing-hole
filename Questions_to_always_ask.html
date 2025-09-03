@@ -1,0 +1,139 @@
+<p>Absolutely—asking the <strong>right questions</strong> during
+exploratory data analysis (EDA) is key to uncovering
+<strong>insights</strong> that are <strong>clear, relevant, and
+impactful</strong> to your customer.</p>
+<p>Here’s a comprehensive list organized by theme. Think of it as your
+<strong>EDA checklist</strong>—your personal detective toolkit for
+getting to know any dataset and telling a compelling story about it.</p>
+<hr />
+<h2 id="general-data-understanding">🧩 <strong>1. General Data
+Understanding</strong></h2>
+<ul>
+<li>What is the shape of the dataset (rows, columns)?</li>
+<li>What does each column represent? What is the unit, if any?</li>
+<li>What are the data types (numerical, categorical, text, date)?</li>
+<li>Is this structured (tabular), time series, or unstructured
+(text/image) data?</li>
+<li>What is the primary entity or observation unit (a person,
+transaction, machine, etc.)?</li>
+<li>Is there a target variable? What are we trying to predict,
+understand, or optimize?</li>
+</ul>
+<hr />
+<h2 id="data-quality">🔍 <strong>2. Data Quality</strong></h2>
+<ul>
+<li>Are there missing values? How many per column?
+<ul>
+<li>Are they random, patterned, or systemic?</li>
+</ul></li>
+<li>Are there duplicate rows?</li>
+<li>Are there constant or near-constant columns?</li>
+<li>Are there unexpected values (e.g., negative ages, future dates,
+special characters)?</li>
+</ul>
+<hr />
+<h2 id="descriptive-statistics-distributions">📏 <strong>3. Descriptive
+Statistics &amp; Distributions</strong></h2>
+<ul>
+<li>What are the min, max, mean, median, std, skewness, and kurtosis for
+each numerical variable?</li>
+<li>Are distributions normal, skewed, or multimodal?
+<ul>
+<li>Are there extreme outliers? Are they errors or legitimate?</li>
+</ul></li>
+<li>Do any variables have large variance or a wide range?</li>
+<li>Which values appear most frequently (mode)?</li>
+<li>Do any numerical columns show heavy-tailed distributions?</li>
+</ul>
+<hr />
+<h2 id="categorical-variables">📊 <strong>4. Categorical
+Variables</strong></h2>
+<ul>
+<li>How many unique values are there per categorical column?</li>
+<li>What is the frequency of each category? Are any dominant?</li>
+<li>Are any categories rare or have too few occurrences?</li>
+<li>Are categories cleanly formatted (e.g., consistent
+spelling/casing)?</li>
+</ul>
+<hr />
+<h2 id="time-based-questions-if-applicable">⏳ <strong>5. Time-Based
+Questions (if applicable)</strong></h2>
+<ul>
+<li>What is the time range of the data?</li>
+<li>Are there gaps or bursts in time?</li>
+<li>Are there temporal trends or seasonality?</li>
+<li>Are key metrics stable or changing over time?</li>
+<li>Is there a timestamp granularity issue (e.g., all dates the same,
+only daily resolution)?</li>
+</ul>
+<hr />
+<h2 id="relationships-between-variables">🧮 <strong>6. Relationships
+Between Variables</strong></h2>
+<ul>
+<li>Which variables are strongly correlated (positively or
+negatively)?</li>
+<li>Are there multicollinear features (i.e., redundant
+information)?</li>
+<li>Are there interesting interactions between features (e.g., only when
+A and B happen together)?</li>
+<li>Are there group-level differences (e.g., average metric by
+category)?</li>
+</ul>
+<hr />
+<h2 id="feature-engineering-opportunities">🧠 <strong>7. Feature
+Engineering Opportunities</strong></h2>
+<ul>
+<li>Are there columns that can be combined (e.g., year + month)?</li>
+<li>Can you create ratios, flags, or aggregates?</li>
+<li>Are there temporal features to extract (e.g., day of week,
+hour)?</li>
+<li>Can you bucket or bin continuous variables (e.g., age groups, price
+bands)?</li>
+<li>Can you encode hierarchical or ordinal relationships?</li>
+</ul>
+<hr />
+<h2 id="target-variable-exploration-if-supervised-task">🧼 <strong>8.
+Target Variable Exploration (if supervised task)</strong></h2>
+<ul>
+<li>Is the target balanced or imbalanced?</li>
+<li>How is the target variable distributed across key features?</li>
+<li>Are there data leakage risks (features that “cheat” by knowing the
+future)?</li>
+<li>How does the target evolve over time or by group?</li>
+</ul>
+<hr />
+<h2 id="anomalies-red-flags">🚩 <strong>9. Anomalies &amp; Red
+Flags</strong></h2>
+<ul>
+<li>Are there clusters of missing data for certain rows/groups?</li>
+<li>Are there inconsistent relationships (e.g., younger person with high
+pension)?</li>
+<li>Are there suspicious timestamp patterns (e.g., all events logged at
+the same second)?</li>
+<li>Are there duplicated IDs, names, or transaction numbers?</li>
+<li>Do repeated exact values suggest automation, human error, or sensor
+defaults?</li>
+</ul>
+<hr />
+<h2 id="communicating-to-the-customer">📣 <strong>10. Communicating to
+the Customer</strong></h2>
+<ul>
+<li>What trends or insights matter most to the customer’s domain?</li>
+<li>How does each insight tie back to the business problem or goal?</li>
+<li>Can you offer a possible explanation or hypothesis for each
+insight?</li>
+<li>What decisions could be influenced by these insights?</li>
+<li>Where should further data collection or deeper analysis happen?</li>
+</ul>
+<hr />
+<h2 id="bonus-your-narrative-template-for-each-variable">✨ Bonus: Your
+Narrative Template for Each Variable</h2>
+<p>For each important column, answer: 1. <strong>What does this variable
+measure, and why does it matter?</strong> 2. <strong>How is it
+distributed?</strong> 3. <strong>What is typical (mean/median), and what
+is unusual (outliers)?</strong> 4. <strong>How does it relate to the
+target or other variables?</strong> 5. <strong>What should the customer
+know or do about it?</strong></p>
+<hr />
+<p>Would you like me to turn this checklist into a printable reference
+card or Markdown template for reuse in your reports or projects?</p>

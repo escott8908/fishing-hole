@@ -1,0 +1,777 @@
+<p>Absolutely—let’s zoom in on <strong>Phase 1: Triage</strong> and
+build it into a <strong>thorough, repeatable system</strong> that helps
+you quickly understand the shape of your dataset without getting stuck
+in the weeds.</p>
+<hr />
+<h1 id="phase-1-triage-map-the-landscape"><strong>Phase 1: Triage – “Map
+the Landscape”</strong></h1>
+<h3 id="goal"><strong>Goal:</strong></h3>
+<p>To quickly scan <strong>every feature</strong> in the dataset and
+assess:</p>
+<ul>
+<li>What type of data it is<br />
+</li>
+<li>Whether it’s clean or problematic<br />
+</li>
+<li>Whether it’s likely to be <strong>useful, redundant, or
+ignorable</strong><br />
+</li>
+<li>Where to <strong>dig deeper</strong> in later phases</li>
+</ul>
+<hr />
+<h2 id="what-youre-looking-for">✅ What You’re Looking For</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Data type</strong> (numeric, categorical, date, etc.)</td>
+<td>Guides what kind of analysis is appropriate</td>
+</tr>
+<tr class="even">
+<td><strong>Cardinality</strong> (how many unique values)</td>
+<td>Helps identify IDs, enums, flags, junk fields</td>
+</tr>
+<tr class="odd">
+<td><strong>Missing values</strong></td>
+<td>Tells you about data quality and where you’ll need imputation</td>
+</tr>
+<tr class="even">
+<td><strong>Basic range or distribution info</strong></td>
+<td>Alerts you to outliers or scaling needs</td>
+</tr>
+<tr class="odd">
+<td><strong>Constant values or near-constant</strong></td>
+<td>Waste of model space—drop or deprioritize</td>
+</tr>
+<tr class="even">
+<td><strong>Inconsistent or strange values</strong></td>
+<td>Highlights cleaning needs (e.g., typos, casing issues)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="triage-checklist-per-feature">🧰 Triage Checklist (Per
+Feature)</h2>
+<p>For every column, answer the following:</p>
+<ol type="1">
+<li><strong>What is the column name?</strong></li>
+<li><strong>What type of data is it?</strong>
+<ul>
+<li>Numeric<br />
+</li>
+<li>Categorical<br />
+</li>
+<li>Date/Time<br />
+</li>
+<li>Boolean<br />
+</li>
+<li>Text<br />
+</li>
+<li>Identifier<br />
+</li>
+</ul></li>
+<li><strong>How many unique values?</strong>
+<ul>
+<li>Constant (1)<br />
+</li>
+<li>Low (&lt;10)<br />
+</li>
+<li>Medium (10–50)<br />
+</li>
+<li>High (&gt;50)<br />
+</li>
+<li>Very High (&gt;100 or matches row count)<br />
+</li>
+</ul></li>
+<li><strong>What % of values are missing?</strong></li>
+<li><strong>Is the data usable at a glance?</strong>
+<ul>
+<li>Clean / Dirty / Ambiguous</li>
+</ul></li>
+<li><strong>Quick action label:</strong>
+<ul>
+<li>Keep<br />
+</li>
+<li>Drop<br />
+</li>
+<li>Needs cleaning<br />
+</li>
+<li>Investigate<br />
+</li>
+<li>Derive features</li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="triage-tracker-table-markdown-or-spreadsheet">📋 Triage Tracker
+Table (Markdown or Spreadsheet)</h2>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 9%" />
+<col style="width: 5%" />
+<col style="width: 9%" />
+<col style="width: 18%" />
+<col style="width: 29%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature Name</th>
+<th>Type</th>
+<th>Unique</th>
+<th>Missing (%)</th>
+<th>Example Values</th>
+<th>Notes / Red Flags</th>
+<th>Quick Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>customer_id</code></td>
+<td>Categorical</td>
+<td>2500</td>
+<td>0%</td>
+<td><code>C123</code>, <code>C124</code>, …</td>
+<td>Unique ID, no use in modeling</td>
+<td>Drop</td>
+</tr>
+<tr class="even">
+<td><code>region</code></td>
+<td>Categorical</td>
+<td>6</td>
+<td>2.5%</td>
+<td><code>North</code>, <code>East</code>, …</td>
+<td>Slight imbalance</td>
+<td>Keep</td>
+</tr>
+<tr class="odd">
+<td><code>purchase_date</code></td>
+<td>Date</td>
+<td>700</td>
+<td>0%</td>
+<td>2022-01-01 → 2023-01-01</td>
+<td>Time-based, could extract features</td>
+<td>Derive features</td>
+</tr>
+<tr class="even">
+<td><code>units_sold</code></td>
+<td>Numeric</td>
+<td>1,345</td>
+<td>0%</td>
+<td>1, 2, 5, 10, 500</td>
+<td>Right-skewed, possible outliers</td>
+<td>Keep</td>
+</tr>
+<tr class="odd">
+<td><code>email_opt_in</code></td>
+<td>Boolean</td>
+<td>2</td>
+<td>0.1%</td>
+<td><code>Yes</code>, <code>No</code></td>
+<td>Clean binary</td>
+<td>Keep</td>
+</tr>
+<tr class="even">
+<td><code>discount_rate</code></td>
+<td>Numeric</td>
+<td>1</td>
+<td>100%</td>
+<td></td>
+<td>Always null</td>
+<td>Drop</td>
+</tr>
+<tr class="odd">
+<td><code>notes</code></td>
+<td>Text</td>
+<td>870</td>
+<td>25%</td>
+<td>Long-form text</td>
+<td>Probably not usable in current model</td>
+<td>Drop or NLP later</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tips-for-efficiency">🧠 Tips for Efficiency</h2>
+<ul>
+<li>You don’t need to run detailed stats—use
+<code>df.describe(include='all')</code> and basic summaries.</li>
+<li>For cardinality, try: <code>df[column].nunique()</code></li>
+<li>For missing %:
+<code>(df[column].isna().mean() * 100).round(1)</code></li>
+<li>For type: <code>df[column].dtype</code></li>
+<li>Set up a <strong>Jupyter Notebook cell</strong> that loops through
+each column and logs the triage table.</li>
+</ul>
+<hr />
+<h2 id="optional-notebook-cell-template-python">🛠️ Optional Notebook
+Cell Template (Python)</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> df.columns:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Feature: </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  - Type: </span><span class="sc">{</span>df[col]<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  - Unique Values: </span><span class="sc">{</span>df[col]<span class="sc">.</span>nunique()<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  - Missing %: </span><span class="sc">{</span>df[col]<span class="sc">.</span>isna()<span class="sc">.</span>mean() <span class="op">*</span> <span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%&quot;</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  - Sample Values: </span><span class="sc">{</span>df[col]<span class="sc">.</span>unique()[:<span class="dv">5</span>]<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;-&quot;</span> <span class="op">*</span> <span class="dv">50</span>)</span></code></pre></div>
+<hr />
+<h2 id="what-you-end-phase-1-with">🎯 What You End Phase 1 With</h2>
+<ul>
+<li>A <strong>shortlist</strong> of:
+<ul>
+<li>Columns to drop</li>
+<li>Columns to clean</li>
+<li>Columns that are priority targets</li>
+</ul></li>
+<li>A quick <strong>qualitative map</strong> of your data</li>
+<li>A <strong>foundation</strong> for deeper analysis in Phase 2</li>
+</ul>
+<p>Absolutely. Phase 2 is where you <strong>move beyond quick scans and
+start uncovering meaningful insights</strong> in your data. This is
+where the EDA becomes thoughtful and strategic—but still manageable.</p>
+<hr />
+<h1 id="phase-2-prioritize-focus-on-what-matters">🔍 <strong>Phase 2:
+Prioritize — “Focus on What Matters”</strong></h1>
+<h2 id="purpose">🎯 Purpose:</h2>
+<p>Now that you’ve mapped out all features in Phase 1, the goal here is
+to <strong>go deeper on high-priority features</strong> to understand
+their behavior and potential relevance.</p>
+<p>You’re answering: - What patterns are emerging? - What variables may
+drive outcomes? - What needs transformation or cleanup? - Where might
+business value hide?</p>
+<hr />
+<h2 id="step-by-step-workflow-for-phase-2">✅ Step-by-Step Workflow for
+Phase 2</h2>
+<hr />
+<h3 id="identify-high-priority-features">1. <strong>Identify
+High-Priority Features</strong></h3>
+<p>Choose variables to focus on using these criteria:</p>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Priority Criteria</th>
+<th>Why it Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Strong domain relevance</td>
+<td>Business-critical fields</td>
+</tr>
+<tr class="even">
+<td>Strong statistical signal</td>
+<td>Skewed, highly variable, high correlation</td>
+</tr>
+<tr class="odd">
+<td>Data quality risk</td>
+<td>Messy fields with missing or inconsistent values</td>
+</tr>
+<tr class="even">
+<td>Known to drive outcomes</td>
+<td>From SMEs or prior models</td>
+</tr>
+<tr class="odd">
+<td>Unexpected behavior</td>
+<td>Surprises or anomalies worth digging into</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Tip:</strong> Don’t try to analyze every column—just the ones
+that might affect insights, modeling, or decisions.</p>
+</blockquote>
+<hr />
+<h3 id="explore-in-detail">2. <strong>Explore in Detail</strong></h3>
+<p>Here’s what to look for by variable type:</p>
+<hr />
+<h4 id="a.-numeric-variables"><strong>A. Numeric Variables</strong></h4>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 36%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>What to Check</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>What’s the distribution?</td>
+<td>Histogram, boxplot</td>
+<td>Skew = transformation?</td>
+</tr>
+<tr class="even">
+<td>Are there outliers?</td>
+<td>Min/max vs IQR</td>
+<td>May distort model</td>
+</tr>
+<tr class="odd">
+<td>Central tendency?</td>
+<td>Mean vs median</td>
+<td>Skewed or symmetric?</td>
+</tr>
+<tr class="even">
+<td>Variance?</td>
+<td>Std dev, CV</td>
+<td>Useful or constant?</td>
+</tr>
+<tr class="odd">
+<td>Correlation?</td>
+<td>With target or other variables</td>
+<td>Predictor signal or multicollinearity</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Note:</strong> &gt; <code>unit_price</code> is
+right-skewed with a long tail of premium products. Median is $18, mean
+is $27. Strongly correlated (0.62) with total revenue. Suggest log
+transform or segmentation by pricing tier.</p>
+<hr />
+<h4 id="b.-categorical-variables"><strong>B. Categorical
+Variables</strong></h4>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 36%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>What to Check</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>How many categories?</td>
+<td>Cardinality</td>
+<td>Too many? May need grouping</td>
+</tr>
+<tr class="even">
+<td>Are some categories rare?</td>
+<td>Frequency table</td>
+<td>Combine or drop</td>
+</tr>
+<tr class="odd">
+<td>Is the distribution balanced?</td>
+<td>Value counts</td>
+<td>Model bias risk if not</td>
+</tr>
+<tr class="even">
+<td>Correlation with target?</td>
+<td>Group target means</td>
+<td>Driver of outcome?</td>
+</tr>
+<tr class="odd">
+<td>Clean values?</td>
+<td>Inconsistent labels</td>
+<td>May need standardization</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Note:</strong> &gt; <code>payment_type</code> has 6
+values, but 2 are rare. “CC” and “Credit Card” both used—needs
+consolidation. Credit Card users have 1.8x higher return rate. Keep and
+encode.</p>
+<hr />
+<h4 id="c.-datetime-variables"><strong>C. Date/Time
+Variables</strong></h4>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 36%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>What to Check</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Time range?</td>
+<td>Min/max dates</td>
+<td>Any gaps or future dates?</td>
+</tr>
+<tr class="even">
+<td>Trends over time?</td>
+<td>Line plots</td>
+<td>Sales growing? Dropping?</td>
+</tr>
+<tr class="odd">
+<td>Seasonality?</td>
+<td>Monthly/weekly cycles</td>
+<td>Business rhythm? Forecasting signal?</td>
+</tr>
+<tr class="even">
+<td>Feature potential?</td>
+<td>Extract day, month, week, etc.</td>
+<td>Create useful predictors</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Note:</strong> &gt; <code>signup_date</code> ranges
+from Jan 2021 to Mar 2023. Weekly cycles are visible (spikes on
+Mondays). Could derive weekday or signup cohort features.</p>
+<hr />
+<h4 id="d.-target-variable-relationship"><strong>D. Target Variable
+Relationship</strong></h4>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 36%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>What to Check</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Grouped summary?</td>
+<td>Mean target per category or bin</td>
+<td>Segment insight</td>
+</tr>
+<tr class="even">
+<td>Scatter or trend?</td>
+<td>Numeric vs target</td>
+<td>Slope or clustering?</td>
+</tr>
+<tr class="odd">
+<td>Is the relationship stable over time?</td>
+<td>Group by date</td>
+<td>Drift or concept change?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Note:</strong> &gt; <code>customer_age</code> shows a
+U-shaped relationship with churn: younger (&lt;25) and older (&gt;60)
+users churn more. Possible segmentation by age group.</p>
+<hr />
+<h3 id="use-structured-notetaking-for-each-feature">3. <strong>Use
+Structured Notetaking for Each Feature</strong></h3>
+<p>Use a consistent format for medium-depth observations.</p>
+<p><strong>Example Markdown Format:</strong></p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### Feature: product_rating</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Type: Numeric (1–5 scale)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Observation: Left-skewed, most ratings are 5; 5% are 1-star</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Interpretation: Possible review bias, most customers happy or silent</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Business Insight: Need to monitor low-rated items for customer retention</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Next Step: Engineer binary flag for 1-star ratings; possible NLP on reviews</span></code></pre></div>
+<hr />
+<h2 id="common-transformations-identified-in-phase-2">🧠 Common
+Transformations Identified in Phase 2</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Issue Found</th>
+<th>Recommended Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Right-skewed variable</td>
+<td>Log transform</td>
+</tr>
+<tr class="even">
+<td>Rare categorical levels</td>
+<td>Group or drop</td>
+</tr>
+<tr class="odd">
+<td>Flat or constant column</td>
+<td>Drop</td>
+</tr>
+<tr class="even">
+<td>Text field with tags or codes</td>
+<td>Extract structured features</td>
+</tr>
+<tr class="odd">
+<td>Seasonality in date field</td>
+<td>Create lag/lead or cyclic features</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="output-of-phase-2-prioritized-feature-notes">🧾 Output of Phase
+2: Prioritized Feature Notes</h2>
+<p>You now have: - A medium-detailed set of notes on 10–25 variables -
+Key features tagged for transformation, modeling, or feature engineering
+- A shortlist of EDA visuals and tables to include in reports - Clear
+rationale for what’s going into your model or dashboard</p>
+<hr />
+<p>Absolutely. <strong>Phase 3: Synthesize</strong> is where your EDA
+transitions from technical exploration to <strong>insight
+communication</strong>. This is where your findings become actionable
+and valuable to others—whether that’s a stakeholder, a client, or your
+future self. It’s also the hardest phase to master because it requires
+<strong>connecting patterns to purpose</strong>.</p>
+<hr />
+<h1 id="phase-3-synthesize-turn-observations-into-insights">🔁 Phase 3:
+Synthesize – “Turn Observations into Insights”</h1>
+<hr />
+<h2 id="goal-1">🎯 <strong>Goal:</strong></h2>
+<p>To translate statistical or structural findings from your EDA
+into:</p>
+<ul>
+<li>Business-relevant interpretations<br />
+</li>
+<li>Hypotheses and explanations<br />
+</li>
+<li>Actionable recommendations<br />
+</li>
+<li>Key messages for reporting</li>
+</ul>
+<p>This is where your technical observations get <strong>framed in the
+language of decisions</strong>.</p>
+<hr />
+<h2 id="what-youre-doing-in-this-phase">✅ <strong>What You’re Doing in
+This Phase:</strong></h2>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Interpreting patterns</td>
+<td>Why does this happen? What could explain it?</td>
+</tr>
+<tr class="even">
+<td>Linking to outcomes</td>
+<td>How does this affect the target or goal?</td>
+</tr>
+<tr class="odd">
+<td>Translating into domain terms</td>
+<td>What does this mean in the real world?</td>
+</tr>
+<tr class="even">
+<td>Recommending action</td>
+<td>What should the business/data team do with this?</td>
+</tr>
+<tr class="odd">
+<td>Structuring for communication</td>
+<td>How will I summarize this in a report or slide?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="four-part-synthesis-framework-o-i-i-r">🧩 <strong>Four-Part
+Synthesis Framework (O-I-I-R)</strong></h2>
+<p>Use this framework per variable or theme:</p>
+<table>
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 41%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Element</th>
+<th>Explanation</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Observation</strong></td>
+<td>What did the data show?</td>
+<td>“Customer churn rate is 18% and higher in Segment C.”</td>
+</tr>
+<tr class="even">
+<td><strong>Interpretation</strong></td>
+<td>Why might that be happening?</td>
+<td>“Segment C includes customers with fewer than 3 support
+interactions.”</td>
+</tr>
+<tr class="odd">
+<td><strong>Impact (Business Meaning)</strong></td>
+<td>Why does this matter to the org?</td>
+<td>“These customers may be disengaged or underserved, leading to
+preventable churn.”</td>
+</tr>
+<tr class="even">
+<td><strong>Recommendation</strong></td>
+<td>What do we do about it?</td>
+<td>“Launch a targeted outreach campaign or improve onboarding for
+Segment C.”</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="examples-by-feature-type">🔍 Examples by Feature Type</h2>
+<hr />
+<h3 id="numeric-variable-example"><strong>Numeric Variable
+Example</strong></h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="an">Feature:</span><span class="co"> `delivery_delay_days`</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Observation: Right-skewed with a median of 3 days but a long tail up to 21 days.</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Interpretation: Most orders ship on time, but a few cause extreme delays, possibly from specific suppliers or regions.</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Business Impact: Outliers are inflating average delivery KPIs and could harm customer trust.</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Recommendation: Report median instead of mean. Investigate long-tail delays and consider SLA renegotiation with underperforming vendors.</span></code></pre></div>
+<hr />
+<h3 id="categorical-variable-example"><strong>Categorical Variable
+Example</strong></h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="an">Feature:</span><span class="co"> `product_category`</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Observation: Accessories category shows a 24% return rate, double the overall average.</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Interpretation: Accessories may be impulse buys or poorly described online.</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Business Impact: High returns increase logistics costs and may signal a UX issue.</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Recommendation: Improve product detail pages and track conversions vs. returns by subcategory.</span></code></pre></div>
+<hr />
+<h3 id="time-based-variable-example"><strong>Time-Based Variable
+Example</strong></h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="an">Feature:</span><span class="co"> `signup_date`</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Observation: Signups peak on Mondays and drop on weekends.</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Interpretation: Most users sign up during work hours—possibly B2B context.</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Business Impact: Marketing spend might be misaligned if weekend ads are underperforming.</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Recommendation: Shift campaigns to weekdays or A/B test timing windows.</span></code></pre></div>
+<hr />
+<h2 id="when-to-synthesize-by-theme-instead-of-feature">🛠️ <strong>When
+to Synthesize by Theme Instead of Feature</strong></h2>
+<p>Sometimes it’s better to write about <strong>themes</strong> rather
+than individual columns. For example:</p>
+<h3 id="theme-high-churn-in-low-engagement-users">Theme: High Churn in
+Low-Engagement Users</h3>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Users with fewer than 2 logins in the first 7 days are 3x more likely to churn.</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>This suggests early activity is a leading indicator of retention.</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>A strong onboarding experience could help drive activation and reduce churn.</span></code></pre></div>
+<hr />
+<h2 id="tools-to-use-in-phase-3">🧰 Tools to Use in Phase 3</h2>
+<table>
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>📊 <strong>Visuals</strong></td>
+<td>Use plots as evidence, not the insight. Annotate trends.</td>
+</tr>
+<tr class="even">
+<td>🗒️ <strong>Narrative templates</strong></td>
+<td>Use the 4-part format to standardize clarity.</td>
+</tr>
+<tr class="odd">
+<td>✅ <strong>Business questions</strong></td>
+<td>Frame findings in terms of cost, risk, opportunity, or
+experience.</td>
+</tr>
+<tr class="even">
+<td>🧾 <strong>Insight tables</strong></td>
+<td>For bulk reporting, use a structured format per feature.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sample-insight-table">📋 Sample Insight Table</h2>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 20%" />
+<col style="width: 25%" />
+<col style="width: 12%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Observation</th>
+<th>Interpretation</th>
+<th>Impact</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>units_sold</td>
+<td>Right-skewed</td>
+<td>Bulk buyers inflate average</td>
+<td>Misrepresents typical behavior</td>
+<td>Use median or segment users</td>
+</tr>
+<tr class="even">
+<td>device_type</td>
+<td>Mobile = 72%</td>
+<td>Users prefer mobile access</td>
+<td>UX must be mobile-first</td>
+<td>Prioritize mobile testing</td>
+</tr>
+<tr class="odd">
+<td>churn_flag</td>
+<td>Higher in Region C</td>
+<td>Possibly due to support delays</td>
+<td>Lost revenue and trust</td>
+<td>Add CS resources to Region C</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tip-avoid-the-just-reporting-trap">🧠 Tip: Avoid the “Just
+Reporting” Trap</h2>
+<p>Don’t just say: &gt; “Hydraulic pressure is skewed.”</p>
+<p>Instead say: &gt; “Hydraulic pressure is skewed, which may indicate
+system stress in certain conditions. Since this variable correlates with
+failure events, it may be valuable for early fault detection.”</p>
+<hr />
+<h2 id="final-deliverables-from-phase-3">✨ Final Deliverables from
+Phase 3</h2>
+<p>You now have: - 5–10 synthesized insights tied to business outcomes -
+Feature-level write-ups or a theme-based executive summary - A strong
+foundation for a written report or stakeholder presentation</p>
+<hr />
+<h2 id="want-a-template">✅ Want a Template?</h2>
+<p>Here’s a <strong>Markdown Template</strong> for this synthesis
+phase:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### Feature: `feature_name_here`</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Observation**: </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Interpretation**: </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Business Impact**: </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Recommendation**: </span></code></pre></div>
+<p>Or, if you’d prefer, I can create: - A <strong>Google Doc</strong> or
+<strong>PDF version</strong> of these templates - A <strong>Notion
+board</strong>, <strong>Airtable</strong>, or <strong>Markdown
+dashboard</strong> for organizing insights across a project</p>
+<p>Let me know your preferred format and I’ll deliver it!</p>

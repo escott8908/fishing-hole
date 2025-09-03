@@ -1,0 +1,421 @@
+<p>Thanks for confirming! I’ll create a clear, non-technical explanation
+that covers: - What Feature Correlation is (with intuitive explanations
+of Pearson, Spearman, Cramér’s V, and Mutual Information). - What
+Network Graphs are. - How combining Feature Correlation with Network
+Graphs enhances exploratory analysis of supply chain data. - Why they
+are valuable for visualizing relationships and uncovering insights.</p>
+<p>I’ll make sure it’s code-free and written in a professional yet
+accessible tone, just like the previous responses. I’ll let you know as
+soon as it’s ready!</p>
+<h1
+id="feature-correlation-and-network-graphs-in-supply-chain-eda">Feature
+Correlation and Network Graphs in Supply Chain EDA</h1>
+<p>Exploring complex supply chain datasets can feel like mapping a maze.
+Two powerful mapping tools are <strong>feature correlation</strong> and
+<strong>network graphs</strong>. Together, they help reveal hidden
+patterns, relationships, and structures in your data – all without any
+predictive modeling. Below, we break down what each concept means in
+simple terms and show how combining them can enhance insight discovery
+in exploratory data analysis (EDA) for supply chain data.</p>
+<h2 id="understanding-feature-correlation">Understanding Feature
+Correlation</h2>
+<p><strong>Feature correlation</strong> tells us how strongly two
+variables in a dataset move in relation to each other. In plain
+language, it measures association: when one metric changes, does another
+tend to change as well? Correlation is typically expressed with a
+coefficient (often called <strong>r</strong>) ranging from -1 to +1 (<a
+href="https://medium.com/@suyebaanjum98/approaches-to-unearth-correlations-between-numeric-and-categorical-data-6b44f6cdb45#:~:text=,positive%20linear%20relationship%2C%20and%200">“Approaches
+to Unearth Correlations Between Numeric and Categorical Data” | by
+Suyebaanjum | Medium</a>). A <strong>positive correlation</strong> (r
+near +1) means that as one feature increases, the other tends to
+increase as well (they move “up or down in the same direction together”)
+(<a
+href="https://medium.com/@suyebaanjum98/approaches-to-unearth-correlations-between-numeric-and-categorical-data-6b44f6cdb45#:~:text=Positive%20correlation%3A%20A%20positive%20correlation,in%20the%20same%20direction%20together">“Approaches
+to Unearth Correlations Between Numeric and Categorical Data” | by
+Suyebaanjum | Medium</a>). A <strong>negative correlation</strong> (r
+near -1) means that when one feature rises, the other tends to fall
+(they move in opposite directions) (<a
+href="https://medium.com/@suyebaanjum98/approaches-to-unearth-correlations-between-numeric-and-categorical-data-6b44f6cdb45#:~:text=Positive%20correlation%3A%20A%20positive%20correlation,in%20the%20same%20direction%20together">“Approaches
+to Unearth Correlations Between Numeric and Categorical Data” | by
+Suyebaanjum | Medium</a>). And an <strong>r around 0</strong> means
+changes in one feature don’t consistently relate to changes in the other
+(no clear relationship) (<a
+href="https://medium.com/@suyebaanjum98/approaches-to-unearth-correlations-between-numeric-and-categorical-data-6b44f6cdb45#:~:text=Positive%20correlation%3A%20A%20positive%20correlation,in%20the%20same%20direction%20together">“Approaches
+to Unearth Correlations Between Numeric and Categorical Data” | by
+Suyebaanjum | Medium</a>). In short, a strong correlation (r value close
+to ±1) implies that changes in one variable
+<strong>consistently</strong> affect the other (<a
+href="https://www.numberanalytics.com/blog/correlation-in-logistics-supply-chain-7-stats#:~:text=A%20strong%20correlation%20,making">7
+Stats: Correlation in Logistics &amp; Supply Chain Uncovered</a>),
+whereas an r value near 0 suggests the two features vary
+independently.</p>
+<p>In supply chain analytics, correlation can uncover meaningful
+patterns. For example, analysts have observed that <strong>average
+delivery time</strong> and <strong>inventory levels</strong> often show
+a significant negative correlation – as delivery times get shorter,
+inventory can be run leaner without shortages (<a
+href="https://www.numberanalytics.com/blog/correlation-in-logistics-supply-chain-7-stats#:~:text=,holding%20excess%20inventory%20while%20ensuring">7
+Stats: Correlation in Logistics &amp; Supply Chain Uncovered</a>).
+Recognizing such a relationship helps operations managers understand
+that improving one aspect (faster deliveries) is typically accompanied
+by improvements in another (more efficient inventory use). It’s
+important to remember that correlation itself doesn’t prove one thing
+causes the other; it simply highlights a noteworthy association.
+Nonetheless, these associations are invaluable for directing attention
+to potential problem areas or confirming intuitive hunches with
+data.</p>
+<p><strong>Different types of feature correlations</strong> can be used
+depending on the data type and the nature of the relationship. Each type
+of correlation measure is like a different lens for examining how
+features relate:</p>
+<ul>
+<li><p><strong>Pearson Correlation:</strong> This is the classic
+correlation measure for numeric data. Pearson’s r measures the
+<strong>linear relationship</strong> between two continuous variables
+(<a
+href="https://medium.com/@suyebaanjum98/approaches-to-unearth-correlations-between-numeric-and-categorical-data-6b44f6cdb45#:~:text=,positive%20linear%20relationship%2C%20and%200">“Approaches
+to Unearth Correlations Between Numeric and Categorical Data” | by
+Suyebaanjum | Medium</a>). If the relationship looks like a straight
+line (e.g. shipping distance vs. fuel cost might increase in a roughly
+linear fashion), Pearson is appropriate. It ranges from -1 (perfect
+inverse linear relationship) to +1 (perfect positive linear
+relationship), with 0 meaning no linear link (<a
+href="https://medium.com/@suyebaanjum98/approaches-to-unearth-correlations-between-numeric-and-categorical-data-6b44f6cdb45#:~:text=,positive%20linear%20relationship%2C%20and%200">“Approaches
+to Unearth Correlations Between Numeric and Categorical Data” | by
+Suyebaanjum | Medium</a>). Use Pearson when your supply chain metrics
+are quantitative (like costs, times, quantities) and you suspect a
+straight-line trend – for instance, <strong>transport distance and
+delivery cost</strong> likely have a high Pearson correlation because
+longer routes generally incur higher costs in a proportional
+way.</p></li>
+<li><p><strong>Spearman Correlation:</strong> Spearman’s rank
+correlation assesses the <strong>monotonic relationship</strong> between
+two variables (<a
+href="https://medium.com/@suyebaanjum98/approaches-to-unearth-correlations-between-numeric-and-categorical-data-6b44f6cdb45#:~:text=,data%20is%20not%20normally%20distributed">“Approaches
+to Unearth Correlations Between Numeric and Categorical Data” | by
+Suyebaanjum | Medium</a>). In simpler terms, it looks at whether one
+variable <strong>consistently increases or decreases</strong> as the
+other one increases, not necessarily at a constant rate. It is computed
+on the ranks of the data rather than the raw values, so it doesn’t
+assume a linear relationship (<a
+href="https://medium.com/@suyebaanjum98/approaches-to-unearth-correlations-between-numeric-and-categorical-data-6b44f6cdb45#:~:text=,data%20is%20not%20normally%20distributed">“Approaches
+to Unearth Correlations Between Numeric and Categorical Data” | by
+Suyebaanjum | Medium</a>). Spearman is useful if your data isn’t
+normally distributed, has outliers, or if the relationship is non-linear
+but one-directional (always up or always down). For example, in supply
+chain data, <strong>supplier rating vs. defect rate</strong> might have
+a monotonic relationship: as supplier quality ratings improve, defect
+rates drop, though not in a perfectly straight line. Spearman would
+capture this association even if the improvement slows down at higher
+ratings. In short, use Spearman for <strong>ordinal data</strong> (like
+ranked survey scores) or anytime you want to catch any steady
+upward/downward trend between two variables, linear or not (<a
+href="https://medium.com/@tilak559/understanding-correlation-pearson-spearman-and-more-b26c6e1d4420#:~:text=Choosing%20the%20right%20correlation%20metric,bridges%20binary%20and%20continuous%20data">Understanding
+Correlation: Pearson, Spearman, and More | by Tilak Mudgal |
+Medium</a>).</p></li>
+<li><p><strong>Cramér’s V:</strong> Pearson and Spearman work for
+numeric data, but what about <strong>categorical features</strong>
+(things like regions, product categories, or shipping methods)? This is
+where Cramér’s V comes in. <strong>Cramér’s V</strong> measures the
+strength of association between two categorical variables (<a
+href="https://medium.com/@manindersingh120996/understanding-categorical-correlations-with-chi-square-test-and-cramers-v-a54fe153b1d6#:~:text=Cramer%E2%80%99sV%20correlation%20is%20used%20to,determined%20by%20the%20other%20attribute">Understanding
+Categorical Correlations with Chi-Square Test and Cramer’s V | by
+Maninder Singh | Medium</a>). Its value ranges from 0 (no association)
+to 1 (perfect association) (<a
+href="https://medium.com/@manindersingh120996/understanding-categorical-correlations-with-chi-square-test-and-cramers-v-a54fe153b1d6#:~:text=Cramer%E2%80%99sV%20correlation%20is%20used%20to,determined%20by%20the%20other%20attribute">Understanding
+Categorical Correlations with Chi-Square Test and Cramer’s V | by
+Maninder Singh | Medium</a>). An intuitive way to think of it: 0 means
+knowing the category of one feature tells you nothing about the category
+of the other, whereas 1 means one feature’s category completely
+determines the other’s category (<a
+href="https://medium.com/@manindersingh120996/understanding-categorical-correlations-with-chi-square-test-and-cramers-v-a54fe153b1d6#:~:text=Cramer%E2%80%99sV%20correlation%20is%20used%20to,determined%20by%20the%20other%20attribute">Understanding
+Categorical Correlations with Chi-Square Test and Cramer’s V | by
+Maninder Singh | Medium</a>). Use Cramér’s V when exploring questions
+like “Is there a relationship between <strong>warehouse location and
+delivery mode</strong>?” or “Do certain <strong>product categories ship
+mostly via a specific transport method</strong>?” A high Cramér’s V
+would indicate, for example, that certain regions are strongly linked to
+a particular shipping mode (perhaps overseas orders are almost always by
+air freight, whereas local deliveries are by truck). This coefficient
+gives a clear, single number summary of how tightly two classifications
+are linked.</p></li>
+<li><p><strong>Mutual Information:</strong> Mutual information (MI) is a
+more general measure of association that comes from information theory.
+It captures any kind of dependency between variables, not just linear or
+monotonic relationships. In essence, <strong>mutual information measures
+how much knowing one feature reduces uncertainty about the
+other</strong> (<a
+href="https://tungmphung.com/a-survey-of-correlation-analysis-methods/#:~:text=Mutual%20Information%20is%20a%20natural,and%20vice%20versa">A
+survey of correlation analysis methods</a>). If two features share a lot
+of information (meaning one is very informative about the other), their
+mutual information score will be higher. Unlike correlation
+coefficients, MI is non-negative (0 means no relationship, and higher
+values indicate greater dependency; often it’s normalized to a 0-1 scale
+for interpretability). MI is especially handy when dealing with complex,
+non-linear relationships or when you have a mix of categorical and
+numeric data. For instance, consider <strong>weather conditions and
+shipment delays</strong>. This relationship might be non-linear –
+perhaps normal weather has little effect, but severe storms cause a big
+jump in delays. Pearson or Spearman might not capture this well, but
+mutual information would detect that knowing the weather significantly
+reduces uncertainty in predicting delays (because extreme weather is a
+strong clue for late shipments). In supply chain EDA, you might use
+mutual information to uncover hidden associations such as
+<strong>combination patterns</strong> (e.g., which combinations of order
+type and season affect return rates) or any situation where the
+relationship isn’t simply “bigger X, bigger Y.” In summary, mutual
+information is a flexible tool to identify <strong>any kind of
+relationship</strong> – it tells you that two features have a link, even
+if that link is nonlinear or complex (<a
+href="https://medium.com/@suyebaanjum98/approaches-to-unearth-correlations-between-numeric-and-categorical-data-6b44f6cdb45#:~:text=2">“Approaches
+to Unearth Correlations Between Numeric and Categorical Data” | by
+Suyebaanjum | Medium</a>).</p></li>
+</ul>
+<p>By choosing the appropriate type of correlation for your data
+(Pearson for linear numeric trends, Spearman for rank-based trends,
+Cramér’s V for categorical ties, MI for general dependencies), you can
+explore your supply chain dataset from multiple angles (<a
+href="https://medium.com/@tilak559/understanding-correlation-pearson-spearman-and-more-b26c6e1d4420#:~:text=Choosing%20the%20right%20correlation%20metric,bridges%20binary%20and%20continuous%20data">Understanding
+Correlation: Pearson, Spearman, and More | by Tilak Mudgal |
+Medium</a>). This helps ensure you don’t miss an important relationship
+just because it didn’t show up under a single method.</p>
+<h2 id="understanding-network-graphs">Understanding Network Graphs</h2>
+<p>Once you’ve identified relationships through correlation (or other
+means), the next step is often to <strong>visualize</strong> those
+relationships. This is where <strong>network graphs</strong> come into
+play. A network graph is basically a picture of connections:
+<strong>nodes</strong> (points) represent entities and
+<strong>edges</strong> (lines) represent the relationships or links
+between those entities (<a
+href="https://powerviz.ai/network-graph#:~:text=A%20Powerviz%20Network%20Graph%20is,directional%20arrow%2C%20and%20many%20more">Network
+Graph - Powerviz</a>). In our context, each node could be a data feature
+(a particular metric or variable in your dataset), and an edge between
+two feature-nodes might indicate that those two features are related
+(for example, an edge if their correlation is above a certain
+threshold).</p>
+<p>Think of a network graph as a city map: the nodes are like locations,
+and the edges are roads connecting them. If there’s a road (edge)
+between two locations (nodes), it means you can travel directly between
+them – similarly, an edge between two features might mean they have a
+strong association. No edge means little to no direct association. This
+visual approach taps into our pattern-recognition ability, making it
+easier to <strong>spot clusters and key connections</strong> at a glance
+than by staring at a big spreadsheet of numbers.</p>
+<p><strong>Simple vs. Weighted Networks:</strong> In a <em>simple
+(unweighted) network graph</em>, all edges are equal – a connection
+either exists or it doesn’t (<a
+href="https://www.tutorchase.com/answers/a-level/computer-science/what-s-the-difference-between-a-weighted-and-an-unweighted-graph#:~:text=A%20weighted%20graph%20assigns%20a,an%20unweighted%20graph%20does%20not">What’s
+the difference between a weighted and an unweighted graph? |
+TutorChase</a>). It’s like an on/off indicator of a relationship. For
+example, you might draw a simple network where an edge is drawn only if
+two features have a correlation above 0.5 (significant relationship) and
+no edge if below that. This quickly shows which pairs are related at
+all. By contrast, a <em>weighted network graph</em> assigns a
+<strong>strength or weight</strong> to each connection (<a
+href="https://www.tutorchase.com/answers/a-level/computer-science/what-s-the-difference-between-a-weighted-and-an-unweighted-graph#:~:text=A%20weighted%20graph%20assigns%20a,an%20unweighted%20graph%20does%20not">What’s
+the difference between a weighted and an unweighted graph? |
+TutorChase</a>) (<a
+href="https://www.tutorchase.com/answers/a-level/computer-science/what-s-the-difference-between-a-weighted-and-an-unweighted-graph#:~:text=On%20the%20other%20hand%2C%20a,one%20with%20the%20fewest%20edges">What’s
+the difference between a weighted and an unweighted graph? |
+TutorChase</a>). The weight could be the correlation coefficient itself
+or some score representing relationship strength. In visualization, you
+might show this by varying the <strong>thickness or color
+intensity</strong> of the edges – a thicker line for a stronger
+correlation, thinner for a weaker one. For instance, in a weighted
+network of supply chain features, the link between <em>Distance</em> and
+<em>Shipping Cost</em> might be drawn as a very thick line if their
+correlation is 0.9, whereas the link between <em>Distance</em> and
+<em>Product Category</em> (likely a much weaker relationship) might be a
+very thin or even absent line. Weighted graphs convey not just
+<strong>who is connected to whom</strong>, but <strong>how
+strongly</strong> they are connected (<a
+href="https://www.tutorchase.com/answers/a-level/computer-science/what-s-the-difference-between-a-weighted-and-an-unweighted-graph#:~:text=On%20the%20other%20hand%2C%20a,one%20with%20the%20fewest%20edges">What’s
+the difference between a weighted and an unweighted graph? |
+TutorChase</a>).</p>
+<p>Both types have their uses: an unweighted graph is great for clarity
+– highlighting the presence of relationships and clustering of features
+into groups – while a weighted graph adds nuance by indicating degrees
+of connection. In many exploratory analyses, you might start simple (to
+see the basic structure of relationships), then introduce weights for
+deeper insight into which links are the most influential.</p>
+<p>Notably, network graphs can also show <strong>positive vs. negative
+relationships</strong> by using different colors or line styles for
+edges. For example, a green solid line could represent a positive
+correlation and a red dashed line a negative correlation. This way, the
+graph can depict whether connected features move in the same or opposite
+directions. All of these visual cues (presence/absence of edges,
+thickness, color, etc.) help in translating raw data relationships into
+an intuitive picture.</p>
+<h2
+id="visualizing-correlations-with-network-graphs-for-supply-chain-insights">Visualizing
+Correlations with Network Graphs for Supply Chain Insights</h2>
+<p>Combining feature correlation analysis with network graphs creates a
+powerful synergy during EDA. The correlation analysis quantifies
+<strong>pairwise relationships</strong> between supply chain variables,
+and the network graph provides a <strong>visual map</strong> of these
+relationships across the whole system (<a
+href="https://www.metwarebio.com/correlation-network-graphs/#:~:text=Correlation%20network%20graphs%20are%20created,33%2C%20metabolomics%20%2B%20transcriptomics%2C%20etc">A
+Comprehensive Guide to Correlation Network Graphs</a>). This combo
+allows analysts and stakeholders to literally see the web of
+interconnections, making complex data more approachable.</p>
+<p>Why is this so valuable for supply chain data? Supply chain
+operations involve many interdependent factors: lead times, shipping
+costs, supplier ratings, demand forecasts, inventory levels, delivery
+performance metrics, and so on. A change in one area often ripples
+through others. By plotting these features as a network, you can
+identify <strong>clusters of related features</strong> and key linkages
+that might not be obvious from raw tables or standard charts.</p>
+<p>For example, imagine we compute the correlations among a variety of
+supply chain performance metrics. We might find a cluster of features
+all strongly interlinked relating to <strong>supplier
+performance</strong> – say, <em>On-Time Delivery Percentage</em>,
+<em>Defect Rate</em>, and <em>Customer Satisfaction Score</em>. These
+three could form a tightly knit trio in a network graph, indicating they
+all correlate with each other (on-time delivery is high when defect
+rates are low and customer satisfaction is high, and vice versa). This
+cluster suggests an underlying theme (perhaps “supplier
+reliability/quality”), and improving one of these metrics could be
+associated with improvements in the others. In another part of the
+network, we might see features like <em>Distance</em>, <em>Shipping
+Cost</em>, <em>Order Size</em>, and <em>Lead Time</em> clustering
+together. This could represent a <strong>logistics-related
+group</strong> – long distances tend to drive up shipping costs and lead
+times, and larger orders might also affect cost and time. By identifying
+such clusters, a network graph effectively segments the dataset into
+meaningful subsets (like quality-related metrics vs. logistics-related
+metrics), which helps teams assign the right focus area or expert to
+investigate further.</p>
+<p>Now, consider what happens when these clusters are visualized
+together. The network graph might reveal that some nodes act as bridges
+between clusters. In our example, <em>On-Time Delivery</em> might
+connect the supplier performance cluster and the logistics cluster, with
+a <strong>negative correlation link</strong> to <em>Lead Time</em> and
+<em>Distance</em>. This makes intuitive sense: as shipping distances and
+lead times grow, on-time performance tends to suffer (fewer shipments
+arrive as scheduled). Such a visualization highlights a
+<strong>cross-domain insight</strong> – a logistics factor (distance) is
+impacting a customer service metric (on-time delivery). This could
+prompt a closer look into how distance is managed (maybe through
+regional warehouses or optimized routing) to improve on-time rates.</p>
+<p><em>An example network graph of supply chain features.</em> Each node
+represents a metric (orange nodes for <em>supplier performance</em>
+metrics, blue nodes for <em>logistics</em> metrics). An edge between two
+nodes indicates a strong correlation or association. Here, green
+<strong>solid</strong> lines denote <strong>positive
+correlations</strong> (metrics that rise and fall together), and red
+<strong>dashed</strong> lines denote <strong>negative
+correlations</strong> (one metric rises while the other falls). You can
+see two clusters: the orange cluster connects features like
+<strong>On-Time Delivery</strong>, <strong>Defect Rate</strong>, and
+<strong>Customer Satisfaction</strong> (these tend to all relate closely
+to supplier reliability and quality), while the blue cluster links
+<strong>Distance</strong>, <strong>Shipping Cost</strong>, <strong>Lead
+Time</strong>, and <strong>Order Size</strong> (features associated with
+logistics and operational flow). The <strong>On-Time Delivery</strong>
+node sits at the intersection, connected by red dashed lines to
+<em>Distance</em> and <em>Lead Time</em>. This indicates that longer
+distances and lead times are associated with lower on-time delivery
+performance – a critical insight for supply chain managers concerned
+with delivery reliability. By visualizing the data this way, patterns
+jump out: one can immediately spot, for instance, that improving
+<em>On-Time Delivery</em> might involve tackling issues in the distance
+and lead time domain, and that <em>Defect Rate</em> and <em>Customer
+Satisfaction</em> are tightly intertwined (likely requiring joint
+quality improvement initiatives). In short, the network graph turns the
+correlation numbers into a map of how different supply chain factors
+interrelate, making the data’s story clearer and more compelling (<a
+href="https://www.metwarebio.com/correlation-network-graphs/#:~:text=Correlation%20network%20graphs%20are%20created,33%2C%20metabolomics%20%2B%20transcriptomics%2C%20etc">A
+Comprehensive Guide to Correlation Network Graphs</a>).</p>
+<p>Using network graphs in exploratory analysis encourages a
+<strong>“big picture” view</strong>. Instead of analyzing correlations
+one pair at a time in isolation, you see how all features connect
+collectively. This holistic visualization can reveal surprising
+structures. For example, you might discover a small group of features
+that are <strong>all interconnected</strong> with each other but
+relatively detached from the rest. In a supply chain context, perhaps a
+set of metrics related to <em>warehouse operations</em> (like picking
+time, packing accuracy, storage cost) correlate strongly with each other
+forming a distinct module in the network. Recognizing that as a
+self-contained cluster tells you these factors might be driven by a
+common underlying element (such as warehouse efficiency or technology)
+and could be managed or investigated together.</p>
+<p>Another benefit is identifying <strong>potential key drivers or
+hubs</strong>. In a correlation network, a node with many connections
+(edges) could be an important variable that interacts with several
+aspects of the business. For instance, suppose <em>Order Volume</em>
+(number of orders) is connected moderately to a range of other nodes –
+inventory levels, lead times, stockouts, transportation cost, etc. This
+would show up as a hub in the network. It suggests that order volume is
+a central factor in the supply chain system, touching many performance
+areas. Such a node might warrant special attention: fluctuations in it
+could send ripples throughout the network (which we see via the many
+edges). Even though correlation doesn’t prove causation, seeing a hub
+prompts us to consider whether that metric is a driving force or just a
+common consequence. In EDA, that’s a cue for formulating hypotheses or
+diving deeper into process analysis.</p>
+<p>The combination of correlations and network graphs is also a powerful
+communication tool. Supply chain data can be technical, and not everyone
+on a decision-making team will be comfortable reading matrices of
+correlation coefficients. A well-designed network graph, however, can be
+shown in a meeting to quickly communicate relationships. For example, a
+network graph could help explain to a procurement team that
+<strong>“supplier on-time performance is closely linked not only with
+defect rates, but also seems tied to how far goods are
+traveling”</strong> – all in one visual. This often sparks productive
+discussions: the team might ask <em>why</em> those links exist, leading
+to exploration of underlying causes (perhaps distant suppliers are more
+likely to be late due to longer transit and also might have quality fade
+issues). In this way, the visualization isn’t just pretty; it directly
+supports deeper understanding and cross-functional dialogue.</p>
+<p>To sum up, <strong>feature correlation</strong> provides the
+quantitative backbone for identifying which supply chain variables move
+together, and <strong>network graphs</strong> provide the intuitive
+visualization that brings those relationships to life. Using them
+together during exploratory analysis helps analysts <strong>quickly spot
+patterns and outliers</strong>, such as clusters of tightly related
+metrics and lone variables that don’t correlate with others. It shines a
+light on the data’s internal structure – for example, distinguishing
+groups of features by theme (quality, cost, time, etc.) and revealing
+linkages between these groups. This approach remains purely descriptive
+(we’re not making predictions or assuming causal directions), which is
+exactly the goal of EDA: to <strong>understand the data</strong> and
+generate insights and hypotheses. In a complex field like supply chain
+management, where everything is interconnected, seeing those connections
+mapped out can be incredibly enlightening. It allows teams with strong
+data literacy (but perhaps little background in machine learning or
+statistics) to leverage their intuition and domain knowledge – once the
+relationships are visualized, they can apply their expertise to
+interpret why those patterns might be occurring and how they could be
+addressed. Ultimately, feature correlations and network graphs together
+turn raw supply chain data into a meaningful story of how different
+pieces of the operation relate, helping practitioners make informed
+decisions and explore “what-ifs” with greater confidence. (<a
+href="https://www.metwarebio.com/correlation-network-graphs/#:~:text=Correlation%20network%20graphs%20are%20created,33%2C%20metabolomics%20%2B%20transcriptomics%2C%20etc">A
+Comprehensive Guide to Correlation Network Graphs</a>) (<a
+href="https://medium.com/@tilak559/understanding-correlation-pearson-spearman-and-more-b26c6e1d4420#:~:text=Choosing%20the%20right%20correlation%20metric,bridges%20binary%20and%20continuous%20data">Understanding
+Correlation: Pearson, Spearman, and More | by Tilak Mudgal |
+Medium</a>)</p>
+<p><strong>Sources:</strong> Feature correlation definitions and
+use-cases (<a
+href="https://medium.com/@suyebaanjum98/approaches-to-unearth-correlations-between-numeric-and-categorical-data-6b44f6cdb45#:~:text=,positive%20linear%20relationship%2C%20and%200">“Approaches
+to Unearth Correlations Between Numeric and Categorical Data” | by
+Suyebaanjum | Medium</a>) (<a
+href="https://medium.com/@suyebaanjum98/approaches-to-unearth-correlations-between-numeric-and-categorical-data-6b44f6cdb45#:~:text=,data%20is%20not%20normally%20distributed">“Approaches
+to Unearth Correlations Between Numeric and Categorical Data” | by
+Suyebaanjum | Medium</a>) (<a
+href="https://medium.com/@manindersingh120996/understanding-categorical-correlations-with-chi-square-test-and-cramers-v-a54fe153b1d6#:~:text=Cramer%E2%80%99sV%20correlation%20is%20used%20to,determined%20by%20the%20other%20attribute">Understanding
+Categorical Correlations with Chi-Square Test and Cramer’s V | by
+Maninder Singh | Medium</a>) (<a
+href="https://tungmphung.com/a-survey-of-correlation-analysis-methods/#:~:text=Mutual%20Information%20is%20a%20natural,and%20vice%20versa">A
+survey of correlation analysis methods</a>); Network graph concepts (<a
+href="https://powerviz.ai/network-graph#:~:text=A%20Powerviz%20Network%20Graph%20is,directional%20arrow%2C%20and%20many%20more">Network
+Graph - Powerviz</a>) (<a
+href="https://www.tutorchase.com/answers/a-level/computer-science/what-s-the-difference-between-a-weighted-and-an-unweighted-graph#:~:text=A%20weighted%20graph%20assigns%20a,an%20unweighted%20graph%20does%20not">What’s
+the difference between a weighted and an unweighted graph? |
+TutorChase</a>); Applications in supply chain EDA (<a
+href="https://www.numberanalytics.com/blog/correlation-in-logistics-supply-chain-7-stats#:~:text=A%20strong%20correlation%20,making">7
+Stats: Correlation in Logistics &amp; Supply Chain Uncovered</a>) (<a
+href="https://www.numberanalytics.com/blog/correlation-in-logistics-supply-chain-7-stats#:~:text=,holding%20excess%20inventory%20while%20ensuring">7
+Stats: Correlation in Logistics &amp; Supply Chain Uncovered</a>) (<a
+href="https://www.metwarebio.com/correlation-network-graphs/#:~:text=Correlation%20network%20graphs%20are%20created,33%2C%20metabolomics%20%2B%20transcriptomics%2C%20etc">A
+Comprehensive Guide to Correlation Network Graphs</a>).</p>

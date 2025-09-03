@@ -1,0 +1,179 @@
+<p>These are all excellent and deeply insightful questions! Let’s walk
+through each one carefully — covering:</p>
+<ol type="1">
+<li>✅ <strong>How to calculate the chi-squared test for imbalance with
+one categorical variable</strong><br />
+</li>
+<li>✅ <strong>What the “imbalance score” means and how it’s
+calculated</strong><br />
+</li>
+<li>✅ <strong>How to measure “skew” in a categorical
+variable</strong></li>
+</ol>
+<hr />
+<h2 id="chi-squared-test-for-imbalance-single-categorical-variable">✅
+1. <strong>Chi-Squared Test for Imbalance (Single Categorical
+Variable)</strong></h2>
+<h3 id="goal">🧠 Goal:</h3>
+<p>You want to test whether the observed distribution of a categorical
+variable is <strong>uniform</strong> (all categories equally likely)
+vs. <strong>non-uniform</strong> (some categories over- or
+under-represented).</p>
+<h3 id="null-hypothesis-h_0">🧪 Null Hypothesis ( H_0 ):</h3>
+<blockquote>
+<p>The categories are <strong>evenly distributed</strong> (i.e., there’s
+no preference or imbalance).</p>
+</blockquote>
+<hr />
+<h3 id="example">📊 Example:</h3>
+<p>Suppose you have a variable <code>job</code> with the following
+counts:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>value_counts <span class="op">=</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;blue-collar&quot;</span>: <span class="dv">9732</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;management&quot;</span>: <span class="dv">9458</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;technician&quot;</span>: <span class="dv">7597</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;admin.&quot;</span>: <span class="dv">5171</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;services&quot;</span>: <span class="dv">4154</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;retired&quot;</span>: <span class="dv">2264</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;self-employed&quot;</span>: <span class="dv">1579</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;entrepreneur&quot;</span>: <span class="dv">1487</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;unemployed&quot;</span>: <span class="dv">1303</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;housemaid&quot;</span>: <span class="dv">1240</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;student&quot;</span>: <span class="dv">938</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;unknown&quot;</span>: <span class="dv">288</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 id="step-by-step-in-python">🧮 Step-by-Step in Python:</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chisquare</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Get observed values</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>observed <span class="op">=</span> <span class="bu">list</span>(value_counts.values())</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Create expected values assuming uniform distribution</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>n_categories <span class="op">=</span> <span class="bu">len</span>(observed)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>n_total <span class="op">=</span> <span class="bu">sum</span>(observed)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>expected <span class="op">=</span> [n_total <span class="op">/</span> n_categories] <span class="op">*</span> n_categories</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Run chi-squared test</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>chi2_stat, p_value <span class="op">=</span> chisquare(f_obs<span class="op">=</span>observed, f_exp<span class="op">=</span>expected)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Chi-squared: </span><span class="sc">{</span>chi2_stat<span class="sc">:.2f}</span><span class="ss">, p-value: </span><span class="sc">{</span>p_value<span class="sc">:.5f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h3 id="interpretation">✅ Interpretation:</h3>
+<ul>
+<li><strong>Low p-value (e.g., &lt; 0.05)</strong>: reject ( H_0 ), the
+distribution is <strong>imbalanced</strong>.</li>
+<li><strong>High p-value</strong>: accept ( H_0 ), the distribution is
+likely <strong>uniform</strong>.</li>
+</ul>
+<hr />
+<h2 id="what-is-the-imbalance-score">✅ 2. <strong>What Is the
+“Imbalance Score”?</strong></h2>
+<p>The <strong>imbalance score</strong> is a <strong>custom
+heuristic</strong> (not a standard statistic) used to <strong>quantify
+how unevenly the categories are distributed</strong> — useful in EDA and
+modeling contexts.</p>
+<h3 id="one-common-formula">💡 One common formula:</h3>
+<p>[ = 1 - ]</p>
+<p>Where: - ( H ) is the <strong>Shannon entropy</strong> of the
+distribution. - ( k ) is the number of categories. - This score ranges
+from <strong>0 (perfectly uniform)</strong> to <strong>1 (maximally
+imbalanced)</strong>.</p>
+<h3 id="in-python">🧮 In Python:</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> np.array(<span class="bu">list</span>(value_counts.values()))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> counts <span class="op">/</span> counts.<span class="bu">sum</span>()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>entropy <span class="op">=</span> <span class="op">-</span>np.<span class="bu">sum</span>(probs <span class="op">*</span> np.log2(probs))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>max_entropy <span class="op">=</span> np.log2(<span class="bu">len</span>(probs))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>imbalance_score <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (entropy <span class="op">/</span> max_entropy)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Imbalance Score: </span><span class="sc">{</span>imbalance_score<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p>✅ Lower scores → more even distribution.<br />
+✅ Higher scores → few categories dominate.</p>
+<hr />
+<h2 id="how-to-measure-skew-in-categorical-features">✅ 3. <strong>How
+to Measure “Skew” in Categorical Features</strong></h2>
+<p>Numerical skewness doesn’t apply directly, but <strong>categorical
+skew</strong> can be interpreted in terms of <strong>frequency
+dominance</strong>:</p>
+<h3 id="youre-asking">🧠 You’re asking:</h3>
+<blockquote>
+<p>“How lopsided is the distribution of categories?”</p>
+</blockquote>
+<h3 id="practical-ways-to-measure-or-visualize-this">📌 Practical ways
+to measure or visualize this:</h3>
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Top category proportion</strong></td>
+<td>How much does the most frequent category dominate? (e.g., 40%)</td>
+</tr>
+<tr class="even">
+<td><strong>Entropy</strong></td>
+<td>Measures uncertainty. High entropy → evenly spread, low entropy →
+skewed.</td>
+</tr>
+<tr class="odd">
+<td><strong>Pareto chart</strong></td>
+<td>Visualize how quickly category frequencies drop off.</td>
+</tr>
+<tr class="even">
+<td><strong>Imbalance score</strong></td>
+<td>See above — quantifies how far the distribution is from
+uniform.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="visualization">📊 Visualization:</h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>sns.countplot(x<span class="op">=</span><span class="st">&#39;job&#39;</span>, data<span class="op">=</span>df, order<span class="op">=</span>df[<span class="st">&#39;job&#39;</span>].value_counts().index)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Categorical Skew in &#39;job&#39;&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="tldr">🧠 TL;DR</h2>
+<table>
+<colgroup>
+<col style="width: 81%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Chi-squared test</strong></td>
+<td>Statistically test if the distribution is imbalanced</td>
+</tr>
+<tr class="even">
+<td><strong>Imbalance score</strong></td>
+<td>Quantify how uneven the category distribution is</td>
+</tr>
+<tr class="odd">
+<td><strong>Categorical skew</strong></td>
+<td>Assess dominance by top category, entropy, or visually via
+countplots</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Would you like a single reusable Python function that performs all
+three checks (chi-squared, imbalance score, and skew analysis)?</p>

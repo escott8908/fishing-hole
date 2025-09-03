@@ -1,0 +1,3937 @@
+<h1 id="business-background">Business Background:</h1>
+<p>Does eating healthy depend on what’s in your wallet? While some
+believe nutritious food is a luxury reserved for those who can afford
+it, others argue that education, accessibility, and policy interventions
+play an even bigger role. As part of a public health research team, your
+mission is to uncover the real factors driving food choices. Are
+healthier foods truly more expensive, or do regional access, income
+distribution, and availability have a greater impact? Your insights
+could help shape smarter food policies, making healthy eating more
+affordable and accessible for all.</p>
+<h1 id="business-question">Business Question:</h1>
+<p>Your public health research team has been asked to advise
+policymakers on the key factors influencing food choices across
+different income groups. Your tasks are to analyze:</p>
+<p>How does household income relate to the affordability of different
+food categories? Do higher-income households buy healthier foods? Are
+there geographic trends in food affordability? Create at least one chart
+to highlight key insights. <strong>Optional</strong> Are healthier foods
+more expensive than processed options?</p>
+<h1 id="data-dictionary">Data Dictionary:</h1>
+<p><strong>Income-Expenditure Table:</strong></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mthly_HH_Income</td>
+<td>Monthly household income</td>
+</tr>
+<tr class="even">
+<td>Mthly_HH_Expense</td>
+<td>Total monthly household expenses</td>
+</tr>
+<tr class="odd">
+<td>No_of_Fly_Members</td>
+<td>Number of family members</td>
+</tr>
+<tr class="even">
+<td>Emi_or_Rent_Amt</td>
+<td>Rent or loan payments</td>
+</tr>
+<tr class="odd">
+<td>Annual_HH_Income</td>
+<td>Annual household income</td>
+</tr>
+<tr class="even">
+<td>Highest_Qualified_Member</td>
+<td>Education level of the most qualified household member</td>
+</tr>
+<tr class="odd">
+<td>No_of_Earning_Members</td>
+<td>Number of income earners in the household</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dietary Habits Survey Data:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Field Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Age</td>
+<td>Age group of the respondent</td>
+</tr>
+<tr class="even">
+<td>Gender</td>
+<td>Male/Female</td>
+</tr>
+<tr class="odd">
+<td>Dietary Preference</td>
+<td>Vegetarian, Non-Vegetarian, Vegan, etc.</td>
+</tr>
+<tr class="even">
+<td>Meal Frequency</td>
+<td>How often certain food types are consumed</td>
+</tr>
+<tr class="odd">
+<td>Food Restrictions</td>
+<td>Allergies and dietary restrictions</td>
+</tr>
+<tr class="even">
+<td>Beverage Intake</td>
+<td>Hydration and drink preferences</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Food Prices Table:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Field Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Year</td>
+<td>Year of data collection</td>
+</tr>
+<tr class="even">
+<td>Month</td>
+<td>Month of data collection</td>
+</tr>
+<tr class="odd">
+<td>Metroregion_code</td>
+<td>Geographic area code</td>
+</tr>
+<tr class="even">
+<td>EFPG_code</td>
+<td>Food category (e.g., whole grains, processed foods)</td>
+</tr>
+<tr class="odd">
+<td>Attribute</td>
+<td>Type of data recorded (e.g., price, purchase amount)</td>
+</tr>
+<tr class="even">
+<td>Value</td>
+<td>Numeric value of the recorded attribute</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="hyperlinks-to-sections">Hyperlinks to Sections</h1>
+<ul>
+<li><a href="#prompt-1">prompt 1</a>: How do I translate a vague
+business problem into actionable data questions?<br />
+</li>
+<li><a href="#prompt-2">prompt 2</a>: What techniques help uncover the
+underlying goal behind a business request?</li>
+<li><a href="#prompt-3">prompt 3</a>:</li>
+<li><a href="#prompt-4">prompt 4</a>:</li>
+<li><a href="#prompt-5">prompt 5</a>:</li>
+<li><a href="#prompt-6">prompt 6</a>:</li>
+<li><a href="#prompt-7">prompt 7</a>:</li>
+<li><a href="#prompt-8">prompt 8</a>:</li>
+<li><a href="#prompt-9">prompt 9</a>:</li>
+<li><a href="#prompt-10">prompt 10</a>:</li>
+<li><a href="#prompt-11">prompt 11</a>:</li>
+<li><a href="#prompt-12">prompt 12</a>:</li>
+<li><a href="#prompt-13">prompt 13</a>:</li>
+<li><a href="#prompt-14">prompt 14</a>:</li>
+<li><a href="#prompt-15">prompt 15</a>:</li>
+<li><a href="#prompt-16">prompt 16</a>:</li>
+<li><a href="#prompt-17">prompt 17</a>:</li>
+<li><a href="#prompt-18">prompt 18</a>:</li>
+<li><a href="#prompt-19">prompt 19</a>:</li>
+<li><a href="#prompt-20">prompt 20</a>:</li>
+<li><a href="#prompt-21">prompt 21</a>:</li>
+<li><a href="#prompt-22">prompt 22</a>:</li>
+<li><a href="#prompt-23">prompt 23</a>:</li>
+<li><a href="#prompt-24">prompt 24</a>:</li>
+</ul>
+<hr />
+<h1 id="prompt-1">Prompt 1:</h1>
+<p>How do I translate a vague business problem into actionable data
+questions?</p>
+<h4 id="response"><strong>Response:</strong></h4>
+<p>Translating a vague business problem into actionable data questions
+is a critical skill in data analysis. It requires <strong>problem
+framing</strong>, a process that involves deeply understanding the
+context, stakeholders, and desired outcomes. Here’s how you can do
+it:</p>
+<hr />
+<h3 id="step-by-step-guide"><strong>Step-by-Step Guide</strong></h3>
+<h4 id="clarify-the-objective"><strong>1. Clarify the
+Objective</strong></h4>
+<p>Ask:</p>
+<ul>
+<li>What decision does the stakeholder want to make?</li>
+<li>What change or action are they hoping to enable?</li>
+<li>What does success look like?</li>
+</ul>
+<p><strong>Example:</strong> <em>Vague problem:</em> “We want to
+understand if people are eating healthy.” <em>Clarified objective:</em>
+“We want to identify what factors (e.g., income, region, price)
+influence the likelihood that a household consumes healthy foods, so we
+can inform policy.”</p>
+<hr />
+<h4 id="identify-key-concepts-and-define-them-measurably"><strong>2.
+Identify Key Concepts and Define Them Measurably</strong></h4>
+<p>Break the problem into measurable parts:</p>
+<ul>
+<li>What does “eating healthy” mean? (e.g., % of calories from
+vegetables?)</li>
+<li>What counts as “affordable” or “expensive”?</li>
+<li>How can “influence” be observed in the data?</li>
+</ul>
+<p><strong>Techniques:</strong></p>
+<ul>
+<li>Use industry standards or public health guidelines (e.g., WHO diet
+guidelines).</li>
+<li>Identify proxy variables if direct measures aren’t available.</li>
+</ul>
+<hr />
+<h4 id="frame-concrete-answerable-questions"><strong>3. Frame Concrete,
+Answerable Questions</strong></h4>
+<p>Convert each concept into a specific, testable question:</p>
+<ul>
+<li><em>Descriptive:</em> What percentage of household income is spent
+on vegetables?</li>
+<li><em>Comparative:</em> Do high-income households spend more on
+healthy food than low-income ones?</li>
+<li><em>Correlational:</em> Is household income correlated with the
+proportion of healthy foods purchased?</li>
+<li><em>Causal (if possible):</em> Does an increase in income lead to
+increased healthy food consumption?</li>
+</ul>
+<hr />
+<h4 id="check-against-available-data"><strong>4. Check Against Available
+Data</strong></h4>
+<p>Scan the data dictionary or schema:</p>
+<ul>
+<li>Which variables can you use to approximate your concepts?</li>
+<li>What’s missing? Can you engineer it (e.g., affordability
+ratio)?</li>
+<li>Is the granularity of data appropriate (household, individual,
+geographic)?</li>
+</ul>
+<hr />
+<h3 id="real-world-example"><strong>Real-World Example</strong></h3>
+<p><strong>Business problem:</strong> “Is our sales strategy
+working?”</p>
+<p><strong>Refined into actionable data questions:</strong></p>
+<ol type="1">
+<li>How have sales volumes changed before and after the strategy
+launch?</li>
+<li>Do regions with more exposure to the strategy perform better?</li>
+<li>Are certain customer segments responding more positively?</li>
+</ol>
+<hr />
+<h3 id="tips-to-practice-this-skill"><strong>Tips to Practice This
+Skill</strong></h3>
+<ul>
+<li>Always ask: <em>“How would I measure that?”</em></li>
+<li>Reframe vague nouns (“success,” “impact,” “affordability”) as
+metrics or outcomes.</li>
+<li>Use the <strong>SMART framework</strong>: Specific, Measurable,
+Achievable, Relevant, Time-bound.</li>
+</ul>
+<hr />
+<h1 id="prompt-2">Prompt 2:</h1>
+<p>What techniques help uncover the underlying goal behind a business
+request?</p>
+<h4 id="response-1"><strong>Response:</strong></h4>
+<p>Often, stakeholders ask for something specific (“Can you make a
+dashboard for this?”), but the <strong>real goal</strong> is buried
+underneath. Your job is to unpack what they’re <em>really</em> trying to
+achieve. Here are the best techniques to uncover the true underlying
+goal:</p>
+<hr />
+<h2 id="techniques-to-uncover-the-real-goal"><strong>Techniques to
+Uncover the Real Goal</strong></h2>
+<h3 id="ask-why-multiple-times-the-5-whys-technique"><strong>1. Ask
+“Why?” Multiple Times (The 5 Whys Technique)</strong></h3>
+<p>This classic problem-solving method helps dig deeper.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Q: “Why do you want to analyze food prices by region?”</li>
+<li>A: “Because we want to know if they’re too high.”</li>
+<li>Q: “Why do you need to know that?”</li>
+<li>A: “To understand if cost is a barrier to healthy eating.”</li>
+<li>Q: “Why does that matter?”</li>
+<li>A: “We want to recommend targeted subsidies or interventions.”</li>
+</ul>
+<p><strong>Takeaway:</strong> The original question was about price
+<em>by region</em>, but the goal is about <em>policy to improve health
+outcomes</em>.</p>
+<hr />
+<h3 id="identify-the-decision-or-action-they-need-to-take"><strong>2.
+Identify the Decision or Action They Need to Take</strong></h3>
+<p>Ask:</p>
+<ul>
+<li>“What decision will this help you make?”</li>
+<li>“What do you plan to do if the analysis shows X?”</li>
+</ul>
+<p>This ties the data request directly to a business value or
+operational outcome.</p>
+<hr />
+<h3 id="rephrase-their-ask-and-validate"><strong>3. Rephrase Their Ask
+and Validate</strong></h3>
+<p>Use active listening and reframe their request back to them:</p>
+<blockquote>
+<p>“So just to confirm—you’re trying to understand if certain foods are
+unaffordable for lower-income groups, in order to shape regional pricing
+policy. Is that right?”</p>
+</blockquote>
+<p>Letting them correct you helps clarify.</p>
+<hr />
+<h3 id="use-the-impact-chain-technique"><strong>4. Use the Impact Chain
+Technique</strong></h3>
+<p>Map out:</p>
+<ul>
+<li><strong>Input</strong> → What data or intervention?</li>
+<li><strong>Process</strong> → What will you analyze?</li>
+<li><strong>Output</strong> → What insight will be gained?</li>
+<li><strong>Outcome</strong> → What will they do differently?</li>
+</ul>
+<p><strong>Example:</strong></p>
+<blockquote>
+<p>If we analyze purchase patterns by income level → We may find a
+healthy food gap → That insight leads to targeted subsidies → Which
+improves health outcomes.</p>
+</blockquote>
+<hr />
+<h3 id="look-for-the-emotional-driver"><strong>5. Look for the Emotional
+Driver</strong></h3>
+<p>People often don’t say this explicitly, but ask:</p>
+<ul>
+<li>“What are you worried might happen?”</li>
+<li>“What would success <em>feel</em> like to your team?”</li>
+</ul>
+<p>This reveals their concerns (e.g., inequality, inefficiency,
+political pressure) that shape the request.</p>
+<hr />
+<h3 id="example-in-practice"><strong>Example in Practice</strong></h3>
+<p><strong>Initial Request:</strong> “Can you show us which food
+categories are most purchased by region?”</p>
+<p><strong>Underlying Goal (after techniques):</strong></p>
+<blockquote>
+<p>“We want to understand if healthier foods are being under-consumed in
+rural areas because of price or access, so we can propose infrastructure
+or pricing policies.”</p>
+</blockquote>
+<hr />
+<h3 id="summary-of-techniques"><strong>Summary of
+Techniques</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>Technique</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>5 Whys</strong></td>
+<td>Drill into the root of the request</td>
+</tr>
+<tr class="even">
+<td><strong>Decision Framing</strong></td>
+<td>Tie data to business actions</td>
+</tr>
+<tr class="odd">
+<td><strong>Rephrasing</strong></td>
+<td>Confirm and clarify intent</td>
+</tr>
+<tr class="even">
+<td><strong>Impact Chain</strong></td>
+<td>Visualize how insights lead to change</td>
+</tr>
+<tr class="odd">
+<td><strong>Emotional Drivers</strong></td>
+<td>Understand the concern or motivation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="prompt-3">Prompt 3:</h1>
+<p>Can you show me how to break down a business question into measurable
+objectives and hypotheses?</p>
+<h4 id="response-2"><strong>Response:</strong></h4>
+<p>This is a crucial step in designing any analysis plan. A
+<strong>business question</strong> is usually broad or abstract. To
+analyze it effectively, you must translate it into:</p>
+<ol type="1">
+<li><strong>Measurable objectives</strong> (what you will quantify or
+test)</li>
+<li><strong>Testable hypotheses</strong> (statements that can be
+supported or refuted by data)</li>
+</ol>
+<hr />
+<h3 id="step-by-step-example">🔍 <strong>Step-by-Step
+Example</strong></h3>
+<h4 id="business-question-1"><strong>Business Question:</strong></h4>
+<blockquote>
+<p><em>Do higher-income households buy healthier foods?</em></p>
+</blockquote>
+<hr />
+<h3 id="step-1-define-the-concepts">✅ Step 1: Define the Concepts</h3>
+<p>Identify the <strong>key variables</strong> and what they mean in
+measurable terms:</p>
+<ul>
+<li>“Higher-income households” → use <code>Mthly_HH_Income</code> or
+income brackets.</li>
+<li>“Buy” → can be measured by <code>purchase amount</code> from the
+food prices table.</li>
+<li>“Healthier foods” → define based on <code>EFPG_code</code> (e.g.,
+fruits, vegetables = healthy; chips, soda = unhealthy).</li>
+</ul>
+<hr />
+<h3 id="step-2-state-measurable-objectives">🎯 Step 2: State Measurable
+Objectives</h3>
+<p>These are specific analysis goals you can act on:</p>
+<ol type="1">
+<li>Calculate the proportion of food purchases that are healthy
+vs. unhealthy for each household.</li>
+<li>Group households into income brackets.</li>
+<li>Compare healthy purchase proportions across income groups.</li>
+</ol>
+<hr />
+<h3 id="step-3-formulate-hypotheses">🧪 Step 3: Formulate
+Hypotheses</h3>
+<p>Frame one or more hypotheses that you can statistically test.</p>
+<p><strong>Null Hypothesis (H₀):</strong></p>
+<blockquote>
+<p>There is no difference in the proportion of healthy food purchases
+between high-income and low-income households.</p>
+</blockquote>
+<p><strong>Alternative Hypothesis (H₁):</strong></p>
+<blockquote>
+<p>Higher-income households purchase a greater proportion of healthy
+food than lower-income households.</p>
+</blockquote>
+<p>You can test this with:</p>
+<ul>
+<li><strong>T-tests</strong> or <strong>Mann-Whitney U</strong> (2
+groups)</li>
+<li><strong>ANOVA</strong> or <strong>Kruskal-Wallis</strong> (3+
+groups)</li>
+<li>Or <strong>regression</strong> if you treat income as a continuous
+variable</li>
+</ul>
+<hr />
+<h3 id="bonus-add-outcome-metrics">✨ Bonus: Add Outcome Metrics</h3>
+<p>Think about how you’ll know if your analysis succeeded:</p>
+<ul>
+<li>Clear difference in healthy food purchase rates by income group</li>
+<li>Statistically significant p-value</li>
+<li>Visual clarity (e.g., boxplots, bar charts)</li>
+</ul>
+<hr />
+<h3 id="practice-case">🧩 Practice Case</h3>
+<p><strong>Business Question:</strong></p>
+<blockquote>
+<p>Are healthier foods more expensive than processed options?</p>
+</blockquote>
+<p><strong>Breakdown:</strong></p>
+<ul>
+<li><p>Objective: Compare prices between healthy and processed food
+categories.</p></li>
+<li><p>Hypotheses:</p>
+<ul>
+<li>H₀: There is no difference in price.</li>
+<li>H₁: Healthy foods are more expensive than processed foods.</li>
+</ul></li>
+<li><p>Test: Two-sample t-test or nonparametric equivalent</p></li>
+</ul>
+<hr />
+<h3 id="summary-checklist-for-you">📌 Summary Checklist for You</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>What to Do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Identify Concepts</td>
+<td>Define each key term with measurable variables</td>
+</tr>
+<tr class="even">
+<td>Write Objectives</td>
+<td>List what you’ll measure or compare</td>
+</tr>
+<tr class="odd">
+<td>Form Hypotheses</td>
+<td>Write testable null and alternative statements</td>
+</tr>
+<tr class="even">
+<td>Plan Analysis</td>
+<td>Choose appropriate test or model</td>
+</tr>
+<tr class="odd">
+<td>Define Success</td>
+<td>Decide what outcome means it “worked”</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="prompt-4">Prompt 4:</h1>
+<p>How do I identify which tables and columns in a data dictionary are
+relevant to a question?**</p>
+<h4 id="response-3"><strong>Response:</strong></h4>
+<p>This is a critical skill for bridging the gap between business needs
+and technical execution. The goal is to <strong>match the meaning of the
+question</strong> with the <strong>structure and semantics of the
+data</strong>.</p>
+<p>Here’s how to approach it step-by-step:</p>
+<hr />
+<h2 id="step-by-step-guide-1">🔍 <strong>Step-by-Step
+Guide</strong></h2>
+<h3 id="step-1-break-down-the-business-question">✅ <strong>Step 1:
+Break Down the Business Question</strong></h3>
+<p>Split the question into <strong>concepts</strong> you’ll need to
+measure.</p>
+<p><strong>Example:</strong> <em>Question:</em> “Do higher-income
+households buy healthier foods?” → Key concepts:</p>
+<ul>
+<li>Household income</li>
+<li>Food purchases</li>
+<li>Food healthiness</li>
+</ul>
+<hr />
+<h3 id="step-2-translate-concepts-into-variable-types">✅ <strong>Step
+2: Translate Concepts into Variable Types</strong></h3>
+<p>Ask yourself:</p>
+<ul>
+<li>What kind of data would represent this? (e.g., numeric, categorical,
+time series?)</li>
+<li>Do I need individual-level or aggregated data?</li>
+</ul>
+<p><strong>Concept Mapping Example:</strong></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 35%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Data Type</th>
+<th>Example Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Income</td>
+<td>Continuous numeric</td>
+<td><code>Mthly_HH_Income</code>, <code>Annual_HH_Income</code></td>
+</tr>
+<tr class="even">
+<td>Food purchases</td>
+<td>Quantity or value per category</td>
+<td><code>Value</code> (Attribute = “purchase amount”)</td>
+</tr>
+<tr class="odd">
+<td>Food healthiness</td>
+<td>Category label</td>
+<td><code>EFPG_code</code> (tagged healthy/unhealthy)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="step-3-scan-the-data-dictionary-systematically">✅ <strong>Step
+3: Scan the Data Dictionary Systematically</strong></h3>
+<p>Read through each table and ask:</p>
+<ul>
+<li>What is this table describing? (e.g., people, households, regions,
+time periods?)</li>
+<li>What are the key identifiers?</li>
+<li>Do any columns connect to the concepts I identified?</li>
+</ul>
+<p><strong>Use a table like this to organize:</strong></p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 29%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Table Name</th>
+<th>Relevant Concepts</th>
+<th>Key Columns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Income-Expenditure Table</td>
+<td>Income, household size</td>
+<td><code>Mthly_HH_Income</code>,
+<code>No_of_Earning_Members</code></td>
+</tr>
+<tr class="even">
+<td>Food Prices Table</td>
+<td>Food cost, category, region</td>
+<td><code>EFPG_code</code>, <code>Metroregion_code</code>,
+<code>Value</code></td>
+</tr>
+<tr class="odd">
+<td>Dietary Habits Survey</td>
+<td>Preferences, restrictions</td>
+<td><code>Dietary Preference</code>, <code>Food Restrictions</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="step-4-validate-linkability">✅ <strong>Step 4: Validate
+Linkability</strong></h3>
+<p>Check:</p>
+<ul>
+<li>Do tables share a key (e.g., household ID, region code, time)?</li>
+<li>Can you join them cleanly without duplication or loss of
+records?</li>
+</ul>
+<hr />
+<h2 id="tips-for-efficiency">🧠 <strong>Tips for
+Efficiency</strong></h2>
+<ul>
+<li><strong>Underline keywords</strong> in business questions and look
+for those terms (or synonyms) in your data dictionary.</li>
+<li><strong>Create a mapping spreadsheet</strong> to track which columns
+address which question elements.</li>
+<li>If something seems missing (e.g., no “household ID” field), flag
+that early as a potential limitation or request for more data.</li>
+</ul>
+<hr />
+<h2 id="real-example">✍️ Real Example</h2>
+<p><strong>Question:</strong> Are there regional trends in food
+affordability?</p>
+<p><strong>Breakdown:</strong></p>
+<ul>
+<li>“Regional” → <code>Metroregion_code</code></li>
+<li>“Food” → <code>EFPG_code</code></li>
+<li>“Affordability” → <code>Value</code> (Attribute = “price”) relative
+to income → join to <code>Income-Expenditure Table</code></li>
+</ul>
+<hr />
+<h2 id="summary-workflow">📌 Summary Workflow</h2>
+<ol type="1">
+<li>Extract concepts from the question</li>
+<li>Translate to data types and variable names</li>
+<li>Scan the data dictionary for matches</li>
+<li>Match tables to questions in a map</li>
+<li>Validate if you can join the data meaningfully</li>
+</ol>
+<hr />
+<h1 id="prompt-5">Prompt 5:</h1>
+<p>Can you show me examples of matching business questions to variables
+in real datasets?</p>
+<h4 id="response-4"><strong>Response:</strong></h4>
+<p>Absolutely. This skill is all about recognizing which
+<strong>specific variables in your data</strong> can be used to
+<strong>answer specific parts of a business question</strong>—even if
+they’re named differently or require some transformation.</p>
+<p>Let’s go through <strong>three real-style examples</strong> using
+your earlier dataset as a reference:</p>
+<hr />
+<h2 id="example-1-do-higher-income-households-buy-healthier-foods">✅
+<strong>Example 1: “Do higher-income households buy healthier
+foods?”</strong></h2>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 24%" />
+<col style="width: 32%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Matching Variable(s)</th>
+<th>Table</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Household income</td>
+<td><code>Mthly_HH_Income</code>, <code>Annual_HH_Income</code></td>
+<td>Income-Expenditure Table</td>
+<td>May want to bin or normalize by family size</td>
+</tr>
+<tr class="even">
+<td>Healthy foods</td>
+<td><code>EFPG_code</code></td>
+<td>Food Prices Table</td>
+<td>Will need to classify categories as healthy/unhealthy</td>
+</tr>
+<tr class="odd">
+<td>Purchases</td>
+<td><code>Value</code> (Attribute = “purchase amount”)</td>
+<td>Food Prices Table</td>
+<td>Filter where <code>Attribute == "purchase amount"</code></td>
+</tr>
+<tr class="even">
+<td>Household link</td>
+<td>Join method not explicitly listed</td>
+<td>Join via common household or regional key (if exists)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2
+id="example-2-are-healthier-foods-more-expensive-than-processed-ones">✅
+<strong>Example 2: “Are healthier foods more expensive than processed
+ones?”</strong></h2>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 12%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Matching Variable(s)</th>
+<th>Table</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Food type (healthy/processed)</td>
+<td><code>EFPG_code</code></td>
+<td>Food Prices Table</td>
+<td>Define classification manually or use nutrition metadata</td>
+</tr>
+<tr class="even">
+<td>Price</td>
+<td><code>Value</code> (Attribute = “price”)</td>
+<td>Food Prices Table</td>
+<td>Normalize to per 100g, kcal, or serving if possible</td>
+</tr>
+<tr class="odd">
+<td>Time control (optional)</td>
+<td><code>Month</code>, <code>Year</code></td>
+<td>Food Prices Table</td>
+<td>To analyze trends or averages over time</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="example-3-are-there-regional-trends-in-food-affordability">✅
+<strong>Example 3: “Are there regional trends in food
+affordability?”</strong></h2>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 31%" />
+<col style="width: 24%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Matching Variable(s)</th>
+<th>Table</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Region</td>
+<td><code>Metroregion_code</code></td>
+<td>Food Prices Table</td>
+<td>May be converted to map regions</td>
+</tr>
+<tr class="even">
+<td>Food type</td>
+<td><code>EFPG_code</code></td>
+<td>Food Prices Table</td>
+<td>To analyze which food types are driving cost</td>
+</tr>
+<tr class="odd">
+<td>Affordability</td>
+<td><code>Value</code> (Attribute = “price”) +
+<code>Mthly_HH_Income</code></td>
+<td>Food Prices Table + Income-Expenditure</td>
+<td>Must compute price as % of income (requires data join)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="pattern-to-practice">🧩 Pattern to Practice</h2>
+<p>To do this consistently:</p>
+<ol type="1">
+<li><strong>Break the question into “concepts”</strong></li>
+<li><strong>Map concepts to columns</strong></li>
+<li><strong>Find the table those columns live in</strong></li>
+<li><strong>Look for join keys</strong></li>
+<li><strong>Note what transformation (if any)</strong> is needed</li>
+</ol>
+<hr />
+<h2 id="practice-template-you-can-use">🔄 Practice Template You Can
+Use</h2>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 10%" />
+<col style="width: 20%" />
+<col style="width: 7%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Business Question</th>
+<th>Concept</th>
+<th>Data Variable</th>
+<th>Table</th>
+<th>Transformation Needed?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="prompt-6">Prompt 6:</h1>
+<p>What should I look for in a data dictionary to determine data quality
+and coverage?</p>
+<h4 id="response-5"><strong>Response:</strong></h4>
+<p>When you receive a data dictionary, it’s not just about finding
+column names—it’s about <strong>evaluating how trustworthy, complete,
+and usable</strong> that data will be for analysis. A good analyst looks
+beyond structure and checks for <strong>quality, granularity, and
+consistency.</strong></p>
+<hr />
+<h2 id="key-things-to-look-for-in-a-data-dictionary">✅ <strong>Key
+Things to Look For in a Data Dictionary</strong></h2>
+<h3 id="presence-of-unique-identifiers">1. <strong>Presence of Unique
+Identifiers</strong></h3>
+<p>Ask:</p>
+<ul>
+<li>Is there a primary key (e.g., <code>household_id</code>,
+<code>region_code</code>)?</li>
+<li>Can I join this table with others?</li>
+</ul>
+<p><strong>Why it matters:</strong> Without reliable IDs, merging data
+may introduce duplicates or misaligned rows.</p>
+<hr />
+<h3 id="granularity-of-the-data">2. <strong>Granularity of the
+Data</strong></h3>
+<p>Ask:</p>
+<ul>
+<li>Does each row represent a person, a household, a region, or a
+month?</li>
+<li>Is the level of detail appropriate for your analysis?</li>
+</ul>
+<p><strong>Why it matters:</strong> If you’re analyzing individual
+behavior but the data is regional, you’re too zoomed out.</p>
+<hr />
+<h3 id="variable-types-and-units">3. <strong>Variable Types and
+Units</strong></h3>
+<p>Check:</p>
+<ul>
+<li>Are columns clearly labeled as numeric, categorical, date, or
+text?</li>
+<li>Are prices in USD per serving? Per 100g? Calories per item?</li>
+</ul>
+<p><strong>Why it matters:</strong> Ambiguous units lead to incorrect
+metrics. You may need to normalize before analysis.</p>
+<hr />
+<h3 id="codebook-value-descriptions">4. <strong>Codebook / Value
+Descriptions</strong></h3>
+<p>Look for:</p>
+<ul>
+<li>Definitions for coded values (<code>EFPG_code</code>,
+<code>Metroregion_code</code>)</li>
+<li>Mappings of categorical options (e.g.,
+<code>Highest_Qualified_Member</code> = Bachelor’s, Master’s)</li>
+</ul>
+<p><strong>Why it matters:</strong> If values aren’t explained,
+interpretation becomes guesswork.</p>
+<hr />
+<h3 id="missing-values-or-optional-fields">5. <strong>Missing Values or
+Optional Fields</strong></h3>
+<p>Check:</p>
+<ul>
+<li>Which fields are required vs. optional?</li>
+<li>Do any fields allow nulls or blanks?</li>
+</ul>
+<p><strong>Why it matters:</strong> A key variable with frequent missing
+data can weaken your analysis or require imputation.</p>
+<hr />
+<h3 id="time-coverage-and-consistency">6. <strong>Time Coverage and
+Consistency</strong></h3>
+<p>Ask:</p>
+<ul>
+<li>What date range does the data span? (<code>Year</code>,
+<code>Month</code>)</li>
+<li>Are records evenly distributed over time?</li>
+</ul>
+<p><strong>Why it matters:</strong> If one year is overrepresented, your
+trends may be biased.</p>
+<hr />
+<h3 id="frequency-of-updates-freshness">7. <strong>Frequency of Updates
+/ Freshness</strong></h3>
+<p>Ask:</p>
+<ul>
+<li>How often is this data collected or updated?</li>
+<li>Is it a snapshot or a time series?</li>
+</ul>
+<p><strong>Why it matters:</strong> You need to know whether you’re
+looking at current behavior or outdated trends.</p>
+<hr />
+<h2 id="example-reviewing-the-food-prices-table">📌 Example: Reviewing
+the “Food Prices Table”</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Example Observations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ID/Joinability</td>
+<td><code>Metroregion_code</code>, <code>EFPG_code</code>,
+<code>Month</code>, <code>Year</code> — potentially composite key</td>
+</tr>
+<tr class="even">
+<td>Granularity</td>
+<td>Price observations by food category by region by month</td>
+</tr>
+<tr class="odd">
+<td>Units</td>
+<td><code>Value</code> field ambiguous — need to check if price is per
+unit, 100g, serving</td>
+</tr>
+<tr class="even">
+<td>Missing Fields</td>
+<td>What if some months are missing prices for a region?</td>
+</tr>
+<tr class="odd">
+<td>Code Mapping</td>
+<td>No description of <code>EFPG_code</code> in dictionary — you’d need
+external mapping</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-checklist">🔄 Summary Checklist</h2>
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>What to Check</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Unique keys</td>
+<td>To enable joins and group-by operations</td>
+</tr>
+<tr class="even">
+<td>Data granularity</td>
+<td>To align with analysis scope</td>
+</tr>
+<tr class="odd">
+<td>Clear types and units</td>
+<td>For accurate measurement and normalization</td>
+</tr>
+<tr class="even">
+<td>Described categories</td>
+<td>For interpretability</td>
+</tr>
+<tr class="odd">
+<td>Missing data</td>
+<td>To plan cleaning or imputation</td>
+</tr>
+<tr class="even">
+<td>Time range and consistency</td>
+<td>To avoid biased trends</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="prompt-7">Prompt 7:</h1>
+<p>How do I recognize which variables need transformation or engineering
+to be useful?</p>
+<h4 id="response-6"><strong>Response:</strong></h4>
+<p>Raw variables often need to be cleaned, reshaped, or redefined to
+answer business questions. <strong>Feature engineering</strong> is the
+process of converting raw data into meaningful input for analysis or
+modeling.</p>
+<p>Recognizing what needs transformation involves understanding both the
+<strong>business context</strong> and the <strong>technical
+limitations</strong> of raw data.</p>
+<hr />
+<h2 id="common-signs-a-variable-needs-transformation">✅ <strong>Common
+Signs a Variable Needs Transformation</strong></h2>
+<h3 id="its-not-in-a-usable-format"><strong>1. It’s Not in a Usable
+Format</strong></h3>
+<ul>
+<li><p><strong>Example:</strong> Dates stored as strings like
+<code>"2024-01-01"</code> → Convert to datetime type to extract month,
+year, weekday, etc.</p></li>
+<li><p><strong>Example:</strong> Income or expense stored as text like
+<code>"$2,500"</code> → Strip currency symbols and commas, then cast to
+numeric.</p></li>
+</ul>
+<hr />
+<h3 id="it-needs-to-be-aggregated-or-averaged"><strong>2. It Needs to Be
+Aggregated or Averaged</strong></h3>
+<ul>
+<li><p><strong>Example:</strong> Prices for each product → You need the
+<strong>average price per food category or per
+household.</strong></p></li>
+<li><p><strong>Example:</strong> Food purchase entries per month →
+Aggregate to <strong>monthly totals</strong> to compare trends.</p></li>
+</ul>
+<hr />
+<h3 id="it-needs-to-be-normalized-or-standardized"><strong>3. It Needs
+to Be Normalized or Standardized</strong></h3>
+<ul>
+<li><p><strong>Use Case:</strong> Comparing across households with
+different incomes or family sizes</p>
+<ul>
+<li>Normalize cost per person →
+<code>Mthly_HH_Expense / No_of_Fly_Members</code></li>
+<li>Normalize price burden →
+<code>Food Price / Mthly_HH_Income</code></li>
+</ul></li>
+<li><p><strong>Modeling use case:</strong> Standardize variables
+(z-score, min-max scaling) if using distance-based models.</p></li>
+</ul>
+<hr />
+<h3 id="it-needs-categorization-or-binning"><strong>4. It Needs
+Categorization or Binning</strong></h3>
+<ul>
+<li><strong>Example:</strong> Income → Turn <code>Mthly_HH_Income</code>
+into income <strong>brackets</strong> or <strong>quintiles</strong></li>
+<li><strong>Example:</strong> Age → Bin <code>Age</code> into 18–29,
+30–49, etc.</li>
+<li><strong>Why:</strong> Makes comparisons easier and supports grouped
+analysis.</li>
+</ul>
+<hr />
+<h3 id="it-combines-multiple-values-into-one"><strong>5. It Combines
+Multiple Values into One</strong></h3>
+<ul>
+<li><strong>Example:</strong> Column “Attribute” contains both “price”
+and “purchase amount” in the same field → You must <strong>pivot or
+separate</strong> them to analyze independently.</li>
+</ul>
+<hr />
+<h3 id="its-coded-and-needs-a-lookup"><strong>6. It’s Coded and Needs a
+Lookup</strong></h3>
+<ul>
+<li><strong>Example:</strong> <code>EFPG_code</code> → You need to
+decode it into “Vegetables”, “Processed Snacks”, etc.</li>
+<li><strong>Why:</strong> You can’t analyze food healthiness if you
+don’t know what the codes represent.</li>
+</ul>
+<hr />
+<h3 id="it-hides-useful-ratios"><strong>7. It Hides Useful
+Ratios</strong></h3>
+<ul>
+<li><p><strong>Transformation ideas:</strong></p>
+<ul>
+<li>Expense-to-income ratio</li>
+<li>Healthy purchases as % of total purchases</li>
+<li>Cost per 100g or per kcal (if available)</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="thought-process-for-identifying-transformations">🧠 Thought
+Process for Identifying Transformations</h2>
+<table>
+<colgroup>
+<col style="width: 62%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question to Ask</th>
+<th>Possible Transformation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>What is this variable trying to measure?</td>
+<td>Normalize it or convert units</td>
+</tr>
+<tr class="even">
+<td>How can I compare this across groups?</td>
+<td>Group by category, bin values</td>
+</tr>
+<tr class="odd">
+<td>Does it help answer a business question directly?</td>
+<td>Derive a metric from it</td>
+</tr>
+<tr class="even">
+<td>Is it in a format I can analyze?</td>
+<td>Convert type, split column</td>
+</tr>
+<tr class="odd">
+<td>Is it interpretable to stakeholders?</td>
+<td>Decode or reformat</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="example-youre-given-this">🧩 Example: You’re given this</h2>
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Transformation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Mthly_HH_Income</code></td>
+<td>Create income brackets</td>
+</tr>
+<tr class="even">
+<td><code>Value</code> (with <code>Attribute</code>)</td>
+<td>Pivot into separate columns for price vs. purchase</td>
+</tr>
+<tr class="odd">
+<td><code>EFPG_code</code></td>
+<td>Map to food healthiness</td>
+</tr>
+<tr class="even">
+<td><code>Metroregion_code</code></td>
+<td>Decode to region name or assign rural/urban tag</td>
+</tr>
+<tr class="odd">
+<td><code>Date</code></td>
+<td>Extract <code>Month</code>, <code>Year</code> for time trend
+analysis</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="rule-of-thumb">🔧 Rule of Thumb</h2>
+<p><strong>If the raw variable doesn’t immediately answer the business
+question, it probably needs transformation.</strong></p>
+<hr />
+<h1 id="prompt-8">Prompt 8:</h1>
+<p>What questions should I ask myself to choose between descriptive,
+inferential, and predictive analysis?</p>
+<h4 id="response-7"><strong>Response:</strong></h4>
+<p>Choosing the right type of analysis is key to answering a business
+question accurately. Each type—<strong>descriptive</strong>,
+<strong>inferential</strong>, and <strong>predictive</strong>—serves a
+different purpose. The best analysts know how to align the
+<strong>intent of the question</strong> with the <strong>power of the
+method</strong>.</p>
+<hr />
+<h2 id="start-with-these-questions">✅ <strong>Start With These
+Questions:</strong></h2>
+<h3 id="what-is-the-stakeholder-trying-to-learn-or-do"><strong>1. What
+is the stakeholder trying to learn or do?</strong></h3>
+<p>Ask:</p>
+<ul>
+<li>Do they want to <strong>describe</strong> what’s happening?</li>
+<li>Do they want to <strong>test a theory or difference</strong>?</li>
+<li>Do they want to <strong>forecast or classify</strong> future
+outcomes?</li>
+</ul>
+<p><strong>Match:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Stakeholder Intent</th>
+<th>Analysis Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“What’s happening?”</td>
+<td>Descriptive</td>
+</tr>
+<tr class="even">
+<td>“Is there a difference?”</td>
+<td>Inferential</td>
+</tr>
+<tr class="odd">
+<td>“What will happen next?”</td>
+<td>Predictive</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="do-i-need-to-summarize-explain-or-predict"><strong>2. Do I need
+to summarize, explain, or predict?</strong></h3>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 26%" />
+<col style="width: 53%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Analysis Type</th>
+<th>Primary Goal</th>
+<th>Typical Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Descriptive</strong></td>
+<td>Summarize data</td>
+<td>Averages, bar charts, cross-tabs</td>
+</tr>
+<tr class="even">
+<td><strong>Inferential</strong></td>
+<td>Test hypotheses</td>
+<td>T-tests, ANOVA, chi-squared</td>
+</tr>
+<tr class="odd">
+<td><strong>Predictive</strong></td>
+<td>Make future estimates</td>
+<td>Regression, decision trees, classification</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3
+id="do-i-need-to-quantify-uncertainty-or-test-a-hypothesis"><strong>3.
+Do I need to quantify uncertainty or test a hypothesis?</strong></h3>
+<ul>
+<li>If <strong>yes</strong>, use <strong>inferential</strong> statistics
+to check if a pattern is statistically significant.</li>
+<li>If <strong>no</strong>, and you’re just summarizing or exploring,
+use <strong>descriptive</strong> methods.</li>
+</ul>
+<hr />
+<h3 id="is-the-outcome-variable-known-or-unknown"><strong>4. Is the
+outcome variable known or unknown?</strong></h3>
+<ul>
+<li>If the outcome is <strong>known</strong> and you want to
+<strong>explain or compare it</strong>, you’re likely doing
+<strong>descriptive or inferential</strong> work.</li>
+<li>If the outcome is <strong>not known</strong>, and you want to
+<strong>forecast it</strong>, you’re doing <strong>predictive</strong>
+analysis.</li>
+</ul>
+<hr />
+<h3
+id="will-this-analysis-be-used-for-decisions-about-future-behavior"><strong>5.
+Will this analysis be used for decisions about future
+behavior?</strong></h3>
+<ul>
+<li>If yes, consider <strong>predictive modeling</strong> to provide
+decision-making tools.</li>
+<li>If no, but the goal is insight, use <strong>descriptive and
+inferential</strong> methods.</li>
+</ul>
+<hr />
+<h2 id="examples-using-your-project-context">🧩 Examples Using Your
+Project Context</h2>
+<h3 id="example-1">Example 1:</h3>
+<p><strong>Business Question:</strong> “Do higher-income households buy
+healthier food?”</p>
+<ul>
+<li>If you want to <strong>describe</strong> purchase patterns →
+Descriptive</li>
+<li>If you want to <strong>test</strong> whether the difference is
+statistically significant → Inferential</li>
+<li>If you want to <strong>predict</strong> healthy food purchase
+likelihood from income and other factors → Predictive</li>
+</ul>
+<hr />
+<h3 id="example-2">Example 2:</h3>
+<p><strong>Business Question:</strong> “Are healthier foods more
+expensive than processed ones?”</p>
+<ul>
+<li>If comparing average prices → Descriptive</li>
+<li>If testing if difference is statistically significant → Inferential
+(e.g., t-test)</li>
+</ul>
+<hr />
+<h3 id="example-3">Example 3:</h3>
+<p><strong>Business Question:</strong> “Can we predict which households
+are at risk of unhealthy eating habits?”</p>
+<ul>
+<li>You’re trying to <strong>forecast behavior</strong> → Predictive
+modeling (e.g., logistic regression, random forest)</li>
+</ul>
+<hr />
+<h2 id="summary-flowchart">✅ Summary Flowchart</h2>
+<pre class="plaintext"><code>Start
+ ↓
+What is the goal?
+ ├── Describe what is happening → Descriptive
+ ├── Test if a difference/relationship is real → Inferential
+ └── Predict future outcomes or behaviors → Predictive</code></pre>
+<p>Excellent—here’s <strong>Prompt 9</strong>:</p>
+<hr />
+<h1 id="prompt-9">Prompt 9:</h1>
+<p>How do I decide which types of charts or models best answer each kind
+of business question?</p>
+<h4 id="response-8"><strong>Response:</strong></h4>
+<p>Choosing the right chart or model is about translating the
+<strong>type of question</strong>, <strong>data structure</strong>, and
+<strong>audience needs</strong> into the <strong>clearest visual or
+computational approach</strong>. This is both a science (based on data
+types) and an art (based on communication goals).</p>
+<hr />
+<h2 id="step-by-step-approach">✅ <strong>Step-by-Step
+Approach</strong></h2>
+<h3 id="understand-the-goal-of-the-visualization-or-model"><strong>1.
+Understand the Goal of the Visualization or Model</strong></h3>
+<p>Ask:</p>
+<ul>
+<li>Is the goal to <strong>compare</strong> groups?</li>
+<li>To <strong>show a trend</strong> over time?</li>
+<li>To <strong>reveal relationships</strong>?</li>
+<li>To <strong>predict</strong> an outcome?</li>
+</ul>
+<p>This determines whether you need:</p>
+<ul>
+<li>A <strong>chart</strong> (for communication)</li>
+<li>A <strong>model</strong> (for inference or prediction)</li>
+</ul>
+<hr />
+<h2 id="a.-choosing-the-right-chart"><strong>A. Choosing the Right
+Chart</strong></h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 37%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question Type</th>
+<th>Best Chart Types</th>
+<th>When to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Compare values across categories</td>
+<td>Bar chart, grouped bar, stacked bar</td>
+<td>Income vs. healthy food share</td>
+</tr>
+<tr class="even">
+<td>Show distribution</td>
+<td>Histogram, boxplot, violin plot</td>
+<td>Price per serving by food type</td>
+</tr>
+<tr class="odd">
+<td>Track trends over time</td>
+<td>Line chart, area chart</td>
+<td>Monthly change in prices</td>
+</tr>
+<tr class="even">
+<td>Show parts of a whole</td>
+<td>Pie chart (use cautiously), stacked bar</td>
+<td>Healthy vs. unhealthy food share</td>
+</tr>
+<tr class="odd">
+<td>Explore correlations</td>
+<td>Scatter plot, heatmap</td>
+<td>Income vs. food spending</td>
+</tr>
+<tr class="even">
+<td>Show geographical patterns</td>
+<td>Choropleth map, symbol map</td>
+<td>Regional affordability trends</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="b.-choosing-the-right-model"><strong>B. Choosing the Right
+Model</strong></h2>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 48%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Business Question Type</th>
+<th>Recommended Model</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Is there a difference between groups?</td>
+<td>T-test, ANOVA</td>
+<td>Use inferential stats</td>
+</tr>
+<tr class="even">
+<td>Is X associated with Y?</td>
+<td>Correlation, linear/logistic regression</td>
+<td>Understand relationships</td>
+</tr>
+<tr class="odd">
+<td>Can we classify or predict?</td>
+<td>Decision trees, logistic regression, random forest, XGBoost</td>
+<td>Use supervised ML models</td>
+</tr>
+<tr class="even">
+<td>Are there patterns or clusters?</td>
+<td>K-means, DBSCAN, PCA</td>
+<td>Use unsupervised learning</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="match-chart-to-audience"><strong>2. Match Chart to
+Audience</strong></h3>
+<p>Ask:</p>
+<ul>
+<li>Is the audience technical or non-technical?</li>
+<li>Do they care more about <strong>trends</strong>,
+<strong>categories</strong>, or <strong>outliers</strong>?</li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li>For executives: bar charts, maps, and high-level comparisons</li>
+<li>For analysts: scatter plots, regression lines, residuals, etc.</li>
+</ul>
+<hr />
+<h3 id="match-model-to-data-type"><strong>3. Match Model to Data
+Type</strong></h3>
+<table>
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Target Variable</th>
+<th>Model Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Continuous (e.g., cost)</td>
+<td>Linear regression</td>
+</tr>
+<tr class="even">
+<td>Binary (e.g., healthy vs. unhealthy)</td>
+<td>Logistic regression, classification trees</td>
+</tr>
+<tr class="odd">
+<td>Multi-class</td>
+<td>Random forest, XGBoost, multiclass classifiers</td>
+</tr>
+<tr class="even">
+<td>No target (clustering, patterns)</td>
+<td>K-means, PCA, DBSCAN</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="example-scenarios">🧩 Example Scenarios</h2>
+<h3 id="q-are-healthy-foods-more-expensive">Q: “Are healthy foods more
+expensive?”</h3>
+<ul>
+<li><strong>Chart:</strong> Boxplot of price by food type</li>
+<li><strong>Model:</strong> T-test or Mann-Whitney U test</li>
+</ul>
+<h3 id="q-do-higher-income-households-eat-healthier">Q: “Do
+higher-income households eat healthier?”</h3>
+<ul>
+<li><strong>Chart:</strong> Stacked bar or violin plot</li>
+<li><strong>Model:</strong> Logistic regression (predict % healthy food
+purchased)</li>
+</ul>
+<h3 id="q-can-we-predict-which-households-will-eat-unhealthily">Q: “Can
+we predict which households will eat unhealthily?”</h3>
+<ul>
+<li><strong>Chart:</strong> ROC curve, confusion matrix (for model
+evaluation)</li>
+<li><strong>Model:</strong> Random forest classifier or XGBoost</li>
+</ul>
+<hr />
+<h2 id="quick-chart-decision-tree">✅ Quick Chart Decision Tree</h2>
+<pre class="plaintext"><code>Do you have a time component?
+ ├── Yes → Line chart
+ └── No
+     ├── Comparing groups? → Bar chart or boxplot
+     ├── Showing distribution? → Histogram or violin plot
+     ├── Showing relationship? → Scatter plot
+     └── Showing geography? → Choropleth map</code></pre>
+<hr />
+<h1 id="prompt-10">Prompt 10:</h1>
+<p>What are best practices for structuring an analysis plan from
+question to visual? #### <strong>Response:</strong></p>
+<p>A strong analysis plan connects <strong>business questions</strong>
+to <strong>analytical methods</strong> and ultimately to <strong>clear
+visuals or models</strong> that deliver insight. Best practice is to
+follow a structured, repeatable framework that balances clarity, rigor,
+and stakeholder relevance.</p>
+<hr />
+<h2 id="best-practices-framework">✅ <strong>Best Practices
+Framework</strong></h2>
+<h3 id="define-the-business-question"><strong>1. Define the Business
+Question</strong></h3>
+<ul>
+<li>Be specific: What are we trying to learn or decide?</li>
+<li>Identify the stakeholders: Who needs the answer and why?</li>
+</ul>
+<p><strong>Example:</strong> “Do higher-income households purchase more
+healthy foods, and should this influence subsidy policy?”</p>
+<hr />
+<h3 id="break-the-question-into-sub-questions"><strong>2. Break the
+Question into Sub-questions</strong></h3>
+<p>Break it down into:</p>
+<ul>
+<li><strong>Descriptive</strong>: What’s the distribution of income
+levels?</li>
+<li><strong>Comparative</strong>: How does healthy food purchase vary by
+income?</li>
+<li><strong>Inferential/Predictive</strong>: Is income a strong
+predictor of food choice?</li>
+</ul>
+<hr />
+<h3 id="map-variables-to-concepts"><strong>3. Map Variables to
+Concepts</strong></h3>
+<p>Use your data dictionary to identify:</p>
+<ul>
+<li>Which columns measure each part of the question?</li>
+<li>What joins or transformations are needed?</li>
+</ul>
+<p><strong>Tool:</strong> Create a variable mapping table:</p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 23%" />
+<col style="width: 25%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Variable</th>
+<th>Table</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Income</td>
+<td><code>Mthly_HH_Income</code></td>
+<td>Income-Expenditure</td>
+<td>Convert to income bracket</td>
+</tr>
+<tr class="even">
+<td>Healthy food</td>
+<td><code>EFPG_code</code></td>
+<td>Food Prices</td>
+<td>Flag healthy/unhealthy</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="engineer-features-clean-data"><strong>4. Engineer Features &amp;
+Clean Data</strong></h3>
+<ul>
+<li>Handle missing values</li>
+<li>Create new features (e.g.,
+<code>% healthy food purchased</code>)</li>
+<li>Normalize or aggregate where needed</li>
+</ul>
+<p><strong>Example transformations:</strong></p>
+<ul>
+<li>Cost per capita =
+<code>Mthly_HH_Expense / No_of_Fly_Members</code></li>
+<li>Healthy purchase ratio =
+<code>Healthy_Purchase_Amount / Total_Purchase_Amount</code></li>
+</ul>
+<hr />
+<h3 id="choose-analytical-techniques"><strong>5. Choose Analytical
+Techniques</strong></h3>
+<p>Base this on:</p>
+<ul>
+<li>The type of question (descriptive, inferential, predictive)</li>
+<li>The data structure (categorical vs. numeric)</li>
+<li>The business goal (exploration vs. decision-making)</li>
+</ul>
+<hr />
+<h3 id="design-visuals-with-purpose"><strong>6. Design Visuals with
+Purpose</strong></h3>
+<p>Each visual should answer a specific sub-question.</p>
+<table>
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 24%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Visual Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>How does affordability vary by income?</td>
+<td>Violin or bar chart</td>
+<td>Use income brackets</td>
+</tr>
+<tr class="even">
+<td>Are healthy foods more expensive?</td>
+<td>Boxplot</td>
+<td>Healthy vs. processed</td>
+</tr>
+<tr class="odd">
+<td>Are there regional trends?</td>
+<td>Choropleth map</td>
+<td>Map <code>Metroregion_code</code></td>
+</tr>
+</tbody>
+</table>
+<p>Keep them simple, clean, and color-coded by relevant dimensions
+(e.g., income level, region).</p>
+<hr />
+<h3 id="document-hypotheses-or-assumptions"><strong>7. Document
+Hypotheses or Assumptions</strong></h3>
+<ul>
+<li>Are you testing a statistical claim? Write down your null and
+alternative hypotheses.</li>
+<li>Are you making assumptions about food category classifications? Be
+transparent.</li>
+</ul>
+<hr />
+<h3 id="draft-key-takeaways-in-plain-language"><strong>8. Draft Key
+Takeaways in Plain Language</strong></h3>
+<p>Even before you build the full report, write 2–3 likely insights and
+what they mean for the business. This helps you frame your story and
+spot gaps.</p>
+<hr />
+<h2 id="bonus-use-a-template">✅ Bonus: Use a Template</h2>
+<p>Here’s a <strong>starter analysis plan template</strong> you can
+use:</p>
+<hr />
+<h3 id="project-title-analysis-plan"><strong>[Project Title] Analysis
+Plan</strong></h3>
+<p><strong>1. Business Question</strong></p>
+<blockquote>
+<p>What are we trying to understand?</p>
+</blockquote>
+<p><strong>2. Stakeholder &amp; Goal</strong></p>
+<blockquote>
+<p>Who is asking, and what will they do with the insight?</p>
+</blockquote>
+<p><strong>3. Data Mapping</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Variable</th>
+<th>Source Table</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>4. Feature Engineering</strong></p>
+<blockquote>
+<p>List new fields, transformations, and justifications.</p>
+</blockquote>
+<p><strong>5. Hypotheses (if applicable)</strong></p>
+<ul>
+<li>H₀:</li>
+<li>H₁:</li>
+</ul>
+<p><strong>6. Analytical Methods</strong></p>
+<blockquote>
+<p>Summary of statistical tests, models, or aggregation techniques</p>
+</blockquote>
+<p><strong>7. Visual Plan</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Insight</th>
+<th>Chart Type</th>
+<th>Variables</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>8. Expected Outcomes</strong></p>
+<blockquote>
+<p>What will success look like? What kind of insight would change policy
+or action?</p>
+</blockquote>
+<hr />
+<h1 id="prompt-11">Prompt 11:</h1>
+<p>Can you walk me through how to select an appropriate modeling
+technique for different data types?</p>
+<h4 id="response-9"><strong>Response:</strong></h4>
+<p>Absolutely. Choosing the right modeling technique depends on three
+main factors:</p>
+<ol type="1">
+<li><strong>The type of question you’re answering</strong></li>
+<li><strong>The nature of your target variable (what you’re predicting
+or explaining)</strong></li>
+<li><strong>The structure and type of your features (predictor
+variables)</strong></li>
+</ol>
+<p>Let’s break it down:</p>
+<hr />
+<h2 id="identify-the-problem-type">✅ <strong>1. Identify the Problem
+Type</strong></h2>
+<table>
+<thead>
+<tr class="header">
+<th>Question Type</th>
+<th>Model Category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Predict a number</td>
+<td>Regression</td>
+</tr>
+<tr class="even">
+<td>Predict a category/class</td>
+<td>Classification</td>
+</tr>
+<tr class="odd">
+<td>Group data without labels</td>
+<td>Clustering</td>
+</tr>
+<tr class="even">
+<td>Reduce dimensionality</td>
+<td>Dimensionality Reduction</td>
+</tr>
+<tr class="odd">
+<td>Identify relationships</td>
+<td>Association/Correlation Models</td>
+</tr>
+<tr class="even">
+<td>Forecast time-based trends</td>
+<td>Time Series Forecasting</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="match-the-target-variable-to-a-model-type">✅ <strong>2. Match
+the Target Variable to a Model Type</strong></h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 26%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Target Variable Type</th>
+<th>Example</th>
+<th>Recommended Models</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Continuous numeric</strong></td>
+<td>Income, cost, calories</td>
+<td>Linear regression, Ridge/Lasso, Gradient Boosting (regression)</td>
+</tr>
+<tr class="even">
+<td><strong>Binary categorical</strong></td>
+<td>Healthy vs. unhealthy</td>
+<td>Logistic regression, Random Forest, XGBoost (classification)</td>
+</tr>
+<tr class="odd">
+<td><strong>Multiclass categorical</strong></td>
+<td>Food type: Fruit, Grain, Snack</td>
+<td>Decision trees, XGBoost, Multinomial logistic regression</td>
+</tr>
+<tr class="even">
+<td><strong>Ordinal</strong></td>
+<td>Satisfaction: Low, Medium, High</td>
+<td>Ordinal regression, Decision Trees</td>
+</tr>
+<tr class="odd">
+<td><strong>Time series</strong></td>
+<td>Price over months</td>
+<td>ARIMA, Prophet, LSTM (advanced)</td>
+</tr>
+<tr class="even">
+<td><strong>Unlabeled data</strong></td>
+<td>Discovering diet patterns</td>
+<td>K-means, DBSCAN, PCA, t-SNE</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="assess-the-input-variables-features">✅ <strong>3. Assess the
+Input Variables (Features)</strong></h2>
+<p>Ask:</p>
+<ul>
+<li>Are the features mostly numeric, categorical, or mixed?</li>
+<li>Do they have many missing values or outliers?</li>
+<li>Are they linearly related to the target variable?</li>
+</ul>
+<p><strong>Based on this:</strong></p>
+<ul>
+<li>Use <strong>tree-based models</strong> (e.g., Random Forest) if you
+have non-linear data or mixed feature types.</li>
+<li>Use <strong>linear models</strong> when the relationship is simple
+and interpretable.</li>
+<li>Use <strong>neural nets or ensemble models</strong> when accuracy is
+critical and interpretability is less important.</li>
+</ul>
+<hr />
+<h2 id="decide-based-on-interpretability-vs.-accuracy">✅ <strong>4.
+Decide Based on Interpretability vs. Accuracy</strong></h2>
+<table>
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Priority</th>
+<th>Suggested Models</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Easy to explain to stakeholders</td>
+<td>Linear/Logistic Regression, Decision Trees</td>
+</tr>
+<tr class="even">
+<td>High performance, less explainable</td>
+<td>XGBoost, Random Forest, Neural Networks</td>
+</tr>
+<tr class="odd">
+<td>Exploratory patterns</td>
+<td>Clustering (K-means, DBSCAN), PCA</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="example-scenarios-1">🧩 Example Scenarios</h2>
+<h3 id="scenario-1">Scenario 1:</h3>
+<p><strong>Q:</strong> Can we predict how much a household will spend on
+healthy food next month?</p>
+<ul>
+<li>Target: <strong>Continuous</strong></li>
+<li>Model: <strong>Linear regression</strong>, <strong>Gradient Boosting
+Regressor</strong></li>
+</ul>
+<h3 id="scenario-2">Scenario 2:</h3>
+<p><strong>Q:</strong> Can we predict whether a household buys mostly
+healthy vs. unhealthy food?</p>
+<ul>
+<li>Target: <strong>Binary</strong></li>
+<li>Model: <strong>Logistic regression</strong>, <strong>Random
+Forest</strong></li>
+</ul>
+<h3 id="scenario-3">Scenario 3:</h3>
+<p><strong>Q:</strong> Can we find patterns in food preferences without
+a target variable?</p>
+<ul>
+<li>Target: <strong>Unsupervised</strong></li>
+<li>Model: <strong>K-means clustering</strong>, <strong>t-SNE for
+visualization</strong></li>
+</ul>
+<hr />
+<h2 id="quick-decision-flow">✅ Quick Decision Flow</h2>
+<pre class="plaintext"><code>Do you have a target variable?
+ ├── No → Clustering, PCA
+ └── Yes
+     ├── Is it numeric? → Regression models
+     ├── Is it binary? → Classification models
+     ├── Is it multiclass? → Decision Trees, XGBoost
+     └── Is it a time series? → ARIMA, Prophet</code></pre>
+<hr />
+<h1 id="prompt-12">Prompt 12:</h1>
+<p>How do I account for confounding variables and bias when designing an
+analysis?</p>
+<h4 id="response-10"><strong>Response:</strong></h4>
+<p>Controlling for <strong>confounding variables</strong> and minimizing
+<strong>bias</strong> are essential steps in designing a credible
+analysis. A <strong>confounder</strong> is a variable that influences
+both your <strong>independent variable</strong> (e.g., income) and your
+<strong>dependent variable</strong> (e.g., food choice), potentially
+leading to incorrect conclusions.</p>
+<hr />
+<h2 id="understand-what-a-confounder-is">✅ <strong>1. Understand What a
+Confounder Is</strong></h2>
+<p><strong>Definition:</strong> A confounding variable distorts the
+apparent relationship between two other variables.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>You observe that income is positively associated with healthy food
+purchases.</li>
+<li>But if <strong>education level</strong> is also positively
+correlated with both income <em>and</em> healthy eating, it may be the
+<strong>true driver</strong>.</li>
+</ul>
+<hr />
+<h2
+id="common-sources-of-confounding-in-public-health-or-socioeconomic-data">✅
+<strong>2. Common Sources of Confounding in Public Health or
+Socioeconomic Data</strong></h2>
+<ul>
+<li><strong>Demographics:</strong> age, gender, race, education</li>
+<li><strong>Geography:</strong> rural vs. urban, food deserts, regional
+pricing</li>
+<li><strong>Household structure:</strong> number of earners, family
+size</li>
+<li><strong>Time-based bias:</strong> seasonality, inflation, pandemic
+effects</li>
+</ul>
+<hr />
+<h2 id="identify-potential-confounders-early">✅ <strong>3. Identify
+Potential Confounders Early</strong></h2>
+<p>Ask:</p>
+<ul>
+<li>Are there variables that could explain both the cause and
+effect?</li>
+<li>Does the stakeholder assume a causal relationship that may not be
+direct?</li>
+</ul>
+<p>Use <strong>directed acyclic graphs (DAGs)</strong> if you’re trained
+in causal inference, or simpler logic trees if not.</p>
+<hr />
+<h2 id="control-for-confounders-in-your-analysis">✅ <strong>4. Control
+for Confounders in Your Analysis</strong></h2>
+<h3 id="option-1-stratify-your-data">Option 1: <strong>Stratify Your
+Data</strong></h3>
+<p>Break your data into subgroups (e.g., income levels <em>within</em>
+education levels) and compare within strata.</p>
+<p><strong>Example:</strong> Compare healthy food purchases across
+income levels, but <strong>only within households where education level
+= “Bachelor’s.”</strong></p>
+<hr />
+<h3 id="option-2-include-confounders-in-a-regression-model">Option 2:
+<strong>Include Confounders in a Regression Model</strong></h3>
+<p>Use multiple regression to estimate the effect of one variable
+<strong>while holding others constant.</strong></p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example using statsmodels in Python</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">&quot;healthy_purchase_ratio ~ Mthly_HH_Income + Highest_Qualified_Member + No_of_Earning_Members&quot;</span>, data<span class="op">=</span>df).fit()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary())</span></code></pre></div>
+<hr />
+<h3 id="option-3-use-propensity-score-matching-advanced">Option 3:
+<strong>Use Propensity Score Matching (Advanced)</strong></h3>
+<p>Match households with similar characteristics (education, region,
+etc.) across income groups to mimic randomization.</p>
+<hr />
+<h3 id="option-4-sensitivity-analysis">Option 4: <strong>Sensitivity
+Analysis</strong></h3>
+<p>Repeat the analysis <strong>excluding or varying</strong> certain
+variables to see if conclusions change significantly.</p>
+<hr />
+<h2 id="minimize-bias-in-general">✅ <strong>5. Minimize Bias in
+General</strong></h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bias Type</th>
+<th>Strategy to Minimize</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Selection bias</strong></td>
+<td>Ensure your data represents the population of interest</td>
+</tr>
+<tr class="even">
+<td><strong>Measurement bias</strong></td>
+<td>Validate that variables are recorded consistently and correctly</td>
+</tr>
+<tr class="odd">
+<td><strong>Survivorship bias</strong></td>
+<td>Check if only successful or surviving cases are included</td>
+</tr>
+<tr class="even">
+<td><strong>Confirmation bias</strong></td>
+<td>Pre-register hypotheses or use blind testing methods</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="example">🧩 Example</h2>
+<p><strong>Business Question:</strong> Do higher-income households buy
+healthier foods?</p>
+<p><strong>Potential Confounders:</strong></p>
+<ul>
+<li>Education level</li>
+<li>Family size</li>
+<li>Region</li>
+<li>Age of household members</li>
+</ul>
+<p><strong>Plan:</strong></p>
+<ul>
+<li>Include confounders in regression</li>
+<li>Stratify by education and region</li>
+<li>Perform sensitivity checks by removing each confounder and
+re-running</li>
+</ul>
+<hr />
+<h2 id="summary-checklist-1">✅ Summary Checklist</h2>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Identify confounders</td>
+<td>Brainstorm all plausible third variables</td>
+</tr>
+<tr class="even">
+<td>Include them in design</td>
+<td>Stratify, regress, or match</td>
+</tr>
+<tr class="odd">
+<td>Communicate limitations</td>
+<td>Be transparent about potential unmeasured confounders</td>
+</tr>
+<tr class="even">
+<td>Validate robustness</td>
+<td>Rerun analyses with different assumptions</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="prompt-13">Prompt 13:</h1>
+<p>Can you explain how to derive insights from EDA charts rather than
+just describing them?</p>
+<h4 id="response-11"><strong>Response:</strong></h4>
+<p>Absolutely. Many analysts fall into the trap of
+<strong>describing</strong> what a chart looks like (e.g., “This bar is
+higher than that one”) without extracting <strong>insights</strong> that
+help <strong>solve the business problem</strong>. The goal is to move
+from:</p>
+<blockquote>
+<p><strong>What the chart shows</strong> → to → <strong>Why it matters
+and what action it suggests</strong></p>
+</blockquote>
+<hr />
+<h2 id="step-by-step-how-to-derive-insight-from-a-chart">✅
+Step-by-Step: How to Derive Insight from a Chart</h2>
+<h3 id="start-with-the-business-question"><strong>1. Start with the
+Business Question</strong></h3>
+<p>Keep the question top of mind. Every chart should help answer some
+part of it.</p>
+<p><strong>Example Question:</strong> “Do higher-income households buy
+more healthy food?”</p>
+<hr />
+<h3 id="describe-the-chart-briefly-observation"><strong>2. Describe the
+Chart Briefly (Observation)</strong></h3>
+<p>Give a factual description—just enough to orient the reader.</p>
+<blockquote>
+<p>“This bar chart shows the average percentage of healthy food
+purchased by income bracket.”</p>
+</blockquote>
+<hr />
+<h3 id="highlight-the-key-pattern-finding"><strong>3. Highlight the Key
+Pattern (Finding)</strong></h3>
+<p>Identify <em>what stands out</em>—differences, trends, or
+outliers.</p>
+<blockquote>
+<p>“Higher income brackets consistently spend a larger proportion of
+their food budget on healthy food, with a noticeable jump between the
+middle- and high-income groups.”</p>
+</blockquote>
+<hr />
+<h3 id="interpret-the-pattern-insight"><strong>4. Interpret the Pattern
+(Insight)</strong></h3>
+<p>Ask: <em>Why is this pattern meaningful in context?</em> This is
+where you connect the data to potential causes, behaviors, or
+implications.</p>
+<blockquote>
+<p>“This suggests that affordability may not be the only
+driver—higher-income households might also be more health-conscious or
+better educated about nutrition.”</p>
+</blockquote>
+<hr />
+<h3
+id="link-to-action-or-implication-recommendation-or-next-step"><strong>5.
+Link to Action or Implication (Recommendation or Next
+Step)</strong></h3>
+<p>What does this mean for policy, strategy, or next analysis steps?</p>
+<blockquote>
+<p>“Programs that provide nutrition education or awareness to
+lower-income households could help close this gap, regardless of direct
+financial support.”</p>
+</blockquote>
+<hr />
+<h2 id="quick-framework-o-f-i-r">✅ Quick Framework:
+<strong>O-F-I-R</strong></h2>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 16%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>O</strong></td>
+<td>Observation</td>
+<td>“Line A is higher than Line B.”</td>
+</tr>
+<tr class="even">
+<td><strong>F</strong></td>
+<td>Finding</td>
+<td>“There’s a steep increase in healthy food purchasing with
+income.”</td>
+</tr>
+<tr class="odd">
+<td><strong>I</strong></td>
+<td>Insight</td>
+<td>“Income likely affects both affordability and awareness.”</td>
+</tr>
+<tr class="even">
+<td><strong>R</strong></td>
+<td>Recommendation</td>
+<td>“Consider combining subsidies with nutrition education.”</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="practice-example">🧩 Practice Example</h2>
+<p><strong>Chart:</strong> Boxplot of food price per 100g across healthy
+vs. processed foods <strong>Business Question:</strong> Are healthier
+foods more expensive?</p>
+<h3 id="weak-interpretation">Weak Interpretation:</h3>
+<blockquote>
+<p>“Healthy foods have a higher median price than processed foods.”</p>
+</blockquote>
+<h3 id="strong-insightful-interpretation">Strong Insightful
+Interpretation:</h3>
+<blockquote>
+<p>“While the median price of healthy foods is higher, the price range
+overlaps significantly, suggesting that some healthy foods are
+competitively priced. This points to an opportunity to promote
+affordable healthy options already available.”</p>
+</blockquote>
+<hr />
+<h2 id="tips-for-better-insight-extraction">✅ Tips for Better Insight
+Extraction</h2>
+<ul>
+<li>Always ask: <em>“So what?”</em> after describing a chart.</li>
+<li>Think of what <strong>stakeholders would want to do</strong> with
+this info.</li>
+<li>Use comparison language: “Compared to…”, “Especially in…”, “Most
+notably…”</li>
+<li>Look for <strong>exceptions</strong> and <strong>surprises</strong>,
+not just averages.</li>
+</ul>
+<hr />
+<h1 id="prompt-14">Prompt 14:</h1>
+<p>How do I combine data exploration with storytelling for
+decision-makers?</p>
+<h4 id="response-12"><strong>Response:</strong></h4>
+<p><strong>Data storytelling</strong> is the art of blending analytical
+findings with narrative structure to make insights
+<strong>understandable, memorable, and actionable</strong>—especially
+for non-technical audiences like policymakers or executives.</p>
+<p>Instead of just presenting data, you guide the audience through a
+<strong>journey</strong>: from <strong>problem</strong>, to
+<strong>evidence</strong>, to <strong>insight</strong>, to
+<strong>recommended action</strong>.</p>
+<hr />
+<h2 id="start-with-the-so-what">✅ 1. Start with the “So What?”</h2>
+<p>Before showing a single chart, ask:</p>
+<ul>
+<li><em>Why does this matter to the audience?</em></li>
+<li><em>What decision could this insight influence?</em></li>
+</ul>
+<p><strong>Example:</strong> Instead of “Here are the food prices across
+regions,” lead with:</p>
+<blockquote>
+<p>“We found that certain regions consistently pay 30% more for healthy
+food, suggesting regional subsidies may be necessary.”</p>
+</blockquote>
+<hr />
+<h2 id="structure-like-a-story-beginning-middle-end">✅ 2. Structure
+Like a Story (Beginning → Middle → End)</h2>
+<h3 id="beginning-the-setup"><strong>Beginning: The Setup</strong></h3>
+<ul>
+<li>Describe the business context and the challenge.</li>
+<li>Introduce the question being answered.</li>
+<li>Explain why it matters.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<blockquote>
+<p>“Policymakers are concerned that low-income households are unable to
+afford nutritious food. We investigated what factors influence food
+purchasing behavior.”</p>
+</blockquote>
+<hr />
+<h3 id="middle-the-evidence"><strong>Middle: The Evidence</strong></h3>
+<ul>
+<li><p>Present key charts and statistics.</p></li>
+<li><p>Use <strong>clear transitions</strong> to guide the audience:</p>
+<ul>
+<li>“To explore this, we first looked at…”</li>
+<li>“Interestingly, we noticed that…”</li>
+<li>“This raised a follow-up question…”</li>
+</ul></li>
+</ul>
+<p><strong>Example:</strong></p>
+<blockquote>
+<p>“This chart shows that households earning below $2,000/month spend
+60% of their food budget on processed items, while higher-income
+households spend more on fresh produce.”</p>
+</blockquote>
+<hr />
+<h3 id="end-the-insight-and-call-to-action"><strong>End: The Insight and
+Call to Action</strong></h3>
+<ul>
+<li>Translate findings into decisions.</li>
+<li>Suggest next steps, policies, or experiments.</li>
+<li>End with a strong takeaway.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<blockquote>
+<p>“The data suggest income and education both shape food choice. Policy
+interventions combining subsidies with nutrition education may be more
+effective than cost control alone.”</p>
+</blockquote>
+<hr />
+<h2 id="use-one-chart-one-message">✅ 3. Use One Chart → One
+Message</h2>
+<p>Don’t overload charts with multiple messages. Each chart should:</p>
+<ul>
+<li>Have a clear title like a headline</li>
+<li>Be followed by a key takeaway</li>
+<li>Support a single insight</li>
+</ul>
+<hr />
+<h2 id="tailor-the-story-to-the-audience">✅ 4. Tailor the Story to the
+Audience</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Audience Type</th>
+<th>Focus On</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Executives</td>
+<td>High-level insights, impact, next steps</td>
+</tr>
+<tr class="even">
+<td>Policymakers</td>
+<td>Trends, disparities, equity issues</td>
+</tr>
+<tr class="odd">
+<td>Technical peers</td>
+<td>Methodology, assumptions, robustness</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="use-visual-aids-as-story-anchors">✅ 5. Use Visual Aids as Story
+Anchors</h2>
+<ul>
+<li>Highlight trends, gaps, and anomalies with annotations.</li>
+<li>Use <strong>color</strong> to draw attention to what’s
+important.</li>
+<li>Consider <strong>progressive disclosure</strong>: start simple, then
+reveal details.</li>
+</ul>
+<hr />
+<h2 id="make-it-human-if-possible">✅ 6. Make It Human (if
+possible)</h2>
+<p>Include relatable details:</p>
+<blockquote>
+<p>“For a family of four in Region X, the price difference means
+spending an extra $1,200 per year to eat healthily.”</p>
+</blockquote>
+<hr />
+<h2 id="example-storyboard-from-your-project">🧩 Example Storyboard
+(from your project)</h2>
+<p><strong>Slide 1:</strong></p>
+<blockquote>
+<p><em>Title:</em> Are Healthy Foods Too Expensive for Low-Income
+Families? <em>Subtitle:</em> What the data tells us about affordability
+and food choice</p>
+</blockquote>
+<p><strong>Slide 2:</strong></p>
+<blockquote>
+<p><em>Setup:</em> Food-related health disparities are rising. Cost is
+often cited as a barrier to healthy eating.</p>
+</blockquote>
+<p><strong>Slide 3–5:</strong></p>
+<blockquote>
+<p><em>Evidence:</em></p>
+<ul>
+<li>Bar chart: Healthy food purchase ratio by income</li>
+<li>Map: Average price of fresh produce by region</li>
+<li>Boxplot: Price comparison of healthy vs. processed foods</li>
+</ul>
+</blockquote>
+<p><strong>Slide 6:</strong></p>
+<blockquote>
+<p><em>Insight:</em> Income explains part of the disparity, but regional
+access and education matter too.</p>
+</blockquote>
+<p><strong>Slide 7:</strong></p>
+<blockquote>
+<p><em>Action:</em> Consider piloting regional nutrition education
+programs and healthy food vouchers.</p>
+</blockquote>
+<hr />
+<h2 id="summary-tips">✅ Summary Tips</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Principle</th>
+<th>Practice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Begin with the “so what”</td>
+<td>Start with a headline insight</td>
+</tr>
+<tr class="even">
+<td>Structure like a story</td>
+<td>Setup → Evidence → Insight</td>
+</tr>
+<tr class="odd">
+<td>Focus on clarity</td>
+<td>One chart = one message</td>
+</tr>
+<tr class="even">
+<td>Relate to action</td>
+<td>Link to decisions or next steps</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="prompt-15">Prompt 15:</h1>
+<p>How do I combine business relevance with statistical rigor in my
+analysis?</p>
+<h4 id="response-13"><strong>Response:</strong></h4>
+<p>This is one of the most valuable skills in analytics—being able to
+<strong>generate accurate, trustworthy insights</strong> that also have
+<strong>clear business value</strong>. It means using statistics <em>not
+just for precision</em>, but in service of the <strong>real-world
+decisions</strong> your audience needs to make.</p>
+<p>Let’s break down how to strike that balance.</p>
+<hr />
+<h2 id="start-with-a-business-driven-question">✅ 1. Start with a
+Business-Driven Question</h2>
+<p>Always root your analysis in a <strong>real business
+need</strong>:</p>
+<ul>
+<li><em>Avoid:</em> “What does the correlation matrix say?”</li>
+<li><em>Prefer:</em> “Which factors most strongly influence healthy food
+purchasing?”</li>
+</ul>
+<p>This keeps the analysis focused on <strong>actionability</strong>,
+not just statistical exploration.</p>
+<hr />
+<h2 id="use-statistical-methods-that-fit-the-context">✅ 2. Use
+Statistical Methods That Fit the Context</h2>
+<p>Use techniques that are:</p>
+<ul>
+<li><strong>Appropriate for the data type</strong></li>
+<li><strong>Robust to common issues</strong> (like outliers or missing
+data)</li>
+<li><strong>Aligned with the question type</strong> (comparison,
+prediction, relationship, etc.)</li>
+</ul>
+<p>But don’t over-complicate it—<strong>don’t run an ensemble
+model</strong> if a simple t-test or regression will suffice and be
+easier to explain.</p>
+<hr />
+<h2 id="frame-your-findings-in-terms-of-business-impact">✅ 3. Frame
+Your Findings in Terms of Business Impact</h2>
+<p><strong>Bad example:</strong></p>
+<blockquote>
+<p>“Income is significantly associated with healthy food purchases (p =
+0.003).”</p>
+</blockquote>
+<p><strong>Better:</strong></p>
+<blockquote>
+<p>“Households in the top income bracket purchase 45% more healthy food
+on average—a statistically significant difference that suggests
+affordability plays a major role in diet quality.”</p>
+</blockquote>
+<p>Always answer the <strong>“So what?”</strong>:</p>
+<ul>
+<li>What does the result imply for policy, strategy, or design?</li>
+<li>Does the size of the effect matter enough to act on it?</li>
+</ul>
+<hr />
+<h2 id="report-statistics-transparently-but-simply">✅ 4. Report
+Statistics Transparently but Simply</h2>
+<p><strong>Best practice:</strong></p>
+<ul>
+<li>Show effect sizes alongside p-values (e.g., “high income → +15%
+healthy food share”).</li>
+<li>Use confidence intervals to express uncertainty.</li>
+<li>Avoid overclaiming causality from correlation (unless using causal
+inference methods).</li>
+</ul>
+<hr />
+<h2 id="use-visuals-that-combine-insight-and-evidence">✅ 5. Use Visuals
+that Combine Insight and Evidence</h2>
+<ul>
+<li>Pair charts with headlines that <strong>interpret</strong>, not just
+<strong>describe</strong>.</li>
+<li>Annotate key takeaways (e.g., “Notice the steep increase in Region
+A”).</li>
+<li>Include footnotes for significance and data caveats.</li>
+</ul>
+<hr />
+<h2 id="include-caveats-thoughtfully">✅ 6. Include Caveats
+Thoughtfully</h2>
+<p>Stakeholders appreciate honesty about limitations:</p>
+<ul>
+<li>Mention possible <strong>confounders</strong>, <strong>data
+gaps</strong>, or <strong>assumptions</strong>.</li>
+<li>But don’t overwhelm—frame limitations in terms of <strong>what you’d
+do next</strong> to resolve them.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<blockquote>
+<p>“While income appears predictive, this doesn’t control for
+education—which we recommend including in future surveys.”</p>
+</blockquote>
+<hr />
+<h2 id="tie-recommendations-directly-to-findings">✅ 7. Tie
+Recommendations Directly to Findings</h2>
+<p>Bridge from numbers to action:</p>
+<blockquote>
+<p>“Because income and food cost are strongly linked, we recommend
+testing a healthy food voucher program targeted at households below
+$2,000/month.”</p>
+</blockquote>
+<p>This makes it easy for decision-makers to connect <strong>statistical
+evidence</strong> to <strong>policy or operational levers.</strong></p>
+<hr />
+<h2 id="practical-example">🧩 Practical Example</h2>
+<p><strong>Business Need:</strong> Understand if healthy food is
+unaffordable for low-income households.</p>
+<p><strong>Analysis Plan:</strong></p>
+<ul>
+<li>Compare healthy food purchases across income levels using
+ANOVA.</li>
+<li>Use multiple regression to control for education and region.</li>
+<li>Visualize the spending ratios across income brackets.</li>
+</ul>
+<p><strong>Insight Summary:</strong></p>
+<blockquote>
+<p>“Even after adjusting for region and education, low-income households
+spend 25% less on healthy foods. A targeted voucher program may address
+this disparity.”</p>
+</blockquote>
+<hr />
+<h2 id="summary-framework">✅ Summary Framework</h2>
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Practice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Start with business relevance</td>
+<td>Use impact-driven questions</td>
+</tr>
+<tr class="even">
+<td>Apply appropriate methods</td>
+<td>Choose rigor without overkill</td>
+</tr>
+<tr class="odd">
+<td>Interpret results for decisions</td>
+<td>Focus on effect sizes and actions</td>
+</tr>
+<tr class="even">
+<td>Report clearly and honestly</td>
+<td>Simplify stats, state limitations</td>
+</tr>
+<tr class="odd">
+<td>Bridge to recommendations</td>
+<td>Every number should point to a potential decision</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="prompt-16">Prompt 16:</h1>
+<p>Can you provide examples of before-and-after improvements in how data
+is communicated?</p>
+<h4 id="response-14"><strong>Response:</strong></h4>
+<p>Absolutely. One of the most powerful ways to improve as a data
+communicator is to <strong>contrast weak vs. strong
+examples</strong>—seeing how small changes in wording, visuals, or
+framing can dramatically improve clarity and impact.</p>
+<p>Here are several <strong>before-and-after examples</strong> across
+charts, insights, and summaries:</p>
+<hr />
+<h2 id="chart-title-insight-headline">✅ <strong>1. Chart Title &amp;
+Insight Headline</strong></h2>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p><em>“Average Food Purchases by Income Group”</em></p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p><em>“Higher-Income Households Buy 2x More Healthy Food Than
+Lower-Income Households”</em></p>
+</blockquote>
+<p><strong>Why it’s better:</strong> It tells the reader the
+<em>story</em>, not just the <em>topic</em>.</p>
+<hr />
+<h2 id="visual-clarity">✅ <strong>2. Visual Clarity</strong></h2>
+<p><strong>Before (cluttered chart):</strong></p>
+<ul>
+<li>Chart has 8 food categories, 12 regions, all shown in the same bar
+plot.</li>
+<li>No color grouping, legend takes effort to decode.</li>
+</ul>
+<p><strong>After (cleaned-up chart):</strong></p>
+<ul>
+<li>Show only top 3 categories and top 5 regions with clear grouping by
+income bracket.</li>
+<li>Color-coding highlights “healthy vs. processed” food groups.</li>
+</ul>
+<p><strong>Why it’s better:</strong> Cognitive load is reduced; audience
+can spot the message in 5 seconds.</p>
+<hr />
+<h2 id="descriptive-vs.-insightful-summary">✅ <strong>3. Descriptive
+vs. Insightful Summary</strong></h2>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>“Healthy food purchases increased with income. Higher-income
+households bought more healthy food.”</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>“Households earning over $5,000/month purchase 42% more healthy food,
+even when controlling for education and household size. This suggests
+affordability is a key driver of diet quality.”</p>
+</blockquote>
+<p><strong>Why it’s better:</strong> The after version includes
+<strong>quantification</strong>, <strong>context</strong>, and
+<strong>interpretation</strong>, all of which support
+decision-making.</p>
+<hr />
+<h2 id="stakeholder-report-text">✅ <strong>4. Stakeholder Report
+Text</strong></h2>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>“We performed a linear regression using <code>Mthly_HH_Income</code>
+and <code>EFPG_code</code> purchase ratios. The model had R² = 0.62 and
+p &lt; 0.01.”</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>“Income level explains 62% of the variation in healthy food
+purchases. The relationship is statistically significant, confirming
+that income is a strong predictor of dietary quality.”</p>
+</blockquote>
+<p><strong>Why it’s better:</strong> Business readers don’t need
+statistical jargon—they need what it means and what it implies.</p>
+<hr />
+<h2 id="recommendations">✅ <strong>5. Recommendations</strong></h2>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>“We suggest a deeper dive into food prices and demographics.”</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>“We recommend piloting a food subsidy and education program in Region
+X, where low-income households pay the highest prices for healthy food
+and purchase the least.”</p>
+</blockquote>
+<p><strong>Why it’s better:</strong> It’s <strong>specific</strong>,
+<strong>actionable</strong>, and <strong>based on the data</strong>.</p>
+<hr />
+<h2 id="framework-for-revising-communication">🧠 Framework for Revising
+Communication</h2>
+<table>
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 53%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ask Yourself</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>What’s the core message?</td>
+<td>“Who buys more healthy food—and why?”</td>
+</tr>
+<tr class="even">
+<td>What’s the impact?</td>
+<td>“This group spends 40% more—so affordability matters.”</td>
+</tr>
+<tr class="odd">
+<td>What should the reader do or think differently?</td>
+<td>“Target subsidies where access gaps are largest.”</td>
+</tr>
+<tr class="even">
+<td>Can I replace jargon with plain language?</td>
+<td>“Positive correlation” → “Tends to increase together”</td>
+</tr>
+<tr class="odd">
+<td>Can I remove clutter from visuals?</td>
+<td>Reduce chart elements to 1–2 dimensions per plot</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="prompt-17">Prompt 17:</h1>
+<p>Can you give me practice case studies where I have to write the
+analysis plan myself?</p>
+<h4 id="response-15"><strong>Response:</strong></h4>
+<p>Yes! Practicing with mini case studies is one of the best ways to
+develop the skill of <strong>structuring an analysis plan</strong> from
+scratch.</p>
+<p>Below are <strong>3 practice case studies</strong> designed for your
+level. After each one, you can try to write the analysis plan using this
+format:</p>
+<hr />
+<h3 id="practice-format-template"><strong>Practice Format
+Template</strong></h3>
+<ol type="1">
+<li><strong>Business Question:</strong></li>
+<li><strong>Key Concepts to Measure:</strong></li>
+<li><strong>Relevant Variables &amp; Tables:</strong></li>
+<li><strong>Planned Transformations or Feature
+Engineering:</strong></li>
+<li><strong>Hypotheses (if applicable):</strong></li>
+<li><strong>Methods (EDA, Modeling, or Statistical Tests):</strong></li>
+<li><strong>Chart(s) to Use:</strong></li>
+<li><strong>What Insight Would Be Actionable?:</strong></li>
+</ol>
+<hr />
+<h2
+id="practice-case-study-1-grocery-store-chain-price-sensitivity-by-region"><strong>Practice
+Case Study 1: Grocery Store Chain – Price Sensitivity by
+Region</strong></h2>
+<blockquote>
+<p>A national grocery chain wants to know if <strong>customers in
+different geographic regions respond differently to price
+increases</strong> on healthy food items like fruits, vegetables, and
+whole grains. They want to adjust regional pricing strategy based on
+consumer behavior.</p>
+</blockquote>
+<hr />
+<h2
+id="practice-case-study-2-school-lunch-program-predicting-nutritional-risk"><strong>Practice
+Case Study 2: School Lunch Program – Predicting Nutritional
+Risk</strong></h2>
+<blockquote>
+<p>A school district is designing a program to ensure students are
+getting proper nutrition. They collected data on <strong>students’ food
+preferences, family income, and lunch selections</strong>. Your task is
+to predict which students are at <strong>nutritional risk</strong> based
+on their selections and demographics, so that targeted interventions can
+be designed.</p>
+</blockquote>
+<hr />
+<h2
+id="practice-case-study-3-national-policy-evaluation-impact-of-food-voucher-program"><strong>Practice
+Case Study 3: National Policy Evaluation – Impact of Food Voucher
+Program</strong></h2>
+<blockquote>
+<p>A public health department implemented a <strong>food voucher program
+for low-income families</strong> in one state. Now they want to evaluate
+if the program led to an <strong>increase in healthy food
+purchases</strong>. You have pre- and post-program data for both the
+treatment state and several control states.</p>
+</blockquote>
+<hr />
+<p>If you’d like, you can:</p>
+<ul>
+<li>Pick one and write your full plan using the 8-part template
+above.</li>
+<li>I’ll review, critique, and guide you through improving it.</li>
+<li>Or I can walk through one example live for you and explain why I
+made each decision.</li>
+</ul>
+<p>Would you like to pick one and try it?</p>
+<hr />
+<h1 id="prompt-18">Prompt 18:</h1>
+<p>What’s the difference between an analysis plan for a technical
+vs. non-technical audience?</p>
+<h4 id="response-16"><strong>Response:</strong></h4>
+<p>The core <strong>content</strong> of your analysis plan may be the
+same, but the way it’s <strong>framed, structured, and
+communicated</strong> will differ significantly depending on your
+audience.</p>
+<hr />
+<h2 id="key-differences-at-a-glance">✅ <strong>Key Differences at a
+Glance</strong></h2>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 46%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Technical Audience</th>
+<th>Non-Technical Audience</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Focus</strong></td>
+<td>Methodology, data quality, assumptions</td>
+<td>Insights, decisions, real-world impact</td>
+</tr>
+<tr class="even">
+<td><strong>Language</strong></td>
+<td>Uses technical terms and statistical metrics</td>
+<td>Uses plain language and storytelling</td>
+</tr>
+<tr class="odd">
+<td><strong>Visuals</strong></td>
+<td>More detailed, may show distributions or model diagnostics</td>
+<td>Simplified visuals with one message per chart</td>
+</tr>
+<tr class="even">
+<td><strong>Detail Level</strong></td>
+<td>Deep explanation of model mechanics and data transformations</td>
+<td>High-level summaries with minimal jargon</td>
+</tr>
+<tr class="odd">
+<td><strong>Outcome Framing</strong></td>
+<td>Accuracy, robustness, model interpretability</td>
+<td>Business relevance, cost-effectiveness, feasibility</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="purpose-driven-framing">✅ <strong>1. Purpose-Driven
+Framing</strong></h2>
+<ul>
+<li><p><strong>Technical Plan:</strong> Focuses on how the analysis will
+be done, and why it’s statistically sound.</p>
+<blockquote>
+<p><em>“We’ll apply ridge regression to prevent multicollinearity due to
+correlated demographic features.”</em></p>
+</blockquote></li>
+<li><p><strong>Non-Technical Plan:</strong> Focuses on what the analysis
+will reveal and how it can help them act.</p>
+<blockquote>
+<p><em>“We’ll analyze household demographics to identify which families
+are most likely to benefit from nutrition programs.”</em></p>
+</blockquote></li>
+</ul>
+<hr />
+<h2 id="language-and-terminology">✅ <strong>2. Language and
+Terminology</strong></h2>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Technical</th>
+<th>Non-Technical</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“We’ll use PCA to reduce dimensionality.”</td>
+<td>“We’ll simplify the data to uncover the most important
+patterns.”</td>
+</tr>
+<tr class="even">
+<td>“The model has an R² of 0.72 with no multicollinearity.”</td>
+<td>“The model explains 72% of the variation and gives us confidence in
+the results.”</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tip:</strong> Avoid acronyms unless you’re sure your audience
+knows them. Use analogies if helpful.</p>
+<hr />
+<h2 id="chart-and-visualization-design">✅ <strong>3. Chart and
+Visualization Design</strong></h2>
+<ul>
+<li><p><strong>Technical Plan:</strong> May include:</p>
+<ul>
+<li>Residual plots</li>
+<li>ROC curves</li>
+<li>Correlation matrices</li>
+<li>Feature importance charts with SHAP values</li>
+</ul></li>
+<li><p><strong>Non-Technical Plan:</strong> Use:</p>
+<ul>
+<li>Bar charts, line plots, simplified stacked visuals</li>
+<li>Clear annotations and headlines</li>
+<li>Color-coded messages (e.g., red for risk, green for
+opportunity)</li>
+</ul></li>
+</ul>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>“Feature importances from XGBoost using SHAP”</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>“The top 3 factors influencing healthy food choice are income,
+education, and household size.”</p>
+</blockquote>
+<hr />
+<h2 id="key-takeaways">✅ <strong>4. Key Takeaways</strong></h2>
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Technical Plan Includes</th>
+<th>Non-Technical Plan Includes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data schemas and join keys</td>
+<td>Where the data came from and what it represents</td>
+</tr>
+<tr class="even">
+<td>Modeling assumptions</td>
+<td>Simplified summary of methods used</td>
+</tr>
+<tr class="odd">
+<td>Statistical test results</td>
+<td>Business implications of findings</td>
+</tr>
+<tr class="even">
+<td>Caveats and data limitations</td>
+<td>Risks and how confident we are in results</td>
+</tr>
+<tr class="odd">
+<td>Code and reproducibility plan</td>
+<td>Action steps based on insight</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-choose-your-lens">✅ Summary: Choose Your Lens</h2>
+<blockquote>
+<p><strong>For technical audiences:</strong> <em>“Here’s exactly how
+we’ll ensure the analysis is valid and accurate.”</em></p>
+</blockquote>
+<blockquote>
+<p><strong>For non-technical audiences:</strong> <em>“Here’s what we’ll
+learn, why it matters, and what you can do with the results.”</em></p>
+</blockquote>
+<hr />
+<h1 id="prompt-19">Prompt 19:</h1>
+<p>How can I explain complex findings clearly using analogies or visual
+metaphors?</p>
+<h4 id="response-17"><strong>Response:</strong></h4>
+<p>Explaining complex findings to non-technical audiences is an
+essential data storytelling skill. Analogies and visual metaphors help
+bridge the gap between <strong>technical detail</strong> and
+<strong>intuitive understanding</strong> by relating unfamiliar concepts
+to everyday experiences.</p>
+<hr />
+<h2 id="why-use-analogies-and-visual-metaphors">✅ Why Use Analogies and
+Visual Metaphors?</h2>
+<ul>
+<li>They <strong>simplify complexity</strong> without dumbing things
+down.</li>
+<li>They <strong>stick in the memory</strong> better than raw
+numbers.</li>
+<li>They help stakeholders <strong>grasp uncertainty, scale, or
+causality</strong> faster.</li>
+</ul>
+<hr />
+<h2 id="common-analogies-for-explaining-data-concepts">✅ Common
+Analogies for Explaining Data Concepts</h2>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 11%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Analogy</th>
+<th>Example Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Regression coefficients</strong></td>
+<td>Recipe ingredients</td>
+<td>“Income is like the flour in a cake—it has the biggest influence on
+the outcome.”</td>
+</tr>
+<tr class="even">
+<td><strong>Variance explained (R²)</strong></td>
+<td>Signal vs. noise</td>
+<td>“An R² of 0.75 means we’re hearing 75% of the song clearly; the rest
+is static.”</td>
+</tr>
+<tr class="odd">
+<td><strong>Correlation</strong></td>
+<td>Synchronized clocks</td>
+<td>“As one clock speeds up, the other speeds up too—just like income
+and healthy food spending.”</td>
+</tr>
+<tr class="even">
+<td><strong>Overfitting</strong></td>
+<td>Memorizing trivia</td>
+<td>“The model knows the quiz answers but can’t pass the real
+test.”</td>
+</tr>
+<tr class="odd">
+<td><strong>Confounding</strong></td>
+<td>Blurry glasses</td>
+<td>“It’s hard to see if income really affects food choice unless we
+clean the lens—removing the effect of education.”</td>
+</tr>
+<tr class="even">
+<td><strong>P-value</strong></td>
+<td>Surprise meter</td>
+<td>“A low p-value means the difference we found is too big to be by
+chance—it’s like flipping 10 heads in a row.”</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="visual-metaphors-for-communicating-data-insights">✅ Visual
+Metaphors for Communicating Data Insights</h2>
+<table>
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Insight Type</th>
+<th>Visual Metaphor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Inequality</strong></td>
+<td>Bar charts with uneven ladders or stair steps</td>
+</tr>
+<tr class="even">
+<td><strong>Causal path</strong></td>
+<td>Flow arrows or water pipes showing influence</td>
+</tr>
+<tr class="odd">
+<td><strong>Bias/confounding</strong></td>
+<td>Funhouse mirror or fogged glasses</td>
+</tr>
+<tr class="even">
+<td><strong>Forecasting</strong></td>
+<td>Weather prediction model with confidence clouds</td>
+</tr>
+<tr class="odd">
+<td><strong>Clustering</strong></td>
+<td>Constellation patterns or islands on a map</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="real-example-your-public-health-project">🧩 Real Example: Your
+Public Health Project</h2>
+<p><strong>Finding:</strong> “Households with higher income purchase
+significantly more healthy food, even after adjusting for education and
+family size.”</p>
+<p><strong>Plain-Language Analogy:</strong></p>
+<blockquote>
+<p>“Think of it like two runners on a track—one has better shoes
+(education), and the other has a head start (income). Even with the same
+shoes, the one with the head start finishes farther ahead in choosing
+healthy food.”</p>
+</blockquote>
+<p><strong>Visual Suggestion:</strong></p>
+<blockquote>
+<p>Use a simple diagram of two runners or stair steps to show “access
+gaps” based on income.</p>
+</blockquote>
+<hr />
+<h2 id="tips-for-crafting-your-own-analogies">✅ Tips for Crafting Your
+Own Analogies</h2>
+<ol type="1">
+<li><strong>Use relatable domains</strong>: food, weather, sports,
+school, travel</li>
+<li><strong>Stay conceptually aligned</strong>: don’t oversimplify or
+mislead</li>
+<li><strong>Test them aloud</strong>: If it works in conversation, it
+likely works in reports</li>
+<li><strong>Anchor them in context</strong>: Use the metaphor to
+reinforce—not replace—the takeaway</li>
+</ol>
+<hr />
+<h1 id="prompt-20">Prompt 20:</h1>
+<p>Can you provide examples of strong vs. weak analysis plans, and how
+can I learn from them?</p>
+<h4 id="response-18"><strong>Response:</strong></h4>
+<p>Absolutely. Reviewing strong and weak analysis plans side-by-side is
+a great way to learn <strong>what makes analysis effective</strong>,
+<strong>where gaps commonly occur</strong>, and <strong>how to improve
+your own approach.</strong> Below are three examples with
+commentary.</p>
+<hr />
+<h2 id="example-1-healthy-food-access-study">✅ <strong>Example 1:
+Healthy Food Access Study</strong></h2>
+<h3 id="weak-analysis-plan"><strong>Weak Analysis Plan</strong></h3>
+<blockquote>
+<p>“We will explore if there is a difference in food purchases across
+income groups using charts and some statistics. We’ll use data from the
+household table and food table.”</p>
+</blockquote>
+<p><strong>What’s missing:</strong></p>
+<ul>
+<li>No clear business goal or actionable outcome</li>
+<li>Vague on methods (“some statistics”)</li>
+<li>No variable mapping or transformation strategy</li>
+<li>Doesn’t mention visualization or modeling specifics</li>
+</ul>
+<hr />
+<h3 id="strong-analysis-plan"><strong>Strong Analysis Plan</strong></h3>
+<blockquote>
+<p>“Our goal is to evaluate whether household income affects the
+percentage of food budget spent on healthy items. We will:</p>
+<ul>
+<li>Define income brackets from <code>Mthly_HH_Income</code></li>
+<li>Classify food categories (<code>EFPG_code</code>) as healthy
+vs. processed</li>
+<li>Calculate household-level healthy purchase ratio</li>
+<li>Use ANOVA to test differences across income groups</li>
+<li>Visualize with a stacked bar chart and annotate the income threshold
+with the largest shift This insight will inform the design of targeted
+food assistance programs.”</li>
+</ul>
+</blockquote>
+<p><strong>What’s strong:</strong></p>
+<ul>
+<li>Clear objective tied to stakeholder action</li>
+<li>Defined variables and transformations</li>
+<li>Appropriate statistical method selected</li>
+<li>Visualization planned for communication</li>
+</ul>
+<hr />
+<h2 id="example-2-predictive-model-for-food-insecurity">✅
+<strong>Example 2: Predictive Model for Food Insecurity</strong></h2>
+<h3 id="weak-plan"><strong>Weak Plan</strong></h3>
+<blockquote>
+<p>“We’ll train a model to predict food insecurity based on household
+data. We’ll use machine learning to improve performance.”</p>
+</blockquote>
+<p><strong>What’s missing:</strong></p>
+<ul>
+<li>No definition of “food insecurity”</li>
+<li>No mention of target variable or model evaluation</li>
+<li>No plan for interpretability or business use</li>
+<li>Vague on the type of machine learning</li>
+</ul>
+<hr />
+<h3 id="strong-plan"><strong>Strong Plan</strong></h3>
+<blockquote>
+<p>“We aim to predict which households are at high risk of food
+insecurity (defined as spending &gt;70% of food budget on processed
+food). We’ll:</p>
+<ul>
+<li>Engineer a binary target from purchase data</li>
+<li>Use <code>Mthly_HH_Income</code>,
+<code>No_of_Earning_Members</code>, <code>Metroregion_code</code>, and
+<code>Highest_Qualified_Member</code> as predictors</li>
+<li>Train a random forest classifier and evaluate using
+precision/recall</li>
+<li>Use SHAP values to explain feature importance</li>
+<li>Deliver results via a dashboard showing region-specific risk
+profiles to inform where interventions are needed.”</li>
+</ul>
+</blockquote>
+<p><strong>Why it works:</strong></p>
+<ul>
+<li>Clear problem definition and target</li>
+<li>Thoughtful variable selection</li>
+<li>Business-use case defined (region-based intervention)</li>
+<li>Model interpretability considered</li>
+</ul>
+<hr />
+<h2 id="lessons-you-can-apply-to-your-own-plans">✅ <strong>Lessons You
+Can Apply to Your Own Plans</strong></h2>
+<table>
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Strong Analysis Plans</th>
+<th>Weak Plans</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Start with a clear, specific question</td>
+<td>Use vague or overly broad questions</td>
+</tr>
+<tr class="even">
+<td>Map variables and transformations</td>
+<td>Leave data handling undefined</td>
+</tr>
+<tr class="odd">
+<td>Choose methods based on the problem</td>
+<td>Say “we’ll use statistics” with no specifics</td>
+</tr>
+<tr class="even">
+<td>Tie results to decisions or actions</td>
+<td>Lack business purpose or next steps</td>
+</tr>
+<tr class="odd">
+<td>Plan for visuals and communication</td>
+<td>Assume raw results speak for themselves</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="how-you-can-practice">✅ How You Can Practice</h2>
+<ol type="1">
+<li><p><strong>Write plans for mini case studies (like Prompt
+17)</strong></p></li>
+<li><p><strong>Compare your plan to strong examples</strong></p></li>
+<li><p><strong>Ask:</strong></p>
+<ul>
+<li>Is my objective clear?</li>
+<li>Did I define the variables and data steps?</li>
+<li>Does my method match the question?</li>
+<li>Would a stakeholder know what to do with my answer?</li>
+</ul></li>
+</ol>
+<hr />
+<p>Would you like me to evaluate one of your analysis plans now, or help
+you build a personalized checklist for your future projects?</p>
+<p>You’re on a roll—let’s continue with <strong>Prompt 21</strong>:</p>
+<hr />
+<h1 id="prompt-21">Prompt 21:</h1>
+<p>How can I develop a reusable checklist or template for building
+analysis plans?</p>
+<h4 id="response-19"><strong>Response:</strong></h4>
+<p>Creating a <strong>reusable checklist or template</strong> allows you
+to consistently build high-quality analysis plans—faster and with fewer
+gaps. Whether you’re analyzing a new dataset, writing up findings, or
+preparing for a stakeholder meeting, a template keeps your work
+<strong>focused, thorough, and aligned with business goals.</strong></p>
+<hr />
+<h2 id="core-elements-of-a-reusable-analysis-plan-template">✅
+<strong>Core Elements of a Reusable Analysis Plan Template</strong></h2>
+<p>Here’s a <strong>comprehensive structure</strong> you can adapt for
+any project:</p>
+<hr />
+<h3 id="analysis-plan-template"><strong>Analysis Plan
+Template</strong></h3>
+<h4 id="business-context-objective"><strong>1. Business Context &amp;
+Objective</strong></h4>
+<blockquote>
+<p>What problem are we solving and why does it matter?</p>
+</blockquote>
+<ul>
+<li>What is the decision or policy question?</li>
+<li>Who are the stakeholders?</li>
+</ul>
+<h4 id="primary-business-questions"><strong>2. Primary Business
+Question(s)</strong></h4>
+<blockquote>
+<p>What specifically do we want to answer?</p>
+</blockquote>
+<ul>
+<li>Write 1–3 focused questions (descriptive, comparative, predictive,
+etc.)</li>
+</ul>
+<h4 id="key-concepts-to-measure"><strong>3. Key Concepts to
+Measure</strong></h4>
+<blockquote>
+<p>Break each question into measurable components:</p>
+</blockquote>
+<ul>
+<li>What are we trying to observe (e.g., income, affordability, diet
+quality)?</li>
+<li>Which variables in the data represent those concepts?</li>
+</ul>
+<h4 id="relevant-data-and-tables"><strong>4. Relevant Data and
+Tables</strong></h4>
+<blockquote>
+<p>Map concepts to columns: | Concept | Variable | Table | Notes |
+|———|———-|——-|——-| | | | | |</p>
+</blockquote>
+<h4 id="transformations-feature-engineering"><strong>5. Transformations
+/ Feature Engineering</strong></h4>
+<blockquote>
+<p>What needs to be cleaned, created, binned, aggregated, or
+normalized?</p>
+</blockquote>
+<ul>
+<li>Example: Normalize expenses by household size</li>
+<li>Example: Classify food types as “healthy” or “processed”</li>
+</ul>
+<h4 id="hypotheses-or-modeling-goals-if-applicable"><strong>6.
+Hypotheses or Modeling Goals (if applicable)</strong></h4>
+<blockquote>
+<p>What do we expect to find? What will we test or predict?</p>
+</blockquote>
+<ul>
+<li>Null vs. alternative hypotheses</li>
+<li>Classification or regression goal?</li>
+<li>Evaluation metric?</li>
+</ul>
+<h4 id="analytical-methods"><strong>7. Analytical Methods</strong></h4>
+<blockquote>
+<p>Choose appropriate techniques:</p>
+</blockquote>
+<ul>
+<li>Descriptive: means, medians, trends</li>
+<li>Inferential: t-tests, ANOVA, regression</li>
+<li>Predictive: tree models, logistic regression, clustering</li>
+<li>Time-based: rolling averages, ARIMA, etc.</li>
+</ul>
+<h4 id="visual-plan"><strong>8. Visual Plan</strong></h4>
+<blockquote>
+<p>What charts will best communicate your findings? | Insight | Chart
+Type | Variables Highlighted | Audience | |——–|————|————————|———-| | | |
+| |</p>
+</blockquote>
+<h4 id="interpretation-plan"><strong>9. Interpretation
+Plan</strong></h4>
+<blockquote>
+<p>How will we explain insights?</p>
+</blockquote>
+<ul>
+<li>What would be a significant or surprising result?</li>
+<li>What action would it inform?</li>
+</ul>
+<h4 id="assumptions-limitations-and-caveats"><strong>10. Assumptions,
+Limitations, and Caveats</strong></h4>
+<blockquote>
+<p>What factors could affect our findings or credibility?</p>
+</blockquote>
+<ul>
+<li>Missing data?</li>
+<li>Confounding variables?</li>
+<li>Sample bias?</li>
+</ul>
+<h4 id="deliverables-timeline"><strong>11. Deliverables &amp;
+Timeline</strong></h4>
+<blockquote>
+<p>(Optional) For project planning:</p>
+</blockquote>
+<ul>
+<li>What is the expected output (report, dashboard, presentation)?</li>
+<li>Who reviews it?</li>
+<li>What’s the deadline?</li>
+</ul>
+<hr />
+<h2 id="bonus-quick-checklist-for-daily-use">✅ <strong>Bonus: Quick
+Checklist (For Daily Use)</strong></h2>
+<p>You can use this lightweight version to rapidly scope an analysis in
+meetings or notebooks:</p>
+<ul class="task-list">
+<li><label><input type="checkbox" />What’s the question we’re
+answering?</label></li>
+<li><label><input type="checkbox" />What decision does it
+support?</label></li>
+<li><label><input type="checkbox" />What tables/columns are
+relevant?</label></li>
+<li><label><input type="checkbox" />What metrics or features need to be
+created?</label></li>
+<li><label><input type="checkbox" />What methods will we
+use?</label></li>
+<li><label><input type="checkbox" />How will we visualize
+it?</label></li>
+<li><label><input type="checkbox" />What insight/action are we aiming to
+deliver?</label></li>
+</ul>
+<hr />
+<h2 id="delivery-formats">✅ Delivery Formats</h2>
+<p>You can implement this template in:</p>
+<ul>
+<li><strong>Markdown</strong> (for Jupyter Notebooks or GitHub)</li>
+<li><strong>Google Docs / Word</strong> (for stakeholder review)</li>
+<li><strong>Excel / Notion / Airtable</strong> (for interactive team
+checklists)</li>
+<li><strong>ChatGPT custom prompt</strong> (to auto-generate draft
+plans)</li>
+</ul>
+<hr />
+<h1 id="prompt-22">Prompt 22:</h1>
+<p>How can I use LLMs or Python scripts to semi-automate the creation of
+an EDA or analysis outline?</p>
+<h4 id="response-20"><strong>Response:</strong></h4>
+<p>You can significantly boost your efficiency by using <strong>large
+language models (LLMs)</strong> like ChatGPT and <strong>Python
+scripting</strong> together to <strong>semi-automate</strong> the
+creation of:</p>
+<ul>
+<li>Exploratory Data Analysis (EDA)</li>
+<li>Feature engineering ideas</li>
+<li>Analysis plans</li>
+<li>Visual summaries</li>
+</ul>
+<p>This hybrid workflow reduces manual effort, ensures consistency, and
+speeds up project startup.</p>
+<hr />
+<h2
+id="option-1-using-llms-like-chatgpt-for-instant-analysis-scaffolds">✅
+Option 1: Using LLMs (like ChatGPT) for Instant Analysis Scaffolds</h2>
+<p>You can give ChatGPT a <strong>data dictionary or sample
+DataFrame</strong>, and ask it to:</p>
+<ol type="1">
+<li>Identify relevant variables for your business question</li>
+<li>Suggest possible feature transformations</li>
+<li>Propose EDA visualizations</li>
+<li>Recommend statistical tests or models</li>
+<li>Draft a plain-language summary of findings</li>
+<li>Build analysis plans using reusable prompts or templates</li>
+</ol>
+<h3 id="example-prompt-to-chatgpt">Example Prompt to ChatGPT:</h3>
+<blockquote>
+<p>“Here is a dataset with <code>income</code>, <code>region</code>,
+<code>food_price</code>, and <code>purchase_amount</code>. I want to
+explore what factors affect healthy food purchasing. Please generate an
+EDA plan with chart ideas, summary statistics, and possible statistical
+tests.”</p>
+</blockquote>
+<hr />
+<h2 id="option-2-using-python-to-automate-eda-reports">✅ Option 2:
+Using Python to Automate EDA Reports</h2>
+<p>You can write or reuse open-source Python code to generate
+<strong>auto-EDA reports</strong>, such as:</p>
+<h3 id="option-a-use-pandas-profiling-now-ydata-profiling">Option A: Use
+<code>pandas-profiling</code> (now <code>ydata-profiling</code>)</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ydata_profiling <span class="im">import</span> ProfileReport</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span> ProfileReport(df, title<span class="op">=</span><span class="st">&quot;EDA Report&quot;</span>, explorative<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>profile.to_file(<span class="st">&quot;eda_report.html&quot;</span>)</span></code></pre></div>
+<p>Generates a full summary with:</p>
+<ul>
+<li>Missing values</li>
+<li>Variable distributions</li>
+<li>Correlations</li>
+<li>Descriptive statistics</li>
+</ul>
+<hr />
+<h3 id="option-b-use-sweetviz">Option B: Use <code>sweetviz</code></h3>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sweetviz <span class="im">as</span> sv</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>report <span class="op">=</span> sv.analyze(df)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>report.show_html(<span class="st">&quot;sweetviz_report.html&quot;</span>)</span></code></pre></div>
+<p>Designed for comparisons (e.g., across income brackets or
+regions).</p>
+<hr />
+<h3 id="option-c-build-your-own-modular-eda-script">Option C: Build Your
+Own Modular EDA Script</h3>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_summary(df):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Shape:&quot;</span>, df.shape)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Missing values:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.isnull().<span class="bu">sum</span>())</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Descriptive stats:</span><span class="ch">\n</span><span class="st">&quot;</span>, df.describe())</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_distributions(df, columns):</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> columns:</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        sns.histplot(df[col], kde<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="ss">f&quot;Distribution of </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        plt.show()</span></code></pre></div>
+<p>You can call this on any dataset to get quick overviews. Add
+visualizations, correlation heatmaps, or pairplots as needed.</p>
+<hr />
+<h2 id="option-3-combine-llm-code">✅ Option 3: Combine LLM + Code</h2>
+<ol type="1">
+<li><strong>Use Python</strong> to output a data schema or
+<code>.describe()</code> summary.</li>
+<li><strong>Paste that into ChatGPT</strong> and ask for a structured
+analysis plan, visual ideas, or hypotheses.</li>
+<li><strong>Copy output back to Python or notebook</strong> to execute
+the suggested charts or models.</li>
+</ol>
+<hr />
+<h2 id="bonus-custom-chatgpt-prompt-for-analysis-outline">✅ Bonus:
+Custom ChatGPT Prompt for Analysis Outline</h2>
+<p>Here’s a reusable ChatGPT prompt template you can save:</p>
+<blockquote>
+<p>“I’m working with a dataset that includes the following fields:
+<code>[field names and types]</code>. My business question is:
+<code>[insert question]</code>. Can you generate an EDA outline with
+recommended visualizations, key metrics to compute, any useful feature
+engineering ideas, and 1–2 modeling suggestions?”</p>
+</blockquote>
+<p>You’ll instantly get a draft outline to tweak and run.</p>
+<hr />
+<h1 id="prompt-23">Prompt 23:</h1>
+<p>How can I use analogies and metaphors to guide junior analysts in
+understanding analytical thinking?</p>
+<h4 id="response-21"><strong>Response:</strong></h4>
+<p>Using <strong>analogies and metaphors</strong> is a powerful way to
+teach junior analysts not just the <em>how</em> of analysis, but the
+<em>why</em> behind each decision. These tools can make abstract
+concepts <strong>concrete</strong>, <strong>memorable</strong>, and
+<strong>relatable</strong>, especially when explaining data workflows,
+problem-solving strategies, or statistical reasoning.</p>
+<hr />
+<h2 id="why-it-works-for-junior-analysts">✅ Why It Works for Junior
+Analysts</h2>
+<ul>
+<li>Reduces intimidation by simplifying complex ideas</li>
+<li>Encourages critical thinking by drawing connections</li>
+<li>Builds storytelling and communication skills</li>
+<li>Makes abstract logic feel real and applicable</li>
+</ul>
+<hr />
+<h2 id="common-analytical-thinking-analogies">✅ Common Analytical
+Thinking Analogies</h2>
+<h3 id="analysis-is-like-cooking">1. <strong>Analysis is Like
+Cooking</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>Analysis Step</th>
+<th>Cooking Analogy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Raw data</td>
+<td>Ingredients</td>
+</tr>
+<tr class="even">
+<td>Data cleaning</td>
+<td>Washing and prepping</td>
+</tr>
+<tr class="odd">
+<td>Feature engineering</td>
+<td>Slicing, marinating, or blending</td>
+</tr>
+<tr class="even">
+<td>Model training</td>
+<td>Cooking or baking</td>
+</tr>
+<tr class="odd">
+<td>Evaluation</td>
+<td>Taste-testing</td>
+</tr>
+<tr class="even">
+<td>Delivery</td>
+<td>Plating the dish or serving the meal</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Use case:</strong> To explain why skipping data cleaning
+leads to “bad meals” even with good ingredients.</p>
+<hr />
+<h3 id="eda-is-like-exploring-a-new-city">2. <strong>EDA is Like
+Exploring a New City</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>EDA Task</th>
+<th>Exploration Analogy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Summary stats</td>
+<td>Looking at a map</td>
+</tr>
+<tr class="even">
+<td>Distributions</td>
+<td>Learning traffic patterns</td>
+</tr>
+<tr class="odd">
+<td>Outliers</td>
+<td>Spotting blocked roads or detours</td>
+</tr>
+<tr class="even">
+<td>Correlation heatmaps</td>
+<td>Finding shortcut routes or one-way streets</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Use case:</strong> To show how EDA helps you <strong>know the
+terrain</strong> before building anything.</p>
+<hr />
+<h3 id="modeling-is-like-hiring-a-candidate">3. <strong>Modeling is Like
+Hiring a Candidate</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Hiring Analogy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Training data</td>
+<td>Resume and experience</td>
+</tr>
+<tr class="even">
+<td>Model selection</td>
+<td>Interview style</td>
+</tr>
+<tr class="odd">
+<td>Evaluation</td>
+<td>Reference checks and test tasks</td>
+</tr>
+<tr class="even">
+<td>Overfitting</td>
+<td>Memorized answers with no real understanding</td>
+</tr>
+<tr class="odd">
+<td>Generalization</td>
+<td>Thinking on their feet in new situations</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Use case:</strong> Teaching the importance of validation and
+avoiding overfitting.</p>
+<hr />
+<h3 id="statistical-tests-are-like-court-trials">4. <strong>Statistical
+Tests are Like Court Trials</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Trial Analogy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Null hypothesis</td>
+<td>Presumed innocence</td>
+</tr>
+<tr class="even">
+<td>P-value</td>
+<td>Strength of evidence</td>
+</tr>
+<tr class="odd">
+<td>Significance threshold</td>
+<td>Burden of proof</td>
+</tr>
+<tr class="even">
+<td>Rejecting H₀</td>
+<td>Guilty beyond reasonable doubt</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Use case:</strong> Helping analysts understand when and how
+to draw conclusions from data.</p>
+<hr />
+<h2 id="teaching-plan-using-analogies-in-practice">✅ Teaching Plan:
+Using Analogies in Practice</h2>
+<h3 id="step-1-present-the-technical-concept">Step 1: Present the
+Technical Concept</h3>
+<blockquote>
+<p>“We want to understand if income level influences healthy food
+choices.”</p>
+</blockquote>
+<h3 id="step-2-offer-an-analogy">Step 2: Offer an Analogy</h3>
+<blockquote>
+<p>“Think of it like checking if a recipe works better with organic
+ingredients. Income is your ingredient; healthy food choice is the final
+taste.”</p>
+</blockquote>
+<h3 id="step-3-reinforce-the-analogy-through-discussion">Step 3:
+Reinforce the Analogy Through Discussion</h3>
+<blockquote>
+<p>“What happens if you don’t wash the ingredients first?” Leads to a
+discussion on data cleaning.</p>
+</blockquote>
+<hr />
+<h2 id="encourage-analysts-to-create-their-own-analogies">✅ Encourage
+Analysts to Create Their Own Analogies</h2>
+<p>This builds:</p>
+<ul>
+<li><strong>Conceptual mastery</strong></li>
+<li><strong>Communication skills</strong></li>
+<li><strong>Empathy for non-technical audiences</strong></li>
+</ul>
+<p>Prompt them:</p>
+<blockquote>
+<p>“How would you explain regression to someone who’s never done
+statistics before?”</p>
+</blockquote>
+<hr />
+<h1 id="prompt-24">Prompt 24:</h1>
+<p>Can you walk me through famous or public data case studies and
+reverse-engineer their analysis plan?</p>
+<h4 id="response-22"><strong>Response:</strong></h4>
+<p>Yes! Reverse-engineering real case studies is a powerful way to
+<strong>see expert analysis in action</strong> and understand
+<strong>how great analysts approach problems, choose variables, and
+communicate insights.</strong> I’ll walk you through a classic example
+and break it down using the same analysis plan structure you’ve been
+practicing.</p>
+<hr />
+<h2 id="case-study-the-usda-food-access-research-atlas">✅ Case Study:
+<strong>The USDA Food Access Research Atlas</strong></h2>
+<h3 id="context"><strong>Context:</strong></h3>
+<p>The USDA created an interactive tool showing which U.S. neighborhoods
+have limited access to affordable and nutritious food—commonly known as
+<strong>food deserts</strong>. The data supports decisions about
+<strong>where to place new grocery stores, target subsidies, or launch
+nutrition programs.</strong></p>
+<hr />
+<h2 id="reverse-engineered-analysis-plan"><strong>Reverse-Engineered
+Analysis Plan</strong></h2>
+<h3 id="business-question-2"><strong>1. Business Question:</strong></h3>
+<p>Where in the U.S. do people have the least access to healthy,
+affordable food—and why?</p>
+<hr />
+<h3 id="stakeholder-objective"><strong>2. Stakeholder &amp;
+Objective:</strong></h3>
+<ul>
+<li><strong>Stakeholder:</strong> U.S. Department of Agriculture, local
+policymakers</li>
+<li><strong>Objective:</strong> Inform food assistance policy, zoning
+laws, and economic development plans</li>
+</ul>
+<hr />
+<h3 id="key-concepts-to-measure-1"><strong>3. Key Concepts to
+Measure:</strong></h3>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>How It’s Measured</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Food access</td>
+<td>Distance to nearest supermarket or large grocery store</td>
+</tr>
+<tr class="even">
+<td>Affordability</td>
+<td>Household income relative to poverty line</td>
+</tr>
+<tr class="odd">
+<td>Mobility</td>
+<td>Vehicle ownership, walkability</td>
+</tr>
+<tr class="even">
+<td>Demographics</td>
+<td>Race, age, education, urban vs. rural status</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="relevant-data-sources"><strong>4. Relevant Data
+Sources:</strong></h3>
+<ul>
+<li>USDA Retail Food Store Location Data</li>
+<li>U.S. Census data for demographics and income</li>
+<li>Geographic shapefiles for census tracts</li>
+</ul>
+<hr />
+<h3 id="feature-engineering"><strong>5. Feature
+Engineering:</strong></h3>
+<ul>
+<li>Calculate % of households more than 1 mile (urban) or 10 miles
+(rural) from a supermarket</li>
+<li>Create binary “low access” and “low income” flags</li>
+<li>Combine to create a “food desert” indicator</li>
+</ul>
+<hr />
+<h3 id="hypotheses"><strong>6. Hypotheses:</strong></h3>
+<ul>
+<li>H₀: There is no geographic or income-related difference in food
+access</li>
+<li>H₁: Low-income and rural areas have significantly worse food
+access</li>
+</ul>
+<hr />
+<h3 id="analytical-methods-1"><strong>7. Analytical
+Methods:</strong></h3>
+<ul>
+<li>Descriptive statistics on access by income, region, and
+demographic</li>
+<li>Geographic mapping (choropleths)</li>
+<li>Logistic regression (optional) to model predictors of food desert
+classification</li>
+</ul>
+<hr />
+<h3 id="visual-plan-1"><strong>8. Visual Plan:</strong></h3>
+<ul>
+<li>Map of food deserts across the U.S.</li>
+<li>Bar charts showing % of people in food deserts by income level or
+race</li>
+<li>Scatter plots: distance vs. income</li>
+</ul>
+<hr />
+<h3 id="insight-example"><strong>9. Insight Example:</strong></h3>
+<blockquote>
+<p>“Over 23 million Americans live in neighborhoods classified as food
+deserts, with disproportionate impacts on Black and Hispanic
+communities. Access is strongly correlated with both income and car
+ownership.”</p>
+</blockquote>
+<hr />
+<h3 id="policy-recommendation"><strong>10. Policy
+Recommendation:</strong></h3>
+<blockquote>
+<p>Target grocery store incentives and food assistance programs in ZIP
+codes where income and distance barriers compound, especially in rural
+counties.</p>
+</blockquote>
+<hr />
+<h2 id="what-you-learn-by-reverse-engineering">✅ What You Learn by
+Reverse-Engineering</h2>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Insight</th>
+<th>How It Helps You</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>How questions were narrowed down</td>
+<td>Teaches you to focus on what matters most</td>
+</tr>
+<tr class="even">
+<td>What data was used</td>
+<td>Shows how to select practical and available metrics</td>
+</tr>
+<tr class="odd">
+<td>How visuals were tied to the story</td>
+<td>Strengthens your data storytelling</td>
+</tr>
+<tr class="even">
+<td>How insight became action</td>
+<td>Reinforces the role of data in decision-making</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Would you like to try reverse-engineering a case study yourself (like
+a Kaggle winner or CDC report), or move to <strong>Prompt
+25</strong>?</p>
+<p>Absolutely—here’s <strong>Prompt 25</strong>:</p>
+<hr />
+<h3
+id="prompt-25-can-you-walk-me-through-one-question-at-a-time-and-critique-and-improve-my-analysis-plan"><strong>Prompt
+25: Can you walk me through one question at a time, and critique and
+improve my analysis plan?</strong></h3>
+<h4 id="response-23"><strong>Response:</strong></h4>
+<p>Yes! This prompt is all about <strong>interactive coaching.</strong>
+I’ll guide you through a single business question of your choice and
+help you:</p>
+<ol type="1">
+<li><strong>Write your analysis plan</strong> (freeform or using a
+template),</li>
+<li><strong>Review and critique it</strong>—highlighting strengths and
+areas to improve,</li>
+<li><strong>Iterate on it together</strong> until it’s clear, effective,
+and stakeholder-ready.</li>
+</ol>
+<hr />
+<h2 id="how-this-works">✅ How This Works:</h2>
+<h3 id="step-1-you-pick-or-create-a-business-question">Step 1: You Pick
+or Create a Business Question</h3>
+<blockquote>
+<p>For example: “Do food prices vary significantly by region?”</p>
+</blockquote>
+<p>If you want, I can suggest a question to begin.</p>
+<hr />
+<h3 id="step-2-you-draft-your-analysis-plan-use-any-structure">Step 2:
+You Draft Your Analysis Plan (Use Any Structure)</h3>
+<p>You can follow this format:</p>
+<ol type="1">
+<li><strong>Business Question:</strong></li>
+<li><strong>Concepts to Measure:</strong></li>
+<li><strong>Relevant Variables/Tables:</strong></li>
+<li><strong>Transformations Needed:</strong></li>
+<li><strong>Hypotheses (if any):</strong></li>
+<li><strong>Methods (EDA/stats/models):</strong></li>
+<li><strong>Visuals to Create:</strong></li>
+<li><strong>Expected Outcome / Insight:</strong></li>
+</ol>
+<hr />
+<h3 id="step-3-i-critique-and-improve-it">Step 3: I Critique and Improve
+It</h3>
+<p>I’ll respond with:</p>
+<ul>
+<li>What you did well (structure, logic, clarity)</li>
+<li>What could be improved (missing variables, assumptions, methods,
+communication)</li>
+<li>Suggested enhancements (stronger framing, more actionable insights,
+better visuals)</li>
+</ul>
+<hr />
+<h3 id="step-4-we-revise-together">Step 4: We Revise Together</h3>
+<p>You can make edits, and I’ll continue to support and refine the plan
+until it’s solid.</p>
+<hr />
+<h3 id="ready-to-start">Ready to Start?</h3>
+<p>Would you like:</p>
+<ul>
+<li>Me to give you a <strong>practice business question</strong> to work
+from,</li>
+<li>Or do you have a <strong>real or practice question of your
+own</strong> you’d like to analyze?</li>
+</ul>
+<p>Once you share the question or tell me to generate one, we’ll
+begin!</p>
+<h1 id="prompt-25">Prompt 25:</h1>
+<p>Can you help me build a prompt template that lets me quickly create
+these plans using ChatGPT?</p>
+<p>Absolutely! Here’s a <strong>customizable ChatGPT prompt
+template</strong> you can reuse to instantly generate high-quality
+analysis plans, tailored to your data and business question. This
+template reflects everything you’ve learned from the previous
+prompts.</p>
+<hr />
+<h2
+id="reusable-prompt-template-for-analysis-plan-generation"><strong>Reusable
+Prompt Template for Analysis Plan Generation</strong></h2>
+<blockquote>
+<p><strong>Prompt:</strong> I’m working with a dataset related to:
+<code>[insert subject, e.g., food purchasing habits, housing prices, student performance]</code>.</p>
+<p>The business context is:
+<code>[brief description of the organizational goal or stakeholder need]</code></p>
+<p>The business question is:
+<code>[state a clear, specific question]</code></p>
+<p>The data includes these variables:
+<code>[list variable names and types from your dataset or data dictionary]</code></p>
+<p>I’d like you to generate a complete analysis plan that includes:</p>
+<ol type="1">
+<li>Business question(s)</li>
+<li>Key concepts to measure</li>
+<li>Relevant variables and data sources</li>
+<li>Required transformations or feature engineering</li>
+<li>Hypotheses (if applicable)</li>
+<li>Recommended analytical methods (EDA, statistical tests, models)</li>
+<li>Suggested visualizations</li>
+<li>Expected outcomes and how they would inform decisions</li>
+<li>Any potential assumptions or limitations</li>
+</ol>
+<p>Please format the output as a structured analysis plan, using
+professional language suitable for sharing with stakeholders.</p>
+</blockquote>
+<hr />
+<h2 id="example-prompt-pre-filled-for-practice"><strong>Example Prompt
+(Pre-Filled for Practice)</strong></h2>
+<blockquote>
+<p>I’m working with a dataset related to household food purchases.</p>
+<p>The business context is: A public health team wants to understand how
+income and access influence healthy food purchasing so they can design
+more effective food assistance programs.</p>
+<p>The business question is: Do lower-income households buy less healthy
+food, and if so, is it due to cost or regional access limitations?</p>
+<p>The data includes these variables:</p>
+<ul>
+<li><code>Mthly_HH_Income</code>: numeric</li>
+<li><code>EFPG_code</code>: food category</li>
+<li><code>Metroregion_code</code>: location</li>
+<li><code>Value</code>: price or purchase amount</li>
+<li><code>Attribute</code>: price or amount flag</li>
+</ul>
+<p>I’d like you to generate a complete analysis plan that includes all
+key steps, from question to chart to insight. Please format the output
+cleanly and logically.</p>
+</blockquote>
+<hr />
+<h2 id="pro-tip-save-this-prompt-in-your-workspace">✅ Pro Tip: Save
+This Prompt in Your Workspace</h2>
+<p>You can:</p>
+<ul>
+<li>Store this in Notion, Obsidian, or your terminal alias</li>
+<li>Turn it into a <strong>custom GPT</strong> using ChatGPT’s “Custom
+GPTs” feature</li>
+<li>Add it as a cell template in your Jupyter notebooks for fast
+analysis design</li>
+</ul>

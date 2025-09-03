@@ -1,0 +1,388 @@
+<p>Thanks! I’ll prepare a clear, code-free explanation of SHAP Values
+for exploratory data analysis (EDA) focused on supply chain data,
+matching your detailed requirements.</p>
+<p>I’ll explain: - What SHAP Values are (with a simple, visual
+explanation and an intuitive reference to cooperative game theory). -
+Different types of SHAP interpretations and visualizations (global SHAP,
+local SHAP, summary plots, dependence plots). - Why SHAP is valuable for
+identifying and visualizing relationships and patterns — not for
+assessing model accuracy. - Supply chain-specific examples
+throughout.</p>
+<p>I’ll use a professional, accessible tone consistent with your
+previous requests. I’ll let you know as soon as it’s ready!</p>
+<h1
+id="uncovering-data-insights-with-shap-values-in-supply-chain-eda">Uncovering
+Data Insights with SHAP Values in Supply Chain EDA</h1>
+<p><strong>Exploratory Data Analysis (EDA)</strong> in supply chain can
+involve complex datasets – from supplier metrics to delivery records –
+where we want to understand how different factors influence outcomes.
+<strong>SHAP values</strong> (which stands for <em>SHapley Additive
+exPlanations</em>) offer an intuitive, visual way to reveal these
+relationships. Below, we explain what SHAP values are and how they help
+uncover how variables relate to outcomes <em>and to each other</em>,
+using simple analogies and supply chain examples.</p>
+<h2 id="what-are-shap-values-game-theory-made-simple">What Are SHAP
+Values? (Game Theory Made Simple)</h2>
+<p>Think of a predictive analysis as a <strong>team game</strong>, where
+each <strong>feature</strong> (variable) is a player and the
+<strong>outcome</strong> (prediction or result) is the total points (or
+<em>payout</em>) of the game. SHAP values, based on a concept from
+<strong>cooperative game theory</strong>, tell us how to <strong>fairly
+distribute the payout among the players (features)</strong> (<a
+href="https://christophm.github.io/interpretable-ml-book/shapley.html#:~:text=A%20prediction%20can%20be%20explained,the%20%E2%80%9Cpayout%E2%80%9D%20among%20the%20features">17 
+Shapley Values – Interpretable Machine Learning</a>). In other words,
+SHAP values determine how much each feature contributed to the outcome
+in a fair, additive way.</p>
+<p>For example, if we’re predicting delivery time for a package,
+features like distance, weather, and truck capacity are the “players”
+contributing to the prediction. SHAP ensures each factor gets its fair
+share of credit (or blame) for the delivery time – just as Shapley
+values fairly allocate payoff to each player in a game (<a
+href="https://christophm.github.io/interpretable-ml-book/shapley.html#:~:text=A%20prediction%20can%20be%20explained,the%20%E2%80%9Cpayout%E2%80%9D%20among%20the%20features">17 
+Shapley Values – Interpretable Machine Learning</a>). This game analogy
+is powerful but we will keep the math behind the scenes. The key idea is
+that <strong>each SHAP value represents the contribution of one variable
+to the prediction</strong>, given all the variables working
+together.</p>
+<p><strong>Why is this useful?</strong> In supply chain EDA, we often
+ask: <em>“Which factors drive late deliveries?”</em> or <em>“What
+conditions lead to higher supplier performance scores?”</em> Traditional
+plots and correlations give some clues, but SHAP values go further. They
+break down an outcome <strong>into a sum of contributions from each
+feature</strong> (<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/#:~:text=learning%20model,on%20the%20values%20of%20the">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>). This means we can see <em>how much</em> each factor
+pushed an outcome up or down, and in <em>which direction</em> (positive
+or negative effect) (<a
+href="https://inpher.io/blog/shap-values/#:~:text=A%20characteristic%20and%20widely%20appreciated,are%20relatively%20easy%20to%20interpret">SHAP
+Values In Support of Forecasting</a>). SHAP was originally a tool for
+explaining machine learning models, but you don’t need to be a coder –
+you can use SHAP results like advanced analytics for your data,
+highlighting patterns and relationships that might be hidden in raw
+tables.</p>
+<h2 id="revealing-feature-effects-relationships-and-influence">Revealing
+Feature Effects (Relationships and Influence)</h2>
+<p>One of the most appreciated abilities of SHAP is that it shows
+<strong>both the magnitude and direction of a feature’s effect</strong>
+on the outcome (<a
+href="https://inpher.io/blog/shap-values/#:~:text=A%20characteristic%20and%20widely%20appreciated,are%20relatively%20easy%20to%20interpret">SHAP
+Values In Support of Forecasting</a>). Unlike simple correlation, SHAP
+can tell you, for each feature: “How much did this feature influence the
+result, and did it push the result higher or lower?” (<a
+href="https://inpher.io/blog/shap-values/#:~:text=A%20characteristic%20and%20widely%20appreciated,are%20relatively%20easy%20to%20interpret">SHAP
+Values In Support of Forecasting</a>). For instance, suppose an analysis
+predicts the likelihood of a delivery <strong>delay</strong>. A SHAP
+value for the feature <em>“distance to customer”</em> might be +0.20 for
+a certain shipment, meaning the long distance increased the delay risk
+by 0.20 (on some scale), while the feature <em>“warehouse on-time
+rate”</em> might have a SHAP value of –0.10, meaning a reliable
+warehouse <strong>decreased</strong> the delay risk for that shipment.
+In this way, SHAP provides a nuanced view of <strong>how variables
+relate to the outcome</strong>:</p>
+<ul>
+<li>A <strong>positive SHAP value</strong> for a feature means that
+feature pushed the prediction <em>upward</em> (increasing the outcome).
+For example, a positive SHAP value for <em>“distance”</em> in a delivery
+time model indicates longer distance is contributing to longer delivery
+times (an upward effect on delay).</li>
+<li>A <strong>negative SHAP value</strong> means the feature dragged the
+prediction <em>downward</em> (reducing the outcome). For example, a
+negative SHAP value for <em>“high truck capacity”</em> might mean larger
+trucks <em>reduce</em> delivery time (downward effect on delay).</li>
+<li>The <strong>size (magnitude)</strong> of the SHAP value shows how
+strong that feature’s impact is. A larger absolute value means a bigger
+push on the outcome (<a
+href="https://www.datacamp.com/tutorial/introduction-to-shap-values-machine-learning-interpretability#:~:text=SHAP%20values%20are%20based%20on,how%20strong%20the%20effect%20is">An
+Introduction to SHAP Values and Machine Learning Interpretability |
+DataCamp</a>).</li>
+</ul>
+<p>Crucially, SHAP values do this <strong>for each individual data
+point</strong> as well as overall. This helps in EDA by illuminating not
+just general trends, but also specific cases that might be outliers or
+special scenarios. It’s like having a lens that can zoom out to see
+broad patterns and zoom in to explain one particular event.</p>
+<h2 id="global-and-local-explanations-with-shap">Global and Local
+Explanations with SHAP</h2>
+<p>When exploring data, we might want <strong>global insights</strong>
+(overall patterns in the whole dataset) and <strong>local
+insights</strong> (explanations for individual instances). SHAP provides
+both:</p>
+<ul>
+<li><p><strong>Global SHAP (Overall Feature Influence):</strong> This is
+an aggregate view of which variables are most important in general. By
+averaging the absolute contributions of each feature across all data
+points, we get a sense of which features matter most overall (<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/#:~:text=The%20simplest%20starting%20point%20for,but%20have%20two%20key%20advantages">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>). For example, in a supplier performance analysis, SHAP
+might reveal that <em>“on-time delivery rate”</em> and <em>“quality
+score”</em> are the top factors influencing the overall supplier
+performance rating, whereas a feature like <em>“region”</em> might rank
+lower in influence. Global SHAP answers, <em>“What are the drivers of
+outcomes across all suppliers or shipments?”</em> Features with higher
+overall SHAP influence are the key players in the dataset (<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/#:~:text=The%20simplest%20starting%20point%20for,but%20have%20two%20key%20advantages">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>).</p></li>
+<li><p><strong>Local SHAP (Single Instance Explanation):</strong> This
+drills down into one specific instance (one order, one shipment, one
+product) to explain <em>why</em> it has the outcome it does. SHAP will
+attribute that single prediction’s difference from the average outcome
+to each feature. Essentially, it provides a per-instance “contribution
+list.” For example, suppose one particular supplier has a surprisingly
+low performance score. A local SHAP explanation might show that this
+supplier’s <em>“delivery delay history”</em> contributed +5 points
+(worsening the score), while their <em>“high product quality”</em>
+contributed –3 points (improving the score), and other factors added or
+subtracted smaller amounts. Summing these contributions would match the
+difference between an average supplier’s score and this supplier’s score
+(<a
+href="https://inpher.io/blog/shap-values/#:~:text=A%20characteristic%20and%20widely%20appreciated,are%20relatively%20easy%20to%20interpret">SHAP
+Values In Support of Forecasting</a>). In short, local SHAP tells a
+story for each case: which features drove the outcome up or down for
+<em>that specific case</em> (<a
+href="https://www.actuaries.digital/2019/06/18/analytics-snippet-feature-importance-and-the-shap-approach-to-machine-learning-models/#:~:text=The%20following%20chart%20uses%20SHAP,prediction%20higher%20for%20this%20observation">Analytics
+Snippet - Feature Importance and the SHAP approach to machine learning
+models - Actuaries Digital</a>). It helps answer questions like,
+<em>“Why was this shipment delayed so much?”</em> or <em>“Why did this
+product return rate spike for this order?”</em>, in terms of feature
+contributions.</p></li>
+</ul>
+<p>By combining global and local perspectives, SHAP aids EDA at multiple
+levels: you see broad trends (global) and you can validate them or
+explore exceptions (local) in a consistent framework. Next, we’ll look
+at some of the visual tools SHAP offers to make these insights even
+clearer.</p>
+<h2
+id="visualizing-shap-insights-summary-and-dependence-plots">Visualizing
+SHAP Insights: Summary and Dependence Plots</h2>
+<p>SHAP values are often visualized to help data analysts <em>see</em>
+the patterns of feature influence. Two common visualizations are
+<strong>summary plots</strong> and <strong>dependence plots</strong>,
+which reveal different aspects of the data relationships:</p>
+<ul>
+<li><strong>SHAP Summary Plot (Beeswarm Plot):</strong> This chart
+provides a comprehensive overview of how each feature affects the
+outcome across all observations. Each feature is listed on the y-axis,
+typically ordered by overall importance. Each point on a row is an
+individual data point’s SHAP value for that feature (so thousands of
+points may be plotted). Points are colored by the feature’s actual value
+(e.g. red might indicate a high value for that feature, blue a low
+value). The points spread out horizontally to show the distribution of
+SHAP values. <strong>What do we learn?</strong> We see not only which
+features are most influential (by the width of the spread), but also the
+<strong>direction of influence</strong>: for instance, if red points
+(high feature value) cluster on the right (positive SHAP side) and blue
+on the left (negative SHAP side), it means higher values of that feature
+drive the prediction up, and lower values drive it down (<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/#:~:text=For%20instance%2C%20we%20see%20that,to%20higher%20house%20price%20predictions">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>). This is crucial for understanding the relationship.
+<em>Example:</em> Imagine a summary plot for a product return prediction
+model, where one feature is <em>“days to delivery”</em>. If we see blue
+dots (short delivery times) mostly have negative SHAP values (left side)
+and red dots (long delivery times) have positive SHAP values (right
+side), it tells us short delivery times tend to reduce return rates,
+while long delivery times increase the chance of returns. In essence,
+the summary (beeswarm) plot gives a color-coded scatter of effects for
+each feature, encapsulating a lot of information: feature importance,
+effect distribution, and correlation of feature value with outcome
+impact (<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/#:~:text=For%20instance%2C%20we%20see%20that,to%20higher%20house%20price%20predictions">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>).</li>
+</ul>
+<p>(<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>) <em>Figure: An example SHAP <strong>summary (beeswarm)
+plot</strong> showing feature impacts on a model’s predictions. Each dot
+represents one data instance’s SHAP value for that feature (features
+listed vertically). Dots are colored by the feature’s value (blue=low,
+red=high). This visual reveals how features relate to the outcome: for
+example, for “% working class” (first row), blue points (low value) have
+positive SHAP (pushing the prediction up) while red points (high value)
+have negative SHAP (pushing it down), indicating that lower values of
+this feature lead to higher predictions, and vice versa (<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/#:~:text=For%20instance%2C%20we%20see%20that,to%20higher%20house%20price%20predictions">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>). The spread of points shows the range of influence each
+feature has.</em></p>
+<ul>
+<li><strong>SHAP Dependence Plot:</strong> While the summary plot gives
+an overview, a dependence plot zooms in on <strong>one feature at a
+time</strong> to show how changes in that feature value affect the
+outcome (through its SHAP value). It’s essentially a scatter plot:
+x-axis is the feature’s value, y-axis is the SHAP value for that feature
+(impact on prediction) for each data point. By looking at the shape of
+the scatter, we can see the relationship (e.g. linear, curved, threshold
+effects). Moreover, to capture <strong>interactions</strong> between
+features, these plots often color the points by another feature. For
+example, suppose in a supply chain model we look at a dependence plot
+for <em>“shipment distance”</em> vs its SHAP value on delivery delay. We
+might color the points by <em>“weather severity”</em>. This could reveal
+that for a given distance, the SHAP value (effect on delay) is higher
+when weather is bad (say, red points) and lower when weather is good
+(blue points). A vertical spread of points at a single distance value
+indicates other features are influencing the delay impact for that
+distance (<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/#:~:text=The%20vertical%20dispersion%20in%20SHAP,8">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>). In other words, if the points aren’t in a tight line, it
+suggests an interaction: some other factor is modifying the effect of
+distance. <strong>Interpretation:</strong> A dependence plot helps us
+see <em>how a feature’s impact on the outcome changes across its range
+and in context with another feature</em>. For instance, a dependence
+plot for <em>“product weight”</em> (x-axis) on its SHAP for shipping
+cost might show that beyond a certain weight, the cost impact grows
+steeply – but only for certain shipping methods (colored differently),
+indicating an interaction between weight and shipping method. This level
+of detail is extremely valuable in supply chain EDA: it uncovers
+conditional relationships (like “if distance is long <em>and</em>
+weather is bad, delays skyrocket”).</li>
+</ul>
+<p>In summary, <strong>summary plots</strong> give a multi-feature
+overview, and <strong>dependence plots</strong> give a focused lens on
+one feature’s relationship (often revealing interactions). Both are
+intuitive visuals: even without knowing the math behind SHAP, one can
+look at these plots and glean insights such as “Feature A tends to
+increase outcome when it’s high” or “Feature B has a bigger effect on
+outcome at certain ranges or when Feature C is X.”</p>
+<p>(<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>) <em>Figure: An example <strong>global SHAP bar
+chart</strong> ranking features by overall influence. Each bar
+represents the mean absolute SHAP value for a feature (average impact on
+the model’s output across all instances). Longer bars mean the feature
+has a larger average effect on the outcome (<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/#:~:text=The%20simplest%20starting%20point%20for,but%20have%20two%20key%20advantages">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>). (In this example from a housing model, “% working class”
+and “number of rooms” are top influencers on house price.) Such a chart
+helps identify which factors are most significant overall in a supply
+chain context – for instance, a similar chart for supplier performance
+might show “on-time delivery rate” and “quality score” as top
+drivers.</em></p>
+<p><em>(The summary and dependence plots are often used for global
+interpretation, while a complementary visualization for local
+interpretation is the <strong>waterfall or force plot</strong> – these
+show a single prediction being composed from feature contributions. In a
+waterfall plot, we start from a baseline (such as average outcome) and
+add each feature’s SHAP value one by one, visualizing how we arrive at
+the final prediction (<a
+href="https://shap.readthedocs.io/en/latest/example_notebooks/api_examples/plots/waterfall.html#:~:text=Waterfall%20plots%20are%20designed%20to,model%20output%20for%20this%20prediction">waterfall
+plot — SHAP latest documentation</a>). For example, a waterfall chart
+for a specific product’s demand prediction might start at the average
+demand and then show +20 due to a holiday sale event, –5 due to a high
+price, +3 due to a popular color, etc., ending up at that product’s
+predicted demand. This gives a clear picture of <strong>why</strong> a
+particular prediction is high or low in terms of feature
+effects.)</em></p>
+<h2 id="practical-examples-in-supply-chain">Practical Examples in Supply
+Chain</h2>
+<p>To make these concepts concrete, here are a few
+<strong>supply-chain-specific scenarios</strong> where SHAP values can
+enhance EDA by uncovering insights:</p>
+<ul>
+<li><p><strong>Supplier Performance Analysis:</strong> Imagine you have
+a score for each supplier’s performance last quarter. By applying SHAP
+(using a model that predicts the performance score from various
+metrics), you find that <strong>on-time delivery percentage</strong> and
+<strong>defect rate</strong> have the largest global SHAP values –
+indicating these are the dominant factors across all suppliers. Locally,
+for a supplier with a low score, SHAP might show a big negative
+contribution from a <strong>high defect rate</strong> (hurting their
+score) and a small positive contribution from an excellent
+<strong>communication rating</strong> (helping slightly). This tells us
+at a glance which areas each supplier needs to improve. We also might
+notice an interaction: the effect of <strong>order volume</strong> on
+performance is negative overall, but not as bad if the <strong>lead
+time</strong> is very long (perhaps because suppliers adjust better on
+long lead times). SHAP helps disentangle such relationships.</p></li>
+<li><p><strong>Delivery Delays:</strong> Consider a logistics dataset of
+shipments with a binary outcome: was the delivery late or on-time? Using
+SHAP to explain a model predicting delay, we uncover that
+<strong>shipping distance</strong> and <strong>weather
+conditions</strong> are major global factors for delays (distance has a
+large positive SHAP on delay risk, bad weather similarly). A SHAP
+summary plot might show most red points (long distances) on the right
+(increasing delay probability) (<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/#:~:text=For%20instance%2C%20we%20see%20that,to%20higher%20house%20price%20predictions">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>). A dependence plot for distance, colored by weather, could
+reveal that distance really matters when weather is poor (points colored
+for bad weather have much higher SHAP values for the same distance than
+those with good weather). On a local level, for a specific delayed
+delivery, a waterfall chart might list: +15% due to distance, +10% due
+to storm, –5% due to extra driver experience, resulting in a high delay
+risk overall. These insights guide us to focus on <strong>routes that
+are long <em>and</em> during bad weather</strong> as high-risk for
+lateness, something we might miss with simpler analysis.</p></li>
+<li><p><strong>Product Return Rates:</strong> Suppose we analyze which
+factors influence whether a delivered product gets returned by the
+customer. SHAP analysis might reveal globally that <strong>delivery
+time</strong>, <strong>product quality rating</strong>, and
+<strong>customer location distance</strong> are key drivers of returns.
+Perhaps fast deliveries (short times) strongly reduce return likelihood
+(negative SHAP values), while certain product categories (e.g.,
+electronics) have positive SHAP values indicating higher return chances.
+A summary plot could show, for example, <em>“delivery days”</em> with
+blue (low days) on the left (negative SHAP) and red (many days) on the
+right (positive SHAP), confirming that quicker deliveries lead to fewer
+returns. We might also find interactions: the dependence plot for
+<em>“product price”</em> might show that expensive items only have
+higher return SHAP values when the <strong>customer satisfaction
+score</strong> is low – suggesting that high-price items are returned if
+customers are unhappy for other reasons. Armed with this knowledge, a
+supply chain manager might investigate why certain high-value products
+dissatisfy customers (perhaps leading to improvements). SHAP essentially
+shines a light on these nuanced patterns in the returns data.</p></li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>SHAP values transform complex model predictions into
+<strong>human-interpretable insights</strong>. By treating each variable
+as a player contributing to an outcome, SHAP provides a <strong>fair,
+consistent measure of feature influence</strong> (<a
+href="https://www.datacamp.com/tutorial/introduction-to-shap-values-machine-learning-interpretability#:~:text=SHAP%20,contribution%20to%20the%20model%27s%20output">An
+Introduction to SHAP Values and Machine Learning Interpretability |
+DataCamp</a>) (<a
+href="https://inpher.io/blog/shap-values/#:~:text=A%20characteristic%20and%20widely%20appreciated,are%20relatively%20easy%20to%20interpret">SHAP
+Values In Support of Forecasting</a>). For professionals analyzing
+supply chain data, SHAP offers a powerful addition to the EDA toolbox:
+it not only ranks which factors matter, but also <strong>explains the
+relationship</strong> each factor has with the outcome (direction and
+strength), and even how factors interact with each other. The result is
+a deeper, intuitive understanding of your supply chain dataset. You can
+pinpoint why certain events (like a delivery delay or a spike in
+returns) happen and identify general drivers (like a supplier’s on-time
+rate) of key performance metrics. All of this is done in a clear, visual
+manner without resorting to heavy math – making SHAP an accessible yet
+insightful technique for anyone with data literacy to <strong>discover
+data-driven stories</strong> in supply chain operations.</p>
+<p><strong>Sources:</strong> The concept of SHAP originates from Lloyd
+Shapley’s game theory method for fair credit allocation (<a
+href="https://christophm.github.io/interpretable-ml-book/shapley.html#:~:text=A%20prediction%20can%20be%20explained,the%20%E2%80%9Cpayout%E2%80%9D%20among%20the%20features">17 
+Shapley Values – Interpretable Machine Learning</a>). SHAP values have
+the desirable property of showing each feature’s contribution (positive
+or negative) to a prediction (<a
+href="https://inpher.io/blog/shap-values/#:~:text=A%20characteristic%20and%20widely%20appreciated,are%20relatively%20easy%20to%20interpret">SHAP
+Values In Support of Forecasting</a>) and are consistent, additive
+explanations for model outputs (<a
+href="https://www.datacamp.com/tutorial/introduction-to-shap-values-machine-learning-interpretability#:~:text=SHAP%20,contribution%20to%20the%20model%27s%20output">An
+Introduction to SHAP Values and Machine Learning Interpretability |
+DataCamp</a>). They can be visualized in various ways to highlight
+global importance and feature effects (<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/#:~:text=Beeswarm%20plots">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>) (<a
+href="https://www.aidancooper.co.uk/a-non-technical-guide-to-interpreting-shap-analyses/#:~:text=The%20vertical%20dispersion%20in%20SHAP,8">Explaining
+Machine Learning Models: A Non-Technical Guide to Interpreting SHAP
+Analyses</a>), enabling detailed exploratory analysis as illustrated
+above. By applying SHAP in supply chain contexts (from forecasting
+demand (<a
+href="https://inpher.io/blog/shap-values/#:~:text=In%20the%20visualizations%20included%20in,This%20waterfall%20plot">SHAP
+Values In Support of Forecasting</a>) to diagnosing delays), analysts
+can gain both high-level and granular insights that drive better
+decisions.</p>

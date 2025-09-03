@@ -1,0 +1,2654 @@
+<p>Absolutely—there are several <strong>powerful, model-driven EDA
+techniques</strong> that, like decision trees, help uncover
+<strong>human-interpretable insights</strong> rather than just modeling
+predictions. These are sometimes called <strong>“model-assisted
+EDA”</strong> or <strong>“explanatory modeling techniques”</strong>.</p>
+<p>Below is a breakdown of <strong>9 EDA techniques</strong>—including
+decision trees—that can supercharge your insight discovery.</p>
+<hr />
+<h2 id="decision-trees-cart-for-rule-discovery">1. <strong>Decision
+Trees (CART) – for Rule Discovery</strong></h2>
+<p><strong>What it does:</strong> Automatically segments data based on
+feature values to predict a target.<br />
+<strong>Why it’s great:</strong> Provides <strong>if-then rules</strong>
+and thresholds you can directly interpret.</p>
+<blockquote>
+<p><em>Insight:</em> “Customers under age 25 with fewer than 3 support
+interactions are 75% more likely to churn.”</p>
+</blockquote>
+<hr />
+<h2 id="clustering-e.g.-k-means-dbscan-for-pattern-discovery">2.
+<strong>Clustering (e.g., k-means, DBSCAN) – for Pattern
+Discovery</strong></h2>
+<p><strong>What it does:</strong> Groups rows based on similarity in
+features.<br />
+<strong>Why it’s great:</strong> Helps discover <strong>natural customer
+segments</strong>, behaviors, or operational patterns.</p>
+<blockquote>
+<p><em>Insight:</em> “There are 3 customer types: bulk buyers, discount
+seekers, and one-time visitors.”</p>
+</blockquote>
+<hr />
+<h2
+id="dimensionality-reduction-e.g.-pca-t-sne-umap-for-structure-detection">3.
+<strong>Dimensionality Reduction (e.g., PCA, t-SNE, UMAP) – for
+Structure Detection</strong></h2>
+<p><strong>What it does:</strong> Projects high-dimensional data into 2D
+or 3D space.<br />
+<strong>Why it’s great:</strong> Reveals <strong>clusters, trends, or
+outliers</strong> in complex datasets.</p>
+<blockquote>
+<p><em>Insight:</em> “A clear separation exists between transactions
+before and after policy change X.”</p>
+</blockquote>
+<hr />
+<h2
+id="association-rule-mining-e.g.-apriori-fp-growth-for-market-basket-insights">4.
+<strong>Association Rule Mining (e.g., Apriori, FP-Growth) – for Market
+Basket Insights</strong></h2>
+<p><strong>What it does:</strong> Finds co-occurring items or behaviors
+in categorical data.<br />
+<strong>Why it’s great:</strong> Outputs interpretable rules like “If A
+and B, then C.”</p>
+<blockquote>
+<p><em>Insight:</em> “If a customer buys Product X and Y, there’s a 78%
+chance they’ll buy Z.”</p>
+</blockquote>
+<hr />
+<h2 id="shap-values-for-feature-influence-quantification">5.
+<strong>SHAP Values – for Feature Influence Quantification</strong></h2>
+<p><strong>What it does:</strong> Quantifies each feature’s contribution
+to a prediction (local or global).<br />
+<strong>Why it’s great:</strong> Visualizes <strong>feature importance
+and directionality</strong> in a way humans can understand.</p>
+<blockquote>
+<p><em>Insight:</em> “Higher <code>last_login_gap</code> increases churn
+risk significantly—especially over 14 days.”</p>
+</blockquote>
+<hr />
+<h2
+id="survival-analysis-e.g.-kaplan-meier-for-time-to-event-understanding">6.
+<strong>Survival Analysis (e.g., Kaplan-Meier) – for Time-to-Event
+Understanding</strong></h2>
+<p><strong>What it does:</strong> Models the probability of an event
+over time (e.g., churn, failure).<br />
+<strong>Why it’s great:</strong> Reveals <strong>when</strong> events
+happen and <strong>which features</strong> delay or accelerate them.</p>
+<blockquote>
+<p><em>Insight:</em> “95% of churn occurs within the first 30 days
+post-signup.”</p>
+</blockquote>
+<hr />
+<h2 id="partial-dependence-plots-pdps-for-sensitivity-analysis">7.
+<strong>Partial Dependence Plots (PDPs) – for Sensitivity
+Analysis</strong></h2>
+<p><strong>What it does:</strong> Shows how changing a single variable
+affects model predictions, holding others constant.<br />
+<strong>Why it’s great:</strong> Identifies <strong>nonlinearities,
+plateaus, and interaction regions</strong>.</p>
+<blockquote>
+<p><em>Insight:</em> “Purchase likelihood increases with discount up to
+30%, but plateaus after that.”</p>
+</blockquote>
+<hr />
+<h2
+id="ice-plots-individual-conditional-expectation-for-customer-specific-behavior">8.
+<strong>ICE Plots (Individual Conditional Expectation) – for
+Customer-Specific Behavior</strong></h2>
+<p><strong>What it does:</strong> Plots the effect of a feature on
+prediction <strong>for each row/customer</strong>.<br />
+<strong>Why it’s great:</strong> Reveals <strong>heterogeneity</strong>
+in behavior across the population.</p>
+<blockquote>
+<p><em>Insight:</em> “Some users are highly sensitive to price
+increases; others are unaffected.”</p>
+</blockquote>
+<hr />
+<h2
+id="feature-correlation-network-graphs-for-structural-understanding">9.
+<strong>Feature Correlation + Network Graphs – for Structural
+Understanding</strong></h2>
+<p><strong>What it does:</strong> Maps relationships between features
+using correlation or mutual information.<br />
+<strong>Why it’s great:</strong> Identifies <strong>redundant,
+interacting, or proxy variables</strong>.</p>
+<blockquote>
+<p><em>Insight:</em> “<code>total_spent</code> and
+<code>number_of_items</code> are highly correlated; may be capturing the
+same signal.”</p>
+</blockquote>
+<hr />
+<h2 id="choosing-the-right-tool">🧠 Choosing the Right Tool</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Goal</th>
+<th>Recommended Techniques</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Find rules or explainable segments</td>
+<td>Decision Trees, Association Rules</td>
+</tr>
+<tr class="even">
+<td>Understand structure or behavior groups</td>
+<td>Clustering, PCA, t-SNE</td>
+</tr>
+<tr class="odd">
+<td>Quantify feature impact</td>
+<td>SHAP, PDP, ICE</td>
+</tr>
+<tr class="even">
+<td>Analyze behavior over time</td>
+<td>Survival Analysis, Time Series Aggregates</td>
+</tr>
+<tr class="odd">
+<td>Detect feature redundancy or proxies</td>
+<td>Correlation matrix, Mutual Info, Feature Networks</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bonus-when-to-use-these-in-the-eda-process">✅ Bonus: When to
+Use These in the EDA Process</h2>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Phase</th>
+<th>Techniques</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Phase 1 (Triage)</strong></td>
+<td>Correlation matrix, Feature types, Missingness heatmaps</td>
+</tr>
+<tr class="even">
+<td><strong>Phase 2 (Prioritize)</strong></td>
+<td>Decision trees, Clustering, SHAP (global)</td>
+</tr>
+<tr class="odd">
+<td><strong>Phase 3 (Synthesize)</strong></td>
+<td>Association rules, PDP, ICE, Survival curves, SHAP (local)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Yes, <strong>using decision trees for discovering data
+insights</strong> is not only possible—it’s a fantastic, underused
+strategy in exploratory data analysis (EDA), especially for:</p>
+<ul>
+<li>Understanding what drives your target variable<br />
+</li>
+<li>Identifying <strong>interaction effects</strong><br />
+</li>
+<li>Discovering <strong>thresholds</strong> or <strong>rules</strong>
+hidden in your data</li>
+</ul>
+<p>This technique is sometimes called <strong>“white-box EDA”</strong>,
+because decision trees are <strong>interpretable models</strong> that
+reveal logic patterns in data.</p>
+<hr />
+<h2 id="why-decision-trees-are-insightful-for-eda">✅ Why Decision Trees
+Are Insightful for EDA</h2>
+<table>
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Why It Helps</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Splits data using clear rules</strong></td>
+<td>Exposes thresholds like “sales &gt; 500” that segment behavior</td>
+</tr>
+<tr class="even">
+<td><strong>Works on mixed types</strong></td>
+<td>Can split on numeric, categorical, and datetime</td>
+</tr>
+<tr class="odd">
+<td><strong>Captures interactions</strong></td>
+<td>Sees how two variables combine to predict the outcome</td>
+</tr>
+<tr class="even">
+<td><strong>Feature hierarchy</strong></td>
+<td>Shows which features matter most and in what order</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="example-use-cases-for-data-insight-discovery">🔍 Example Use
+Cases for Data Insight Discovery</h1>
+<hr />
+<h2 id="find-drivers-of-a-binary-outcome-e.g.-churn-purchase">1.
+<strong>Find Drivers of a Binary Outcome (e.g., Churn,
+Purchase)</strong></h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier, plot_tree</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>clf.fit(X, y)  <span class="co"># where X = features, y = binary target</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plot_tree(clf, feature_names<span class="op">=</span>X.columns, class_names<span class="op">=</span>[<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>], filled<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<h3 id="you-learn">You Learn:</h3>
+<ul>
+<li>Which <strong>features split first</strong> → strongest
+predictor</li>
+<li>What thresholds define the groups</li>
+<li>How <strong>subgroups behave differently</strong></li>
+</ul>
+<p><strong>Example Insight:</strong> &gt; “Customers with usage &lt; 300
+mins and tenure &lt; 6 months are 80% likely to churn. Loyalty improves
+after 6 months.”</p>
+<hr />
+<h2
+id="quantify-rules-in-numeric-target-prediction-e.g.-revenue-spend">2.
+<strong>Quantify Rules in Numeric Target Prediction (e.g., Revenue,
+Spend)</strong></h2>
+<p>Use <code>DecisionTreeRegressor</code>:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>reg <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>reg.fit(X, y_continuous)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plot_tree(reg, feature_names<span class="op">=</span>X.columns, filled<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+<p><strong>Example Insight:</strong> &gt; “Orders with quantity &gt; 12
+and from Region C have 3x higher average revenue.”</p>
+<hr />
+<h2 id="compare-segments-across-categorical-target">3. <strong>Compare
+Segments Across Categorical Target</strong></h2>
+<p>Use trees to <strong>explain imbalance or unexpected trends</strong>
+in target distributions:</p>
+<ul>
+<li>Why is Region A returning more products?</li>
+<li>What characterizes users who upgrade plans?</li>
+<li>What distinguishes long-stay vs. short-stay patients?</li>
+</ul>
+<p>Train a classifier and analyze the first few splits.</p>
+<hr />
+<h2 id="find-feature-interactions">4. <strong>Find Feature
+Interactions</strong></h2>
+<p>Suppose neither <code>age</code> nor <code>product_type</code> alone
+explains churn well—but their combo does.</p>
+<p>Trees can reveal: &gt; “Young customers on the Premium plan churn 4x
+more than older customers on Basic.”</p>
+<hr />
+<h2 id="spot-outliers-or-anomalies">5. <strong>Spot Outliers or
+Anomalies</strong></h2>
+<p>By examining <strong>leaves with low sample counts</strong> or high
+errors: - Who doesn’t fit the rule? - Where is prediction difficult? -
+Could this subgroup be an anomaly or edge case?</p>
+<hr />
+<h2 id="bonus-tree-based-eda-shap">🧠 Bonus: Tree-Based EDA + SHAP</h2>
+<p>Combine trees with SHAP (SHapley Additive exPlanations) to get:</p>
+<ul>
+<li><strong>Feature importance</strong></li>
+<li><strong>Local explanations</strong></li>
+<li><strong>Visual interactions</strong></li>
+</ul>
+<p>Trees build the interpretable structure; SHAP quantifies
+contributions.</p>
+<hr />
+<h2 id="tips-for-using-trees-for-eda">📌 Tips for Using Trees for
+EDA</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tip</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Use <strong>shallow trees</strong> (max_depth 3–4)</td>
+<td>Focus on interpretability, not accuracy</td>
+</tr>
+<tr class="even">
+<td>Use <strong>min_samples_leaf</strong> to avoid overfitting</td>
+<td>Keeps splits meaningful</td>
+</tr>
+<tr class="odd">
+<td>Limit features to a <strong>subset of interest</strong></td>
+<td>Keeps insight focused</td>
+</tr>
+<tr class="even">
+<td>Export trees as <strong>rules</strong> (if-then format)</td>
+<td>Great for explaining decisions or policies</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>Using decision trees in EDA helps you: - Surface <strong>explainable
+rules</strong> - Discover <strong>segment-based insights</strong> -
+Prioritize <strong>important features</strong> - Uncover
+<strong>interactions and thresholds</strong></p>
+<hr />
+<p>Absolutely! Let’s dive deep into:</p>
+<hr />
+<h1 id="clustering-e.g.-k-means-dbscan-for-pattern-discovery-1">✅
+<strong>2. Clustering (e.g., k-means, DBSCAN) – for Pattern
+Discovery</strong></h1>
+<p><em>(from model-driven EDA techniques)</em></p>
+<hr />
+<h2 id="what-is-clustering">🧠 What Is Clustering?</h2>
+<p>Clustering is an <strong>unsupervised learning</strong> technique
+that <strong>groups similar data points</strong> together based on their
+feature values—without using a target variable. It’s one of the most
+effective tools for <strong>pattern discovery</strong> in EDA.</p>
+<blockquote>
+<p>💡 It answers:<br />
+- “What natural segments exist in my data?”<br />
+- “Are there different types of users, products, or behaviors?”<br />
+- “Who looks unusual or doesn’t belong in any group?”</p>
+</blockquote>
+<hr />
+<h2 id="why-use-clustering-for-eda">🎯 Why Use Clustering for EDA?</h2>
+<table>
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Benefit</th>
+<th>Why It’s Insightful</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🔍 Discover hidden patterns</td>
+<td>See groups that weren’t obvious</td>
+</tr>
+<tr class="even">
+<td>🧑 Segment users or items</td>
+<td>Helps with personalization, targeting</td>
+</tr>
+<tr class="odd">
+<td>🚩 Detect outliers</td>
+<td>Points that don’t belong in any cluster</td>
+</tr>
+<tr class="even">
+<td>🧪 Compare cluster behavior</td>
+<td>Profile each group by summary stats</td>
+</tr>
+<tr class="odd">
+<td>📊 Feature interaction insight</td>
+<td>Sometimes clusters reflect interactions of multiple variables</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="common-clustering-methods">🛠️ Common Clustering Methods</h2>
+<table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 37%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Algorithm</th>
+<th>Best For</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>k-means</strong></td>
+<td>Dense, round-ish clusters</td>
+<td>Fast &amp; popular, but needs <code>k</code></td>
+</tr>
+<tr class="even">
+<td><strong>DBSCAN</strong></td>
+<td>Irregular shapes + outliers</td>
+<td>Great for noise detection</td>
+</tr>
+<tr class="odd">
+<td><strong>Agglomerative</strong></td>
+<td>Hierarchical data</td>
+<td>Produces a tree of clusters</td>
+</tr>
+<tr class="even">
+<td><strong>HDBSCAN</strong></td>
+<td>Smart density + noise</td>
+<td>Robust, no need to specify <code>k</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="example-walkthrough-k-means-clustering-in-python">✅ Example
+Walkthrough: k-means Clustering in Python</h2>
+<p>Let’s use a synthetic customer behavior dataset:</p>
+<h3 id="step-1-simulate-or-load-your-data">📦 Step 1: Simulate or Load
+Your Data</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;annual_income&#39;</span>: [<span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">17</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">35</span>, <span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">88</span>],</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;spending_score&#39;</span>: [<span class="dv">39</span>, <span class="dv">81</span>, <span class="dv">6</span>, <span class="dv">77</span>, <span class="dv">40</span>, <span class="dv">45</span>, <span class="dv">20</span>, <span class="dv">90</span>, <span class="dv">15</span>]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<hr />
+<h3 id="step-2-preprocess-scaling-is-important">⚙️ Step 2: Preprocess
+(Scaling is Important!)</h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> scaler.fit_transform(df)</span></code></pre></div>
+<hr />
+<h3 id="step-3-apply-k-means">🚀 Step 3: Apply k-means</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;cluster&#39;</span>] <span class="op">=</span> kmeans.fit_predict(X_scaled)</span></code></pre></div>
+<hr />
+<h3 id="step-4-visualize-the-clusters">🔍 Step 4: Visualize the
+Clusters</h3>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> df[<span class="st">&#39;cluster&#39;</span>].unique():</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    subset <span class="op">=</span> df[df[<span class="st">&#39;cluster&#39;</span>] <span class="op">==</span> c]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    plt.scatter(subset[<span class="st">&#39;annual_income&#39;</span>], subset[<span class="st">&#39;spending_score&#39;</span>], label<span class="op">=</span><span class="ss">f&#39;Cluster </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;Annual Income (k$)&quot;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Spending Score&quot;</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Customer Segments (k-means)&quot;</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<hr />
+<h2 id="now-ask-what-do-the-clusters-mean">🧠 Now Ask: What Do the
+Clusters Mean?</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Cluster ID</th>
+<th>Summary</th>
+<th>Business Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>Low income, low spend</td>
+<td>Price-sensitive, low LTV</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Mid-income, high spend</td>
+<td>Core buyers, target for upselling</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>High income, low spend</td>
+<td>Under-engaged premium segment</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="eda-insight-statements-from-clustering">💡 EDA Insight
+Statements from Clustering</h2>
+<blockquote>
+<p>“We identified 3 distinct customer segments. One group consists of
+high-income but low-spending users—this could represent an opportunity
+for engagement campaigns. Another group has high spend but mid-income,
+suggesting brand loyalty or emotional connection.”</p>
+</blockquote>
+<blockquote>
+<p>“Customers in Cluster 2 have a 3x higher average return rate. They
+also appear more frequently in Region C, suggesting geographic behavior
+differences.”</p>
+</blockquote>
+<hr />
+<h2 id="advanced-eda-profile-clusters">🚨 Advanced EDA: Profile
+Clusters</h2>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">&#39;cluster&#39;</span>).agg([<span class="st">&#39;mean&#39;</span>, <span class="st">&#39;count&#39;</span>])</span></code></pre></div>
+<ul>
+<li>Compare <strong>behavioral or demographic fields</strong> across
+clusters</li>
+<li>Add <strong>target rates</strong> if you’re modeling (e.g., churn
+rate per cluster)</li>
+</ul>
+<hr />
+<h2 id="alternative-dbscan-for-anomaly-detection">📊 Alternative: DBSCAN
+for Anomaly Detection</h2>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>dbscan <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="fl">0.5</span>, min_samples<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;dbscan_cluster&#39;</span>] <span class="op">=</span> dbscan.fit_predict(X_scaled)</span></code></pre></div>
+<blockquote>
+<p>Cluster <code>-1</code> = <strong>outliers</strong>. Use this to flag
+suspicious entries, edge behavior, or operational noise.</p>
+</blockquote>
+<hr />
+<h2 id="when-to-use-clustering-for-eda">✅ When to Use Clustering for
+EDA</h2>
+<table>
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Use Case</th>
+<th>What You Get</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Customer behavior patterns</td>
+<td>Segment strategies or personalization</td>
+</tr>
+<tr class="even">
+<td>Outlier detection</td>
+<td>DBSCAN/HDBSCAN flags rare cases</td>
+</tr>
+<tr class="odd">
+<td>Understand diversity in the dataset</td>
+<td>Visual and statistical group differences</td>
+</tr>
+<tr class="even">
+<td>Preprocessing step before modeling</td>
+<td>Create cluster membership as a feature</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="caveats">⚠️ Caveats</h2>
+<ul>
+<li>Requires <strong>scaling</strong> (especially k-means)</li>
+<li>k-means assumes <strong>spherical clusters</strong>—not ideal for
+all data</li>
+<li>Choosing <code>k</code> may require <strong>elbow method</strong> or
+<strong>silhouette score</strong></li>
+<li>Clusters can be <strong>sensitive to noise or outliers</strong></li>
+</ul>
+<hr />
+<h2 id="summary-1">🎯 Summary</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>KMeans</code></td>
+<td>Quick segmentation</td>
+</tr>
+<tr class="even">
+<td><code>DBSCAN</code></td>
+<td>Outlier-aware clustering</td>
+</tr>
+<tr class="odd">
+<td><code>Agglomerative</code></td>
+<td>Hierarchies and dendrograms</td>
+</tr>
+<tr class="even">
+<td><code>groupby('cluster')</code></td>
+<td>Profiles for business impact</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Absolutely! Let’s break down and <strong>deep-dive into</strong>:</p>
+<hr />
+<h1
+id="dimensionality-reduction-e.g.-pca-t-sne-umap-for-structure-detection-1">✅
+<strong>3. Dimensionality Reduction (e.g., PCA, t-SNE, UMAP) – for
+Structure Detection</strong></h1>
+<p><em>(from model-driven EDA techniques)</em></p>
+<hr />
+<h2 id="what-is-dimensionality-reduction">🧠 What Is Dimensionality
+Reduction?</h2>
+<p>Dimensionality reduction techniques <strong>transform
+high-dimensional data into lower dimensions (2D or 3D)</strong>—while
+trying to <strong>preserve its structure, patterns, and
+relationships</strong>.</p>
+<blockquote>
+<p>Think of it like compressing a complex space so that you can
+<strong>visualize it</strong>, <strong>detect clusters</strong>, or
+<strong>identify hidden structure</strong> in a way your eyes and mind
+can grasp.</p>
+</blockquote>
+<p>These methods are particularly useful when you: - Have many features
+(10+) - Want to <strong>see data structure visually</strong> - Need to
+<strong>understand relationships</strong> between observations - Want to
+find <strong>groupings, gradients, or anomalies</strong></p>
+<hr />
+<h2 id="three-main-tools-each-with-unique-strengths">✅ Three Main Tools
+(Each with Unique Strengths)</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 32%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Best For</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>PCA (Principal Component Analysis)</strong></td>
+<td>Global patterns, feature variance</td>
+<td>Linear projection; captures directions of max variance</td>
+</tr>
+<tr class="even">
+<td><strong>t-SNE (t-distributed Stochastic Neighbor
+Embedding)</strong></td>
+<td>Visualizing clusters</td>
+<td>Nonlinear; emphasizes local structure</td>
+</tr>
+<tr class="odd">
+<td><strong>UMAP (Uniform Manifold Approximation and
+Projection)</strong></td>
+<td>Visual + real structure</td>
+<td>Nonlinear; preserves global and local relationships</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="why-use-these-for-eda">🎯 Why Use These for EDA?</h2>
+<table>
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>EDA Goal</th>
+<th>How It Helps</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>See patterns</td>
+<td>Reduce 10+ dimensions to 2D for visualization</td>
+</tr>
+<tr class="even">
+<td>Spot clusters</td>
+<td>See whether the data naturally groups</td>
+</tr>
+<tr class="odd">
+<td>Detect outliers</td>
+<td>Outliers become visible as points far from any cluster</td>
+</tr>
+<tr class="even">
+<td>Preprocessing for clustering or modeling</td>
+<td>Use top principal components instead of original noisy features</td>
+</tr>
+<tr class="odd">
+<td>Interpret “hidden” relationships</td>
+<td>Sometimes important axes aren’t obvious in raw features</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1
+id="example-visualizing-high-dimensional-customer-data-with-pca-t-sne-umap">📊
+Example: Visualizing High-Dimensional Customer Data with PCA + t-SNE +
+UMAP</h1>
+<p>Let’s walk through an example using simulated customer data:</p>
+<hr />
+<h3 id="step-1-generate-sample-data">📦 Step 1: Generate Sample
+Data</h3>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate customer features</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">300</span>, centers<span class="op">=</span><span class="dv">4</span>, n_features<span class="op">=</span><span class="dv">6</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(X, columns<span class="op">=</span>[<span class="ss">f&#39;feature_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">&#39;</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(X.shape[<span class="dv">1</span>])])</span></code></pre></div>
+<hr />
+<h3 id="step-2-standardize-the-data">⚙️ Step 2: Standardize the
+Data</h3>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> StandardScaler().fit_transform(df)</span></code></pre></div>
+<hr />
+<h2 id="a.-pca-principal-component-analysis">🧭 3A. PCA – Principal
+Component Analysis</h2>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>X_pca <span class="op">=</span> pca.fit_transform(X_scaled)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_pca[:, <span class="dv">0</span>], X_pca[:, <span class="dv">1</span>], c<span class="op">=</span>y, cmap<span class="op">=</span><span class="st">&#39;Set1&#39;</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;PCA Projection (2D)&quot;</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;PC1&quot;</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;PC2&quot;</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<h3 id="what-you-learn">🧠 What You Learn:</h3>
+<ul>
+<li>Which directions carry the most variance</li>
+<li>Whether clusters exist globally</li>
+<li>Whether a few components can summarize many features</li>
+</ul>
+<hr />
+<h2 id="b.-t-sne-nonlinear-embedding-for-cluster-visualization">🧭 3B.
+t-SNE – Nonlinear Embedding for Cluster Visualization</h2>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.manifold <span class="im">import</span> TSNE</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span><span class="dv">30</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>X_tsne <span class="op">=</span> tsne.fit_transform(X_scaled)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_tsne[:, <span class="dv">0</span>], X_tsne[:, <span class="dv">1</span>], c<span class="op">=</span>y, cmap<span class="op">=</span><span class="st">&#39;Set1&#39;</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;t-SNE Projection&quot;</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<h3 id="what-you-learn-1">🧠 What You Learn:</h3>
+<ul>
+<li>Highly effective for <strong>discovering clusters</strong></li>
+<li>t-SNE <strong>pulls similar points together</strong> and pushes
+dissimilar ones apart</li>
+<li>Excellent for revealing <strong>latent segments</strong> even when
+features are noisy</li>
+</ul>
+<hr />
+<h2 id="c.-umap-the-balance-between-global-and-local">🧭 3C. UMAP – The
+Balance Between Global and Local</h2>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> umap.umap_ <span class="im">as</span> umap</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>umap_model <span class="op">=</span> umap.UMAP(n_neighbors<span class="op">=</span><span class="dv">15</span>, min_dist<span class="op">=</span><span class="fl">0.1</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>X_umap <span class="op">=</span> umap_model.fit_transform(X_scaled)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_umap[:, <span class="dv">0</span>], X_umap[:, <span class="dv">1</span>], c<span class="op">=</span>y, cmap<span class="op">=</span><span class="st">&#39;Set1&#39;</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;UMAP Projection&quot;</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<h3 id="what-you-learn-2">🧠 What You Learn:</h3>
+<ul>
+<li>UMAP preserves both local neighborhood structure
+<strong>and</strong> global layout</li>
+<li>UMAP is faster than t-SNE and more stable</li>
+<li>Works well with high-dimensional categorical embeddings</li>
+</ul>
+<hr />
+<h2 id="when-should-you-use-each">🧠 When Should You Use Each?</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Goal</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>You want <strong>variance explanation</strong></td>
+<td>PCA</td>
+</tr>
+<tr class="even">
+<td>You want <strong>cluster visualization</strong></td>
+<td>t-SNE or UMAP</td>
+</tr>
+<tr class="odd">
+<td>You want to <strong>reduce dimensions before modeling</strong></td>
+<td>PCA (or UMAP)</td>
+</tr>
+<tr class="even">
+<td>You have <strong>nonlinear relationships</strong></td>
+<td>t-SNE or UMAP</td>
+</tr>
+<tr class="odd">
+<td>You want <strong>interpretable axes</strong></td>
+<td>PCA only</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="practical-eda-use-cases">📌 Practical EDA Use Cases</h2>
+<table>
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Use Case</th>
+<th>Insight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Understand segments in user behavior</td>
+<td>See groups that emerge from activity features</td>
+</tr>
+<tr class="even">
+<td>Spot anomalies</td>
+<td>Points far from clusters = potential outliers</td>
+</tr>
+<tr class="odd">
+<td>Identify hidden drivers</td>
+<td>Loadings from PCA show which features explain variability</td>
+</tr>
+<tr class="even">
+<td>Preprocessing before clustering</td>
+<td>UMAP before DBSCAN = powerful combination</td>
+</tr>
+<tr class="odd">
+<td>Creating visualizations for stakeholders</td>
+<td>Give interpretable snapshots of complex behavior</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tips-caveats">⚠️ Tips &amp; Caveats</h2>
+<table>
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Consideration</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Always <strong>standardize</strong> data first</td>
+<td>PCA/t-SNE/UMAP are sensitive to scale</td>
+</tr>
+<tr class="even">
+<td>t-SNE is <strong>non-deterministic</strong></td>
+<td>Use <code>random_state</code> for reproducibility</td>
+</tr>
+<tr class="odd">
+<td>UMAP and t-SNE <strong>distort distances</strong></td>
+<td>Don’t interpret distances literally</td>
+</tr>
+<tr class="even">
+<td>PCA components are <strong>linear combinations</strong></td>
+<td>You can use <code>.components_</code> to interpret them</td>
+</tr>
+<tr class="odd">
+<td>Use 3D UMAP/t-SNE for visualizations</td>
+<td>Ideal for dashboards or deep dives</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-2">✅ Summary</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Technique</th>
+<th>What It Gives You</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>PCA</strong></td>
+<td>Linear structure, interpretable directions</td>
+</tr>
+<tr class="even">
+<td><strong>t-SNE</strong></td>
+<td>Nonlinear cluster visualization</td>
+</tr>
+<tr class="odd">
+<td><strong>UMAP</strong></td>
+<td>Combined global + local structure, fast &amp; interpretable</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Absolutely! Let’s unpack one of the most <strong>classic yet
+underrated model-driven EDA techniques</strong>:</p>
+<hr />
+<h1
+id="association-rule-mining-e.g.-apriori-fp-growth-for-market-basket-insights-1">✅
+<strong>4. Association Rule Mining (e.g., Apriori, FP-Growth) – for
+Market Basket Insights</strong></h1>
+<p><em>(from model-driven EDA techniques)</em></p>
+<hr />
+<h2 id="what-is-association-rule-mining">🧠 What Is Association Rule
+Mining?</h2>
+<p><strong>Association Rule Mining</strong> is an unsupervised learning
+method that <strong>discovers co-occurrence patterns</strong>—like which
+items are often purchased together or which behaviors happen in
+sequence.</p>
+<blockquote>
+<p>💡 It answers questions like:<br />
+“If a user buys Product A and B, what’s the likelihood they’ll also buy
+Product C?”<br />
+“Which user behaviors tend to co-occur?”<br />
+“What combinations of features or actions are meaningful?”</p>
+</blockquote>
+<p>This is the logic behind: - Amazon’s “Frequently Bought Together” -
+Retail basket analysis - Fraud detection sequences - Trigger chains in
+user behavior</p>
+<hr />
+<h2 id="why-use-association-rules-in-eda">✅ Why Use Association Rules
+in EDA?</h2>
+<table>
+<colgroup>
+<col style="width: 58%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Use Case</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>📦 Market basket analysis</td>
+<td>See what products co-occur in transactions</td>
+</tr>
+<tr class="even">
+<td>🧑‍💻 Behavior analysis</td>
+<td>Discover user action patterns (e.g., open → click → buy)</td>
+</tr>
+<tr class="odd">
+<td>🧩 Feature interaction discovery</td>
+<td>Understand feature combinations that imply outcomes</td>
+</tr>
+<tr class="even">
+<td>🚨 Anomaly detection</td>
+<td>Spot unexpected or rare combinations</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="key-metrics-for-association-rules">🛠️ Key Metrics for
+Association Rules</h2>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Support</strong></td>
+<td>How often items A and B appear together</td>
+</tr>
+<tr class="even">
+<td><strong>Confidence</strong></td>
+<td>Likelihood of B given A (conditional probability)</td>
+</tr>
+<tr class="odd">
+<td><strong>Lift</strong></td>
+<td>How much more likely A and B co-occur than by chance (lift &gt; 1 =
+interesting)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rule-format">Rule Format:</h3>
+<blockquote>
+<p><strong>If [antecedent], then [consequent]</strong></p>
+</blockquote>
+<hr />
+<h2 id="example-market-basket-analysis-with-mlxtend">📊 Example: Market
+Basket Analysis with <code>mlxtend</code></h2>
+<p>We’ll use a dataset of transactions from a fictional grocery
+store.</p>
+<hr />
+<h3 id="step-1-create-a-basket-format">📦 Step 1: Create a Basket
+Format</h3>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example transaction data</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>transactions <span class="op">=</span> [</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    [<span class="st">&#39;milk&#39;</span>, <span class="st">&#39;bread&#39;</span>, <span class="st">&#39;butter&#39;</span>],</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    [<span class="st">&#39;bread&#39;</span>, <span class="st">&#39;butter&#39;</span>],</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    [<span class="st">&#39;milk&#39;</span>],</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    [<span class="st">&#39;milk&#39;</span>, <span class="st">&#39;bread&#39;</span>],</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    [<span class="st">&#39;butter&#39;</span>, <span class="st">&#39;bread&#39;</span>],</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    [<span class="st">&#39;milk&#39;</span>, <span class="st">&#39;butter&#39;</span>],</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    [<span class="st">&#39;milk&#39;</span>, <span class="st">&#39;bread&#39;</span>, <span class="st">&#39;butter&#39;</span>],</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to basket-style format (one-hot encoded)</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlxtend.preprocessing <span class="im">import</span> TransactionEncoder</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>te <span class="op">=</span> TransactionEncoder()</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>te_ary <span class="op">=</span> te.fit(transactions).transform(transactions)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(te_ary, columns<span class="op">=</span>te.columns_)</span></code></pre></div>
+<hr />
+<h3 id="step-2-generate-frequent-itemsets">⚙️ Step 2: Generate Frequent
+Itemsets</h3>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlxtend.frequent_patterns <span class="im">import</span> apriori</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>frequent_itemsets <span class="op">=</span> apriori(df, min_support<span class="op">=</span><span class="fl">0.3</span>, use_colnames<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>frequent_itemsets</span></code></pre></div>
+<hr />
+<h3 id="step-3-generate-association-rules">🚀 Step 3: Generate
+Association Rules</h3>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlxtend.frequent_patterns <span class="im">import</span> association_rules</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>rules <span class="op">=</span> association_rules(frequent_itemsets, metric<span class="op">=</span><span class="st">&quot;lift&quot;</span>, min_threshold<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>rules[[<span class="st">&#39;antecedents&#39;</span>, <span class="st">&#39;consequents&#39;</span>, <span class="st">&#39;support&#39;</span>, <span class="st">&#39;confidence&#39;</span>, <span class="st">&#39;lift&#39;</span>]]</span></code></pre></div>
+<hr />
+<h3 id="example-output">🔍 Example Output:</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Antecedents</th>
+<th>Consequents</th>
+<th>Support</th>
+<th>Confidence</th>
+<th>Lift</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>{bread}</td>
+<td>{butter}</td>
+<td>0.57</td>
+<td>0.80</td>
+<td>1.14</td>
+</tr>
+<tr class="even">
+<td>{butter}</td>
+<td>{milk}</td>
+<td>0.43</td>
+<td>0.67</td>
+<td>1.12</td>
+</tr>
+<tr class="odd">
+<td>{milk, bread}</td>
+<td>{butter}</td>
+<td>0.43</td>
+<td>0.86</td>
+<td>1.23</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="how-to-interpret">🧠 How to Interpret</h2>
+<blockquote>
+<p>Rule: “If customer buys milk and bread, then they also buy butter
+(confidence = 86%, lift = 1.23)”</p>
+</blockquote>
+<p><strong>EDA Insight:</strong> &gt; Suggests bundling milk + bread +
+butter in promotions. This combo drives higher co-occurrence than chance
+alone.</p>
+<hr />
+<h2 id="real-world-applications">📌 Real-World Applications</h2>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th>Insight Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Retail</strong></td>
+<td>Customers who buy diapers and beer often buy chips</td>
+</tr>
+<tr class="even">
+<td><strong>E-commerce</strong></td>
+<td>Visitors who view Product A often also add Product B</td>
+</tr>
+<tr class="odd">
+<td><strong>Healthcare</strong></td>
+<td>Patients with condition A and B often also take Drug C</td>
+</tr>
+<tr class="even">
+<td><strong>Banking</strong></td>
+<td>Customers who defaulted often had high credit utilization + recent
+late payment</td>
+</tr>
+<tr class="odd">
+<td><strong>Web analytics</strong></td>
+<td>Users who start trial and click email 2 often convert to paid</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="advanced-tips">🧪 Advanced Tips</h2>
+<ul>
+<li>Use <code>min_support</code> and <code>min_lift</code> to tune rule
+quality</li>
+<li>Use <code>frozenset</code> strings or convert to readable text for
+dashboards</li>
+<li>Visualize rules as a <strong>network graph</strong> or
+<strong>Sankey diagram</strong></li>
+<li>Combine with <strong>clustering</strong> to segment behavior then
+run rules within clusters</li>
+</ul>
+<hr />
+<h2 id="cautions">🛑 Cautions</h2>
+<table>
+<colgroup>
+<col style="width: 58%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Too many rules?</td>
+<td>Increase support/lift/confidence</td>
+</tr>
+<tr class="even">
+<td>Meaningless rules?</td>
+<td>Filter by domain logic</td>
+</tr>
+<tr class="odd">
+<td>Rare combos?</td>
+<td>Use with <strong>confidence AND lift</strong> to find impactful
+rules</td>
+</tr>
+<tr class="even">
+<td>One-hot encoding limits?</td>
+<td>Use <code>mlxtend.preprocessing.TransactionEncoder</code> on raw
+data lists</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-3">✅ Summary</h2>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One-hot encode transactions</td>
+<td>Input for Apriori</td>
+</tr>
+<tr class="even">
+<td>Use <code>apriori()</code></td>
+<td>Find frequent itemsets</td>
+</tr>
+<tr class="odd">
+<td>Use <code>association_rules()</code></td>
+<td>Extract meaningful rule combinations</td>
+</tr>
+<tr class="even">
+<td>Interpret via support, confidence, lift</td>
+<td>Discover which combinations matter</td>
+</tr>
+<tr class="odd">
+<td>Actionable insight</td>
+<td>Bundle, recommend, intervene, or investigate</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Absolutely! Let’s go <strong>deep into SHAP (SHapley Additive
+exPlanations)</strong>—one of the most powerful tools for
+<strong>model-driven EDA</strong> and one of the best ways to understand
+<strong>feature influence on predictions</strong>.</p>
+<hr />
+<h1 id="shap-values-for-feature-influence-quantification-1">✅
+<strong>5. SHAP Values – for Feature Influence
+Quantification</strong></h1>
+<p><em>(from model-driven EDA techniques)</em></p>
+<hr />
+<h2 id="what-are-shap-values">🧠 What Are SHAP Values?</h2>
+<p><strong>SHAP values</strong> are a game-theoretic approach to explain
+<strong>how much each feature contributed</strong> to a specific model
+prediction.</p>
+<blockquote>
+<p>💡 Think of SHAP as: - “How did each feature <strong>push the model’s
+prediction</strong> away from the baseline?” - For every prediction, you
+get a <strong>+/- contribution</strong> from each feature</p>
+</blockquote>
+<hr />
+<h2 id="why-shap-is-unique-and-powerful">🧩 Why SHAP Is Unique (and
+Powerful)</h2>
+<table>
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Advantage</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>✅ <strong>Local + global</strong></td>
+<td>You can explain <strong>individual predictions</strong> and
+<strong>overall model behavior</strong></td>
+</tr>
+<tr class="even">
+<td>✅ <strong>Model-agnostic</strong></td>
+<td>Works with <strong>any model</strong> (tree, linear, NN, etc.)</td>
+</tr>
+<tr class="odd">
+<td>✅ <strong>Additive</strong></td>
+<td>SHAP values <strong>sum to the prediction</strong> (interpretable
+math)</td>
+</tr>
+<tr class="even">
+<td>✅ <strong>Fair attribution</strong></td>
+<td>Based on Shapley values from game theory (fair split of credit)</td>
+</tr>
+<tr class="odd">
+<td>✅ <strong>Visuals are excellent</strong></td>
+<td>Force plots, waterfall plots, summary plots, interaction plots</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="shap-in-eda-what-you-can-learn">📊 SHAP in EDA: What You Can
+Learn</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Use Case</th>
+<th>Insight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Feature importance</td>
+<td>Which features impact predictions most?</td>
+</tr>
+<tr class="even">
+<td>Direction of impact</td>
+<td>Does high age increase or decrease churn risk?</td>
+</tr>
+<tr class="odd">
+<td>Thresholds</td>
+<td>At what point does income start influencing risk?</td>
+</tr>
+<tr class="even">
+<td>Interactions</td>
+<td>Are there combinations that flip effects?</td>
+</tr>
+<tr class="odd">
+<td>Local outliers</td>
+<td>Why did this customer behave differently?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="example-using-shap-for-eda-on-classification">🛠️ Example: Using
+SHAP for EDA on Classification</h1>
+<p>We’ll use the <strong>Titanic survival dataset</strong> to understand
+what influences survival.</p>
+<hr />
+<h3 id="step-1-load-and-prepare-the-data">📦 Step 1: Load and Prepare
+the Data</h3>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> xgboost <span class="im">import</span> XGBClassifier</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv&quot;</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[[<span class="st">&#39;Survived&#39;</span>, <span class="st">&#39;Pclass&#39;</span>, <span class="st">&#39;Sex&#39;</span>, <span class="st">&#39;Age&#39;</span>, <span class="st">&#39;Fare&#39;</span>, <span class="st">&#39;SibSp&#39;</span>, <span class="st">&#39;Parch&#39;</span>]]</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna()</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;Sex&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;Sex&#39;</span>].<span class="bu">map</span>({<span class="st">&#39;male&#39;</span>: <span class="dv">0</span>, <span class="st">&#39;female&#39;</span>: <span class="dv">1</span>})</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">&#39;Survived&#39;</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">&#39;Survived&#39;</span>]</span></code></pre></div>
+<hr />
+<h3 id="step-2-train-a-model">⚙️ Step 2: Train a Model</h3>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> XGBClassifier(n_estimators<span class="op">=</span><span class="dv">100</span>, max_depth<span class="op">=</span><span class="dv">3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>model.fit(X, y)</span></code></pre></div>
+<hr />
+<h3 id="step-3-apply-shap">🔍 Step 3: Apply SHAP</h3>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shap</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>explainer <span class="op">=</span> shap.Explainer(model)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>shap_values <span class="op">=</span> explainer(X)</span></code></pre></div>
+<hr />
+<h3 id="step-4-global-feature-impact-shap-summary-plot">📈 Step 4:
+Global Feature Impact (SHAP Summary Plot)</h3>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>shap.plots.beeswarm(shap_values)</span></code></pre></div>
+<blockquote>
+<p>🔍 This shows <strong>which features matter most</strong>, and how
+they influence predictions.</p>
+</blockquote>
+<hr />
+<h3 id="step-5-local-explanation-single-row">🔎 Step 5: Local
+Explanation (Single Row)</h3>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>shap.plots.waterfall(shap_values[<span class="dv">0</span>])</span></code></pre></div>
+<blockquote>
+<p>Explains exactly <strong>why this passenger</strong> was predicted to
+survive or not.</p>
+</blockquote>
+<hr />
+<h3 id="step-6-dependence-plot-feature-thresholds">🌈 Step 6: Dependence
+Plot (Feature Thresholds)</h3>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>shap.plots.scatter(shap_values[:, <span class="st">&quot;Age&quot;</span>], color<span class="op">=</span>shap_values)</span></code></pre></div>
+<blockquote>
+<p>Visualizes how <strong>Age affects survival</strong>, and whether it
+interacts with other features like <code>Sex</code>.</p>
+</blockquote>
+<hr />
+<h2 id="how-to-interpret-shap-values">🧠 How to Interpret SHAP
+Values</h2>
+<table>
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Positive SHAP</td>
+<td>Feature <strong>increased the prediction</strong> (pushed toward “1”
+for classification)</td>
+</tr>
+<tr class="even">
+<td>Negative SHAP</td>
+<td>Feature <strong>decreased the prediction</strong></td>
+</tr>
+<tr class="odd">
+<td>Magnitude</td>
+<td>Strength of the effect</td>
+</tr>
+<tr class="even">
+<td>Zero</td>
+<td>Feature had no meaningful influence for this row</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="common-shap-visuals">✅ Common SHAP Visuals</h2>
+<table>
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Plot</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Beeswarm</strong></td>
+<td>Global overview of feature effects across all rows</td>
+</tr>
+<tr class="even">
+<td><strong>Bar plot</strong></td>
+<td>Feature importance (average absolute SHAP value)</td>
+</tr>
+<tr class="odd">
+<td><strong>Waterfall</strong></td>
+<td>Breakdown of individual prediction</td>
+</tr>
+<tr class="even">
+<td><strong>Force plot</strong></td>
+<td>Push-pull visualization of prediction</td>
+</tr>
+<tr class="odd">
+<td><strong>Dependence plot</strong></td>
+<td>Continuous variable vs SHAP value</td>
+</tr>
+<tr class="even">
+<td><strong>Interaction plot</strong></td>
+<td>Pairs of variables and how they affect prediction together</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-why-shap-is-a-game-changer-for-eda">🧠 Summary: Why SHAP
+Is a Game-Changer for EDA</h2>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Benefit</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bridges modeling and interpretation</td>
+<td>Works <strong>before modeling</strong> (as insight discovery) or
+<strong>after modeling</strong> (for audit/exploration)</td>
+</tr>
+<tr class="even">
+<td>Highly visual</td>
+<td>Communicates well with stakeholders</td>
+</tr>
+<tr class="odd">
+<td>Spot trends and interactions</td>
+<td>Helps define rules and thresholds</td>
+</tr>
+<tr class="even">
+<td>Find “why this happened”</td>
+<td>Best tool for <strong>individual row interpretation</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="considerations">⚠️ Considerations</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Caveat</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Can be slow</td>
+<td>Use <code>TreeExplainer</code> for tree-based models like XGBoost,
+LightGBM</td>
+</tr>
+<tr class="even">
+<td>Local explanations vary</td>
+<td>Always check global patterns too</td>
+</tr>
+<tr class="odd">
+<td>Correlated features</td>
+<td>SHAP tries to compensate, but correlation can skew attribution</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Absolutely! Let’s dive into one of the most <strong>powerful
+time-based EDA techniques</strong> for understanding not just
+<em>what</em> happens, but <em>when</em> it happens:</p>
+<hr />
+<h1
+id="survival-analysis-e.g.-kaplan-meier-for-time-to-event-understanding-1">✅
+<strong>6. Survival Analysis (e.g., Kaplan-Meier) – for Time-to-Event
+Understanding</strong></h1>
+<p><em>(from model-driven EDA techniques)</em></p>
+<hr />
+<h2 id="what-is-survival-analysis">🧠 What Is Survival Analysis?</h2>
+<p><strong>Survival Analysis</strong> is a family of statistical methods
+for modeling <strong>time until an event occurs</strong>—such as churn,
+failure, death, upgrade, conversion, etc.</p>
+<blockquote>
+<p>💡 It answers:<br />
+- “How long does it take for users to churn?”<br />
+- “What % of machines survive past 1,000 hours?”<br />
+- “When are customers most likely to convert?”<br />
+- “Which user types drop off sooner than others?”</p>
+</blockquote>
+<hr />
+<h2 id="key-concepts">✅ Key Concepts</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Event</strong></td>
+<td>The outcome we’re waiting for (e.g., churn, failure, death)</td>
+</tr>
+<tr class="even">
+<td><strong>Duration</strong></td>
+<td>Time from start to the event or censoring</td>
+</tr>
+<tr class="odd">
+<td><strong>Censoring</strong></td>
+<td>Cases where we don’t observe the event by the end of the study
+(e.g., still active)</td>
+</tr>
+<tr class="even">
+<td><strong>Survival function (S(t))</strong></td>
+<td>Probability of <strong>surviving past time t</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Hazard function</strong></td>
+<td>Instantaneous <strong>risk of the event</strong> at time t, given
+survival until then</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="why-use-survival-analysis-in-eda">📊 Why Use Survival Analysis
+in EDA?</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Goal</th>
+<th>What It Reveals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Understand <strong>when</strong> outcomes occur</td>
+<td>Go beyond binary classification (e.g., churn vs. no churn)</td>
+</tr>
+<tr class="even">
+<td>Detect <strong>time-based risk patterns</strong></td>
+<td>Are customers more likely to churn early or late?</td>
+</tr>
+<tr class="odd">
+<td>Compare <strong>groups over time</strong></td>
+<td>Do Plan A users stay longer than Plan B?</td>
+</tr>
+<tr class="even">
+<td>Support <strong>retention, maintenance, warranty</strong>
+analysis</td>
+<td>Predict when failure or drop-off is likely</td>
+</tr>
+<tr class="odd">
+<td>Build <strong>segment-level timelines</strong></td>
+<td>Visualize time-to-event curves by user type, region, etc.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="example-kaplan-meier-survival-curves-in-python">🧪 Example:
+Kaplan-Meier Survival Curves in Python</h1>
+<p>Let’s look at an example of user churn over time (synthetic
+data).</p>
+<hr />
+<h3 id="step-1-simulate-time-to-event-data">📦 Step 1: Simulate
+Time-to-Event Data</h3>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated user data</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;user_id&#39;</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>),</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;tenure_days&#39;</span>: np.random.exponential(scale<span class="op">=</span><span class="dv">365</span>, size<span class="op">=</span><span class="dv">100</span>).astype(<span class="bu">int</span>),</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;churned&#39;</span>: np.random.binomial(<span class="dv">1</span>, <span class="fl">0.7</span>, size<span class="op">=</span><span class="dv">100</span>)  <span class="co"># 70% observed churn</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<ul>
+<li><code>tenure_days</code>: how long they stayed active</li>
+<li><code>churned</code>: 1 = churned, 0 = still active
+(right-censored)</li>
+</ul>
+<hr />
+<h3 id="step-2-kaplan-meier-estimator">⚙️ Step 2: Kaplan-Meier
+Estimator</h3>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lifelines <span class="im">import</span> KaplanMeierFitter</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>kmf <span class="op">=</span> KaplanMeierFitter()</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>kmf.fit(durations<span class="op">=</span>df[<span class="st">&#39;tenure_days&#39;</span>], event_observed<span class="op">=</span>df[<span class="st">&#39;churned&#39;</span>])</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>kmf.plot_survival_function()</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Survival Curve: User Churn Over Time&quot;</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;Days Since Signup&quot;</span>)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Probability of Retention&quot;</span>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<hr />
+<h3 id="interpretation">🔍 Interpretation:</h3>
+<ul>
+<li>The curve shows the <strong>probability of users <em>not</em>
+churning over time</strong><br />
+</li>
+<li>A steep drop early on suggests <strong>high early
+churn</strong></li>
+<li>A plateau implies <strong>stabilized long-term users</strong></li>
+<li>You can compare groups (e.g., subscription plans) using multiple
+curves</li>
+</ul>
+<hr />
+<h3 id="step-3-compare-groups-e.g.-plan-a-vs-plan-b">🧪 Step 3: Compare
+Groups (e.g., Plan A vs Plan B)</h3>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;plan&#39;</span>] <span class="op">=</span> np.random.choice([<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>], size<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot grouped survival curves</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> plan <span class="kw">in</span> df[<span class="st">&#39;plan&#39;</span>].unique():</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    kmf.fit(durations<span class="op">=</span>df[df[<span class="st">&#39;plan&#39;</span>] <span class="op">==</span> plan][<span class="st">&#39;tenure_days&#39;</span>],</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>            event_observed<span class="op">=</span>df[df[<span class="st">&#39;plan&#39;</span>] <span class="op">==</span> plan][<span class="st">&#39;churned&#39;</span>],</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span><span class="ss">f&#39;Plan </span><span class="sc">{</span>plan<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    kmf.plot_survival_function()</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Survival by Plan Type&quot;</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&quot;Days&quot;</span>)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;Retention Probability&quot;</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<blockquote>
+<p><strong>Insight:</strong> If Plan A has a steeper drop than Plan B,
+it may be riskier for early churn.</p>
+</blockquote>
+<hr />
+<h2 id="more-advanced-survival-tools">🧠 More Advanced Survival
+Tools</h2>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Cox Proportional Hazards Model</strong></td>
+<td>Model hazard rate using covariates (age, plan, etc.)</td>
+</tr>
+<tr class="even">
+<td><strong>Nelson-Aalen Estimator</strong></td>
+<td>Estimate cumulative hazard</td>
+</tr>
+<tr class="odd">
+<td><strong>Log-rank test</strong></td>
+<td>Test if two survival curves are significantly different</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="real-world-eda-examples">🧩 Real-World EDA Examples</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th>Example Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>SaaS</strong></td>
+<td>Understand when users churn or upgrade</td>
+</tr>
+<tr class="even">
+<td><strong>Healthcare</strong></td>
+<td>Time until readmission or complication</td>
+</tr>
+<tr class="odd">
+<td><strong>Manufacturing</strong></td>
+<td>Time-to-failure for machines or parts</td>
+</tr>
+<tr class="even">
+<td><strong>Education</strong></td>
+<td>When students drop a course or stop attending</td>
+</tr>
+<tr class="odd">
+<td><strong>Finance</strong></td>
+<td>Duration until default or early repayment</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-4">📌 Summary</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Element</th>
+<th>Insight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Kaplan-Meier</td>
+<td>Retention probability over time</td>
+</tr>
+<tr class="even">
+<td>Survival function</td>
+<td>Who is more or less likely to “survive”?</td>
+</tr>
+<tr class="odd">
+<td>Censoring</td>
+<td>Models incomplete observations correctly</td>
+</tr>
+<tr class="even">
+<td>Group comparison</td>
+<td>Retention by plan, cohort, region, etc.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Absolutely! Let’s explore <strong>Partial Dependence Plots
+(PDPs)</strong>—a vital part of model-driven EDA that helps you
+understand <strong>how changes in a feature affect your model’s
+predictions</strong>.</p>
+<hr />
+<h1 id="partial-dependence-plots-pdps-for-sensitivity-analysis-1">✅
+<strong>7. Partial Dependence Plots (PDPs) – for Sensitivity
+Analysis</strong></h1>
+<p><em>(from model-driven EDA techniques)</em></p>
+<hr />
+<h2 id="what-is-a-partial-dependence-plot">🧠 What Is a Partial
+Dependence Plot?</h2>
+<p>A <strong>Partial Dependence Plot (PDP)</strong> shows the
+<strong>marginal effect</strong> of one or two features on the predicted
+outcome of a machine learning model, <strong>averaging out all other
+features</strong>.</p>
+<blockquote>
+<p>💡 Think of it like this:<br />
+“If we vary <code>feature X</code> while keeping everything else
+constant, how does the model’s prediction change?”</p>
+</blockquote>
+<hr />
+<h2 id="why-use-pdps-in-eda">✅ Why Use PDPs in EDA?</h2>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Goal</th>
+<th>What PDP Shows</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>📈 Understand model behavior</td>
+<td>Shows relationship between a feature and predictions</td>
+</tr>
+<tr class="even">
+<td>🧪 Perform sensitivity analysis</td>
+<td>Are predictions stable across feature ranges?</td>
+</tr>
+<tr class="odd">
+<td>🔍 Detect nonlinear effects</td>
+<td>U-shapes, plateaus, thresholds, etc.</td>
+</tr>
+<tr class="even">
+<td>⚠️ Spot regions of high/low risk</td>
+<td>PDP shows where risk increases or levels off</td>
+</tr>
+<tr class="odd">
+<td>💡 Communicate findings</td>
+<td>PDPs are intuitive, stakeholder-friendly plots</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ideal-use-cases-for-pdp">🎯 Ideal Use Cases for PDP</h2>
+<ul>
+<li>Churn risk increases when tenure &lt; 3 months</li>
+<li>High claim amounts sharply increase insurance fraud probability</li>
+<li>Revenue impact plateaus once ad spend &gt; $100k</li>
+<li>Age or credit score drives risk in a nonlinear way</li>
+</ul>
+<hr />
+<h1 id="step-by-step-example-pdp-with-a-classification-model">🛠️
+Step-by-Step Example: PDP with a Classification Model</h1>
+<p>We’ll use a simple dataset and scikit-learn’s PDP tools.</p>
+<hr />
+<h3 id="step-1-load-sample-data">📦 Step 1: Load Sample Data</h3>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_california_housing</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> fetch_california_housing()</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data.data, columns<span class="op">=</span>data.feature_names)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> data.target</span></code></pre></div>
+<hr />
+<h3 id="step-2-train-a-model-1">⚙️ Step 2: Train a Model</h3>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> GradientBoostingRegressor</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(df, target, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GradientBoostingRegressor().fit(X_train, y_train)</span></code></pre></div>
+<hr />
+<h3 id="step-3-plot-a-pdp">📈 Step 3: Plot a PDP</h3>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.inspection <span class="im">import</span> plot_partial_dependence</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> [<span class="st">&#39;AveRooms&#39;</span>, <span class="st">&#39;HouseAge&#39;</span>]</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>plot_partial_dependence(model, X_train, features, kind<span class="op">=</span><span class="st">&#39;average&#39;</span>, grid_resolution<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">&quot;Partial Dependence Plots&quot;</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<hr />
+<h3 id="what-you-might-see">🧠 What You Might See</h3>
+<ul>
+<li>As <code>HouseAge</code> increases, predicted housing prices rise
+sharply up to ~25 years, then level off<br />
+</li>
+<li><code>AveRooms</code> shows a nonlinear relationship with
+price—higher rooms ≠ always higher prices</li>
+</ul>
+<hr />
+<h2 id="interpreting-pdps">✅ Interpreting PDPs</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Shape</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Upward slope</td>
+<td>Feature increases outcome</td>
+</tr>
+<tr class="even">
+<td>Downward slope</td>
+<td>Feature decreases outcome</td>
+</tr>
+<tr class="odd">
+<td>U-shape or inverted U</td>
+<td>Nonlinear or optimal ranges</td>
+</tr>
+<tr class="even">
+<td>Plateau</td>
+<td>Diminishing returns</td>
+</tr>
+<tr class="odd">
+<td>Steep drop</td>
+<td>Sensitivity region or model instability</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="advanced-2d-pdp-feature-interactions">🔍 Advanced: 2D PDP
+(Feature Interactions)</h2>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_partial_dependence(model, X_train, [(<span class="st">&#39;AveRooms&#39;</span>, <span class="st">&#39;HouseAge&#39;</span>)], grid_resolution<span class="op">=</span><span class="dv">30</span>)</span></code></pre></div>
+<blockquote>
+<p>Shows a 3D surface plot of how <strong>two features interact</strong>
+in influencing predictions.</p>
+</blockquote>
+<hr />
+<h2 id="key-insights-you-can-derive">💡 Key Insights You Can Derive</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Insight</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Thresholds</td>
+<td>Income below $30k sharply increases churn</td>
+</tr>
+<tr class="even">
+<td>Diminishing returns</td>
+<td>Marketing spend beyond $50k yields flat gains</td>
+</tr>
+<tr class="odd">
+<td>Feature effects</td>
+<td>HouseAge has stronger effect on price than MedInc</td>
+</tr>
+<tr class="even">
+<td>Nonlinear behavior</td>
+<td>Customer engagement peaks at moderate usage</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tips-for-using-pdps-well">📌 Tips for Using PDPs Well</h2>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tip</th>
+<th>Why It Helps</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Use with <strong>tree-based models</strong></td>
+<td>PDPs are most stable with decision trees, random forests, gradient
+boosting</td>
+</tr>
+<tr class="even">
+<td>Avoid high correlation</td>
+<td>If features are highly correlated, PDP assumptions may break</td>
+</tr>
+<tr class="odd">
+<td>Use <code>kind='both'</code></td>
+<td>Combines averaged and individual lines for richer visual</td>
+</tr>
+<tr class="even">
+<td>Use <code>ice_lines=True</code> (or SHAP instead)</td>
+<td>For instance-level behavior (see ICE/SHAP)</td>
+</tr>
+<tr class="odd">
+<td>Pair with SHAP or feature importance</td>
+<td>Validate what you see with other model explainability tools</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="pdp-vs.-shap-vs.-ice">🔁 PDP vs. SHAP vs. ICE</h2>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 30%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Focus</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>PDP</strong></td>
+<td>Average global effect</td>
+<td>General model insight</td>
+</tr>
+<tr class="even">
+<td><strong>ICE</strong></td>
+<td>Individual curves per sample</td>
+<td>Heterogeneity analysis</td>
+</tr>
+<tr class="odd">
+<td><strong>SHAP</strong></td>
+<td>Local + global explanation</td>
+<td>Feature importance + interactions</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-5">✅ Summary</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PDP</td>
+<td>Shows how changing a feature impacts prediction</td>
+</tr>
+<tr class="even">
+<td>Good for</td>
+<td>Visualizing thresholds, plateaus, nonlinearities</td>
+</tr>
+<tr class="odd">
+<td>Not good for</td>
+<td>Highly correlated features, individual behavior</td>
+</tr>
+<tr class="even">
+<td>Output</td>
+<td>Easy-to-read, stakeholder-friendly graphs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Absolutely! Let’s explore <strong>ICE plots</strong> (Individual
+Conditional Expectation)—a powerful tool for understanding <strong>how a
+feature affects predictions for individual rows (e.g.,
+customers)</strong>, rather than just on average.</p>
+<hr />
+<h1
+id="ice-plots-individual-conditional-expectation-for-customer-specific-behavior-1">✅
+<strong>8. ICE Plots (Individual Conditional Expectation) – for
+Customer-Specific Behavior</strong></h1>
+<p><em>(from model-driven EDA techniques)</em></p>
+<hr />
+<h2 id="what-is-an-ice-plot">🧠 What Is an ICE Plot?</h2>
+<p><strong>ICE plots</strong> show how a model’s prediction changes as a
+<strong>single feature is varied</strong>, for <strong>one data point at
+a time</strong>, while keeping all other features constant.</p>
+<blockquote>
+<p>💡 Think of it like: “If this customer’s income changed, how would
+their predicted risk change—<em>for them specifically</em>?”</p>
+<p>It’s like a personalized <strong>sensitivity test</strong> for each
+row.</p>
+</blockquote>
+<p>ICE plots give you <strong>many individual lines</strong>, one per
+observation, showing: - Personal response curves to a given feature -
+Variation across users - Hidden subgroups with different reactions</p>
+<hr />
+<h2 id="how-ice-plots-differ-from-pdps">🔍 How ICE Plots Differ from
+PDPs</h2>
+<table>
+<thead>
+<tr class="header">
+<th>PDP</th>
+<th>ICE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Shows <strong>average effect</strong></td>
+<td>Shows <strong>individual effects</strong></td>
+</tr>
+<tr class="even">
+<td>Smooth, single line</td>
+<td>Many lines (one per sample)</td>
+</tr>
+<tr class="odd">
+<td>Good for global trends</td>
+<td>Good for <strong>heterogeneity</strong></td>
+</tr>
+<tr class="even">
+<td>Can miss subgroups</td>
+<td>Reveals subgroups and exceptions</td>
+</tr>
+<tr class="odd">
+<td>Easy to summarize</td>
+<td>Rich, nuanced, more complex</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="why-use-ice-plots-in-eda">🎯 Why Use ICE Plots in EDA?</h2>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Goal</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🧪 Understand individual behavior</td>
+<td>Does <em>this</em> customer respond like the average one?</td>
+</tr>
+<tr class="even">
+<td>👥 Reveal subgroups</td>
+<td>Some customers increase risk with age, others decrease</td>
+</tr>
+<tr class="odd">
+<td>🧠 Detect heterogeneity</td>
+<td>Not all data points are equal</td>
+</tr>
+<tr class="even">
+<td>🔎 Spot unfair or biased model effects</td>
+<td>See if certain groups are treated differently</td>
+</tr>
+<tr class="odd">
+<td>📊 Create user personas or segments</td>
+<td>Based on how they respond to features</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="example-ice-plot-in-python-scikit-learn-pdpbox">🛠️ Example: ICE
+Plot in Python (scikit-learn + PDPBox)</h1>
+<p>Let’s walk through how to use ICE plots on a housing price prediction
+model.</p>
+<hr />
+<h3 id="step-1-load-and-prepare-data">📦 Step 1: Load and Prepare
+Data</h3>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_california_housing</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> fetch_california_housing()</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data.data, columns<span class="op">=</span>data.feature_names)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data.target</span></code></pre></div>
+<hr />
+<h3 id="step-2-train-a-model-2">⚙️ Step 2: Train a Model</h3>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> GradientBoostingRegressor</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(df, y, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GradientBoostingRegressor().fit(X_train, y_train)</span></code></pre></div>
+<hr />
+<h3 id="step-3-ice-plot-with-pdpbox">📈 Step 3: ICE Plot with
+PDPBox</h3>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pdpbox <span class="im">import</span> pdp</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ICE plot for &#39;AveRooms&#39;</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>ice_plot <span class="op">=</span> pdp.pdp_isolate(</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span>model,</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    dataset<span class="op">=</span>X_test,</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    model_features<span class="op">=</span>X_test.columns.tolist(),</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    feature<span class="op">=</span><span class="st">&#39;AveRooms&#39;</span>,</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    num_grid_points<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    grid_type<span class="op">=</span><span class="st">&#39;percentile&#39;</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>pdp.pdp_plot(ice_plot, <span class="st">&#39;AveRooms&#39;</span>, plot_lines<span class="op">=</span><span class="va">True</span>, frac_to_plot<span class="op">=</span><span class="fl">0.1</span>)</span></code></pre></div>
+<hr />
+<h3 id="what-you-might-see-1">🧠 What You Might See:</h3>
+<ul>
+<li>Most lines go up: More rooms = higher predicted house value</li>
+<li>Some lines go flat: Room count doesn’t affect prediction for certain
+homes</li>
+<li>A few drop: Maybe in low-income regions, more rooms don’t increase
+value</li>
+</ul>
+<hr />
+<h2 id="how-to-read-ice-plots">📌 How to Read ICE Plots</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 52%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>ICE Line Behavior</th>
+<th>Insight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Flat line</td>
+<td>Feature has no effect on that sample</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Steep slope</td>
+<td>Feature highly influences prediction for that sample</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Crossing lines</td>
+<td>Feature affects samples differently →
+<strong>heterogeneity</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Outlier lines</td>
+<td>Sample behaves differently from the group → investigate it!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ice-pdp-hybrid-centered-ice-c-ice">🔁 ICE + PDP Hybrid: Centered
+ICE (c-ICE)</h2>
+<p>To better compare shapes (ignoring vertical shifts), you can center
+each line at the feature’s baseline value. Most libraries like SHAP or
+PDPBox support this.</p>
+<hr />
+<h2 id="ice-plot-use-cases">👥 ICE Plot Use Cases</h2>
+<table>
+<colgroup>
+<col style="width: 61%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Customer churn</strong></td>
+<td>See how each customer’s churn risk responds to changing contract
+length</td>
+</tr>
+<tr class="even">
+<td><strong>Loan approval</strong></td>
+<td>Understand how income affects approval probability by applicant</td>
+</tr>
+<tr class="odd">
+<td><strong>Healthcare</strong></td>
+<td>See how a patient’s predicted risk responds to age or dosage</td>
+</tr>
+<tr class="even">
+<td><strong>Pricing</strong></td>
+<td>Understand how ad spend or discount % impacts predicted revenue by
+customer type</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-6">✅ Summary</h2>
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Element</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>ICE plot</strong></td>
+<td>One line per observation, showing model response as one feature
+varies</td>
+</tr>
+<tr class="even">
+<td><strong>Good for</strong></td>
+<td>Detecting individual-level behavior and segment diversity</td>
+</tr>
+<tr class="odd">
+<td><strong>Best used with</strong></td>
+<td>Tree-based models (Random Forest, XGBoost, GBM) or any scikit-learn
+model</td>
+</tr>
+<tr class="even">
+<td><strong>Pairs well with</strong></td>
+<td>PDP (global) and SHAP (local + global)</td>
+</tr>
+<tr class="odd">
+<td><strong>Output</strong></td>
+<td>Lines that expose model structure, bias, and subgroup behaviors</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="quick-comparison-table">🧠 Quick Comparison Table</h2>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 30%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Focus</th>
+<th>Good For</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>PDP</strong></td>
+<td>Average trend</td>
+<td>Summary insight</td>
+</tr>
+<tr class="even">
+<td><strong>ICE</strong></td>
+<td>Individual behavior</td>
+<td>Segment and exception discovery</td>
+</tr>
+<tr class="odd">
+<td><strong>SHAP</strong></td>
+<td>Local + global effects</td>
+<td>Feature attribution, fairness, interpretability</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Absolutely! Let’s do a <strong>deep dive</strong> into a powerful yet
+often underutilized model-driven EDA technique:</p>
+<hr />
+<h1
+id="feature-correlation-network-graphs-for-structural-understanding-1">✅
+<strong>9. Feature Correlation + Network Graphs – for Structural
+Understanding</strong></h1>
+<p><em>(from model-driven EDA techniques)</em></p>
+<hr />
+<h2 id="what-is-it">🧠 What Is It?</h2>
+<p>This technique combines:</p>
+<ol type="1">
+<li><strong>Feature Correlation</strong>: Measures
+<strong>linear</strong> or <strong>nonlinear</strong> associations
+between features<br />
+</li>
+<li><strong>Network Graphs</strong>: Visual structures that <strong>map
+relationships as nodes and edges</strong></li>
+</ol>
+<blockquote>
+<p>💡 Think of it as creating a <strong>map of how features are
+connected</strong>—a “social network” of your data variables.</p>
+</blockquote>
+<hr />
+<h2 id="what-it-tells-you">🎯 What It Tells You</h2>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Goal</th>
+<th>What You Learn</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Detect <strong>redundancy</strong></td>
+<td>Are multiple variables capturing the same signal?</td>
+</tr>
+<tr class="even">
+<td>Find <strong>latent structures</strong></td>
+<td>Are there feature “families” or tightly-knit subgroups?</td>
+</tr>
+<tr class="odd">
+<td>Improve <strong>feature selection</strong></td>
+<td>Drop or combine highly correlated variables</td>
+</tr>
+<tr class="even">
+<td>Uncover <strong>unexpected links</strong></td>
+<td>Reveal proxy relationships or engineered variable overlap</td>
+</tr>
+<tr class="odd">
+<td>Support <strong>explainable models</strong></td>
+<td>Helps diagnose multicollinearity or bias in ML models</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tools-you-can-use">✅ Tools You Can Use</h2>
+<table>
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pandas.corr()</code></td>
+<td>Pearson correlation (linear)</td>
+</tr>
+<tr class="even">
+<td><code>mutual_info_regression/classif</code></td>
+<td>Nonlinear correlation (entropy-based)</td>
+</tr>
+<tr class="odd">
+<td><code>networkx</code></td>
+<td>Create and visualize networks in Python</td>
+</tr>
+<tr class="even">
+<td><code>matplotlib</code>, <code>plotly</code>, or
+<code>pyvis</code></td>
+<td>Visualize graphs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="example-create-a-feature-correlation-network-graph-pearson">🛠️
+Example: Create a Feature Correlation Network Graph (Pearson)</h1>
+<h3 id="step-1-create-synthetic-dataset">📦 Step 1: Create Synthetic
+Dataset</h3>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;age&#39;</span>: np.random.randint(<span class="dv">20</span>, <span class="dv">70</span>, <span class="dv">100</span>),</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;income&#39;</span>: np.random.normal(<span class="dv">50000</span>, <span class="dv">10000</span>, <span class="dv">100</span>),</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;expenses&#39;</span>: np.random.normal(<span class="dv">30000</span>, <span class="dv">5000</span>, <span class="dv">100</span>),</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;savings&#39;</span>: np.random.normal(<span class="dv">10000</span>, <span class="dv">3000</span>, <span class="dv">100</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Inject correlation</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;total_spent&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;income&#39;</span>] <span class="op">-</span> df[<span class="st">&#39;savings&#39;</span>]</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;debt_ratio&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;expenses&#39;</span>] <span class="op">/</span> df[<span class="st">&#39;income&#39;</span>]</span></code></pre></div>
+<hr />
+<h3 id="step-2-calculate-correlation-matrix">📉 Step 2: Calculate
+Correlation Matrix</h3>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="op">=</span> df.corr().<span class="bu">abs</span>()  <span class="co"># absolute correlation</span></span></code></pre></div>
+<hr />
+<h3 id="step-3-filter-for-strong-correlations">🧼 Step 3: Filter for
+Strong Correlations</h3>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>corr_pairs <span class="op">=</span> corr_matrix.stack().reset_index()</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>corr_pairs.columns <span class="op">=</span> [<span class="st">&#39;var1&#39;</span>, <span class="st">&#39;var2&#39;</span>, <span class="st">&#39;correlation&#39;</span>]</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>corr_pairs <span class="op">=</span> corr_pairs[corr_pairs[<span class="st">&#39;var1&#39;</span>] <span class="op">!=</span> corr_pairs[<span class="st">&#39;var2&#39;</span>]]</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>corr_pairs <span class="op">=</span> corr_pairs[corr_pairs[<span class="st">&#39;correlation&#39;</span>] <span class="op">&gt;</span> <span class="fl">0.5</span>]</span></code></pre></div>
+<hr />
+<h3 id="step-4-create-network-graph">🔗 Step 4: Create Network
+Graph</h3>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.Graph()</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, row <span class="kw">in</span> corr_pairs.iterrows():</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    G.add_edge(row[<span class="st">&#39;var1&#39;</span>], row[<span class="st">&#39;var2&#39;</span>], weight<span class="op">=</span>row[<span class="st">&#39;correlation&#39;</span>])</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>pos <span class="op">=</span> nx.spring_layout(G, seed<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>nx.draw(G, pos, with_labels<span class="op">=</span><span class="va">True</span>, node_color<span class="op">=</span><span class="st">&#39;lightblue&#39;</span>, edge_color<span class="op">=</span><span class="st">&#39;gray&#39;</span>, node_size<span class="op">=</span><span class="dv">2000</span>, font_size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>edge_labels <span class="op">=</span> {(row[<span class="st">&#39;var1&#39;</span>], row[<span class="st">&#39;var2&#39;</span>]): <span class="ss">f&quot;</span><span class="sc">{</span>row[<span class="st">&#39;correlation&#39;</span>]<span class="sc">:.2f}</span><span class="ss">&quot;</span> <span class="cf">for</span> _, row <span class="kw">in</span> corr_pairs.iterrows()}</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx_edge_labels(G, pos, edge_labels<span class="op">=</span>edge_labels)</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&quot;Feature Correlation Network Graph&quot;</span>)</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<hr />
+<h2 id="what-you-might-see-2">🔍 What You Might See</h2>
+<table>
+<colgroup>
+<col style="width: 60%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Relationship</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>income</code> ↔︎ <code>total_spent</code></td>
+<td>Highly correlated → redundant</td>
+</tr>
+<tr class="even">
+<td><code>income</code> ↔︎ <code>debt_ratio</code></td>
+<td>Inverse relationship</td>
+</tr>
+<tr class="odd">
+<td><code>savings</code> ↔︎ <code>total_spent</code></td>
+<td>Negative correlation: more savings = less spent</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="optional-use-mutual-information-instead">📈 Optional: Use Mutual
+Information Instead</h2>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> mutual_info_regression</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_mi_matrix(df):</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    columns <span class="op">=</span> df.columns</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    mi_matrix <span class="op">=</span> pd.DataFrame(index<span class="op">=</span>columns, columns<span class="op">=</span>columns)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col1 <span class="kw">in</span> columns:</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> col2 <span class="kw">in</span> columns:</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> col1 <span class="op">!=</span> col2:</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>                mi <span class="op">=</span> mutual_info_regression(df[[col1]], df[col2])[<span class="dv">0</span>]</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>                mi_matrix.loc[col1, col2] <span class="op">=</span> mi</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mi_matrix.astype(<span class="bu">float</span>)</span></code></pre></div>
+<p>Use this when relationships are <strong>nonlinear</strong> or involve
+<strong>categorical + numeric</strong> interactions.</p>
+<hr />
+<h2 id="what-you-can-learn-from-the-network-graph">🧠 What You Can Learn
+from the Network Graph</h2>
+<table>
+<colgroup>
+<col style="width: 60%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Insight Type</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Redundant features</td>
+<td><code>income</code>, <code>total_spent</code> — drop one or
+combine</td>
+</tr>
+<tr class="even">
+<td>Feature clusters</td>
+<td><code>savings</code>, <code>expenses</code>, <code>debt_ratio</code>
+may belong to a financial health cluster</td>
+</tr>
+<tr class="odd">
+<td>Proxy variables</td>
+<td>If <code>age</code> is strongly linked to <code>income</code>, be
+careful about fairness/bias</td>
+</tr>
+<tr class="even">
+<td>Unexpected links</td>
+<td>See if two engineered features overlap more than expected</td>
+</tr>
+<tr class="odd">
+<td>Target proxy</td>
+<td>If the target appears strongly connected to a feature, check for
+leakage</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="real-world-use-cases">🧠 Real-World Use Cases</h2>
+<table>
+<colgroup>
+<col style="width: 61%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Finance</strong></td>
+<td>Spot correlated credit features before building risk model</td>
+</tr>
+<tr class="even">
+<td><strong>Healthcare</strong></td>
+<td>Identify diagnostic features that track the same conditions</td>
+</tr>
+<tr class="odd">
+<td><strong>Manufacturing</strong></td>
+<td>See how sensor variables interact or duplicate each other</td>
+</tr>
+<tr class="even">
+<td><strong>Marketing</strong></td>
+<td>Combine user behavior metrics into more compact feature sets</td>
+</tr>
+<tr class="odd">
+<td><strong>EDA prep</strong></td>
+<td>Identify what to drop, keep, or combine before modeling</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-7">✅ Summary</h2>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pearson or MI matrix</td>
+<td>Quantify pairwise similarity</td>
+</tr>
+<tr class="even">
+<td>Network graph</td>
+<td>Visually explore structure of feature relationships</td>
+</tr>
+<tr class="odd">
+<td>Use case</td>
+<td>Reduce redundancy, discover structure, improve interpretability</td>
+</tr>
+<tr class="even">
+<td>Key benefit</td>
+<td>Helps with <strong>feature selection</strong>,
+<strong>multicollinearity</strong>, and <strong>data
+storytelling</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
